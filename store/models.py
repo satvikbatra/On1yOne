@@ -1,3 +1,65 @@
 from django.db import models
+from django.contrib.auth.models import User
 
 # Create your models here.
+
+# class signup(models.Model):
+#     full_name = models.CharField(max_length=30)
+#     user_name = models.CharField(max_length=30)
+#     email = models.EmailField()
+#     phone_no = models.IntegerField(max_length=10)
+#     password = models.CharField(min_lenght=8)
+#     confirm_password = models.CharField(min_length=8)
+
+
+# OneToOneFeild() means a user can have only one customer and a customer has only one user
+# on_delete=models.CASCADE use to delete the item if we delete user item
+class Customer(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE, null=True, blank=True) 
+    name = models.CharField(max_length=30, null=True)
+    email = models.CharField(max_length=100, null=True)
+
+    # this value will show in the admin panel when we create the model
+    def __str__(self):
+        return self.name
+    
+class Product(models.Model):
+    name = models.CharField(max_length=50, null=True)
+    price = models.FloatField()
+
+    def __str__(self):
+        return self.name
+    
+
+# ForeignKey is used to create many to one relationship i.e a customer can have multiple orders
+# on_delete=models.SET_NULL is used for if the user is deleted we don't have to delete the order, just have to set the value of user to null
+# if complete is false this means the cart is open and we can continue adding items in the cart
+class Order(models.Model):
+    customer = models.ForeignKey(Customer, on_delete=models.SET_NULL, null=True, blank=True)
+    date_ordered = models.DateField(auto_now_add=True)
+    complete = models.BooleanField(default=False)
+    transaction_id = models.CharField(max_length=100, null=True)
+    
+    def __str__(self):
+        return str(self.id)
+
+
+class OrderItem(models.Model):
+    product = models.ForeignKey(Product, on_delete=models.SET_NULL, null=True)
+    order = models.ForeignKey(Order, on_delete=models.SET_NULL, null=True)
+    date_added = models.DateTimeField(auto_now_add=True)
+
+
+
+class ShippingAddress(models.Model):
+    customer = models.ForeignKey(Customer, on_delete=models.SET_NULL, null=True)
+    order = models.ForeignKey(Order, on_delete=models.SET_NULL, null=True)
+    address = models.CharField(max_length=300, null=False)
+    city = models.CharField(max_length=100, null=False)
+    state = models.CharField(max_length=100, null=False)
+    zipcode = models.IntegerField(null=False)
+    date_added = models.DateField(auto_now_add=True)
+
+    def __str__(self):
+        return self.address
+    
