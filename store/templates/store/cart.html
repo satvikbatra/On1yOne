@@ -1,5 +1,23 @@
-{% extends 'store/home.html' %}
 {% load static %}
 {% block content %}
-<h1>Cart</h1>
+<h1>{{ user }}</h1>
+
+<br>
+
+<h3>Items:{{order.get_cart_items}}</h3>
+<h3>Total:{{order.get_cart_total}}</h3>
+
+{% for item in items %}
+<div>
+    <div><img src="{{ item.product.imageURL }}" alt=""></div>
+    <div>{{ item.product.name }}</div>
+    <div>Price: ₹{{ item.product.price }}</div>
+    <div>{{ item.product.id }}</div>
+    <!-- <div>Colour: {{ item.product.get_colour_display }}</div> -->
+    <div>Size: {{ item.product.size }}</div>
+</div>
+{% endfor %}
+
+<h2>hi</h2>
+
 {% endblock content %}

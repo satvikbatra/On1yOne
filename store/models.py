@@ -3,15 +3,6 @@ from django.contrib.auth.models import User
 
 # Create your models here.
 
-# class signup(models.Model):
-#     full_name = models.CharField(max_length=30)
-#     user_name = models.CharField(max_length=30)
-#     email = models.EmailField()
-#     phone_no = models.IntegerField(max_length=10)
-#     password = models.CharField(min_lenght=8)
-#     confirm_password = models.CharField(min_length=8)
-
-
 # OneToOneFeild() means a user can have only one customer and a customer has only one user
 # on_delete=models.CASCADE use to delete the item if we delete user item
 class Customer(models.Model):
@@ -24,11 +15,56 @@ class Customer(models.Model):
         return self.name
     
 class Product(models.Model):
-    name = models.CharField(max_length=50, null=True)
-    price = models.FloatField()
+    SIZES = {
+        "XS": "Extra Small",
+        "S": "Small",
+        "M": "Medium",
+        "L": "Large",
+        "XL": "Extra Large",
+        "XXL": "Double Extra Large",
+    }
+    TYPES = {
+        "t-shirt": "T-Shirt",
+        "hoodie": "Hoodie",
+    }
+    COLOURS = {
+        "white": "White",
+        "black": "Black",
+        "off-white": "Off-White",
+        "red": "Red",
+        "brown": "Brown",
+        "green": "Green",
+        "yellow": "Yellow",
+        "pink": "Pink",
+    }
+    product_type = models.CharField(max_length=10, choices=TYPES, default='t-shirt')
+    name = models.CharField(max_length=50, null=True, blank=True)
+    price = models.IntegerField(default=1999)
+    colour = models.CharField(max_length=10, choices=COLOURS, default='off-white')
+    image = models.ImageField(null=True, blank=True)
+    size = models.CharField(max_length=3, choices=SIZES, default='L')
+    
 
     def __str__(self):
         return self.name
+    
+    def save(self, *args, **kwargs):
+    # Set price based on product type
+        if self.product_type == 't-shirt':
+            self.price = 1999
+            self.name = 't-shirt'
+        elif self.product_type == 'hoodie':
+            self.price = 3999
+            self.name = 'hoodie'
+        super().save(*args, **kwargs)
+
+    @property
+    def imageURL(self):
+        try:
+            url = self.image.url
+        except:
+            url = ''
+        return url
     
 
 # ForeignKey is used to create many to one relationship i.e a customer can have multiple orders
@@ -42,6 +78,17 @@ class Order(models.Model):
     
     def __str__(self):
         return str(self.id)
+    
+    @property
+    def get_cart_total(self):
+        orderitems = self.orderitem_set.all()
+        total = sum([item.get_total for item in orderitems])
+        return total
+    
+    def get_cart_items(self):
+        orderitems = self.orderitem_set.all()
+        total = sum([1 for item in orderitems])
+        return total
 
 
 class OrderItem(models.Model):
@@ -49,6 +96,10 @@ class OrderItem(models.Model):
     order = models.ForeignKey(Order, on_delete=models.SET_NULL, null=True)
     date_added = models.DateTimeField(auto_now_add=True)
 
+    @property
+    def get_total(self):
+        total = self.product.price
+        return total
 
 
 class ShippingAddress(models.Model):
