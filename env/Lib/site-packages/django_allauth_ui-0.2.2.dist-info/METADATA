@@ -1,0 +1,15 @@
+Metadata-Version: 2.1
+Name: django-allauth-ui
+Version: 0.2.2
+Summary: 
+License: MIT
+Author: Dani Hodovic
+Author-email: you@example.com
+Requires-Python: >=3.8,<4.2
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.11
+Requires-Dist: django-widget-tweaks (>=1.4.12,<2.0.0)

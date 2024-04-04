@@ -1,23 +1,153 @@
+<!DOCTYPE html>
 {% load static %}
-{% block content %}
-<h1>{{ user }}</h1>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Urbanist:ital,wght@0,100..900;1,100..900&display=swap');
+        /* Add your CSS styles here */
+    </style>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/cart.css' %}" />
+</head>
+<body>
+<div class="checkout-page">
+    <div class="div">
+        <div class="navbar">
+            <div class="navbar-2">
+                <img src="on1y-One-logo_white.png" class="one-logo-1" >
+                <div class="home">HOME</div>
+                <div class="about">ABOUT</div>
+                <div class="shop">SHOP</div>
+                <div class="contact">CONTACT</div>
+            </div>
+        </div>
+        <div class="text-wrapper">Bag</div>
+        <div class="text-wrapper-2">Summary</div>
+        <h3>Items:{{order.get_cart_items}}</h3>
+        <div class="scroll">
+            {% for item in items %}
+            <div class="product-container">
+                <img class="rectangle" src="{{ item.product.imageURL }}" alt="">
+                <div class="p">{{ item.product.name }}</div>
+                <br>
+                <div>Price: ₹{{ item.product.price }}</div>
+                <!-- <div>{{ item.product.id }}</div> -->
+                <div class="text-wrapper-5">Size: {{ item.product.size }}</div>
+                <button data-product="{{item.product.id}}" data-action="remove" class="update-cart">Remove</button>
+            </div>
+            {% endfor %}
+        </div>
 
-<br>
-
-<h3>Items:{{order.get_cart_items}}</h3>
-<h3>Total:{{order.get_cart_total}}</h3>
-
-{% for item in items %}
-<div>
-    <div><img src="{{ item.product.imageURL }}" alt=""></div>
-    <div>{{ item.product.name }}</div>
-    <div>Price: ₹{{ item.product.price }}</div>
-    <div>{{ item.product.id }}</div>
-    <!-- <div>Colour: {{ item.product.get_colour_display }}</div> -->
-    <div>Size: {{ item.product.size }}</div>
+        <div class="text-wrapper-3">Subtotal</div>
+        <div class="estimated-delivery">Estimated Delivery &amp; Handling</div>
+        <div class="line-2"></div>
+        <!-- <div class="text-wrapper-4">Hoodie</div>
+        <div class="text-wrapper-6">Quantity : 1</div> -->
+        <div class="line-1"></div>
+        <div class="text-wrapper-7">₹ {{order.get_cart_total}}</div>
+        <div class="text-wrapper-8">₹ 1000.00</div>
+        <div class="group">
+            <div class="text-wrapper-9">Total</div>
+            <div class="text-wrapper-10">₹ {{ order.get_cart_total | add:1000 }}</div>
+        </div>
+        <div class="line-3"></div>
+        <div class="frame">
+            <div class="div-wrapper"><div class="text-wrapper-11">Guest Checkout</div></div>
+            <div class="frame-2"><button class="text-wrapper-11" onclick="location.href = '/checkout'">Member Checkout</button></div>
+        </div>
+        <div class="footer">
+            <img class="social-1" src="facebooklogo.jpeg" />
+            <img class="social-2" src="instagramlogo.jpeg" />
+            <img class="social-3" src="youtubelogo.jpeg" />
+            <img class="social-4" src="linkdinlogo.jpeg" />
+            <div class="menu-footer">
+                <div class="text-wrapper-12">Product</div>
+                <div class="text-wrapper-13">Landing Page</div>
+                <div class="text-wrapper-14">Popup Builder</div>
+                <div class="text-wrapper-15">Web-design</div>
+                <div class="text-wrapper-16">Content</div>
+                <div class="text-wrapper-17">Integrations</div>
+            </div>
+            <div class="menu-footer-vert">
+                <div class="text-wrapper-12">Use Cases</div>
+                <div class="text-wrapper-13">Web-designers</div>
+                <div class="text-wrapper-14">Marketers</div>
+                <div class="text-wrapper-15">Small Business</div>
+                <div class="text-wrapper-16">Website Builder</div>
+            </div>
+            <div class="menu-footer-2">
+                <div class="text-wrapper-12">Company</div>
+                <div class="text-wrapper-13">About Us</div>
+                <div class="text-wrapper-14">Careers</div>
+                <div class="text-wrapper-15">FAQs</div>
+                <div class="text-wrapper-16">Teams</div>
+                <div class="text-wrapper-17">Contact Us</div>
+            </div>
+            <div class="overlap">
+                <p class="text-wrapper-18">
+                    High level experience in web design and development knowledge, producing quality work.
+                </p>
+                <img class="one-logo" src="on1y One logo .png" />
+            </div>
+        </div>
+    </div>
 </div>
-{% endfor %}
 
-<h2>hi</h2>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+    var removeButtons = document.querySelectorAll('.update-cart');
 
-{% endblock content %}
+    removeButtons.forEach(function(button) {
+        button.addEventListener('click', function() {
+            var productId = button.getAttribute('data-product');
+            var action = button.getAttribute('data-action');
+
+            // Construct the data payload
+            var data = {
+                'product_id': productId,
+                'action': action
+            };
+
+            // Send an AJAX request to update the cart
+            fetch('/update-cart/', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-CSRFToken': getCookie('csrftoken')
+                },
+                body: JSON.stringify(data)
+            })
+            .then(response => response.json())
+            .then(data => {
+                // Handle the response from the server
+                console.log(data);
+                // Refresh the page upon successful removal
+                location.reload();
+            })
+            .catch((error) => {
+                console.error('Error:', error);
+            });
+        });
+    });
+
+    // Function to get CSRF token from cookies
+    function getCookie(name) {
+        var cookieValue = null;
+        if (document.cookie && document.cookie !== '') {
+            var cookies = document.cookie.split(';');
+            for (var i = 0; i < cookies.length; i++) {
+                var cookie = cookies[i].trim();
+                if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                    cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                    break;
+                }
+            }
+        }
+        return cookieValue;
+    }
+});
+
+
+</script>
+</body>
+</html>
