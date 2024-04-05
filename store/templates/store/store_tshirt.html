@@ -128,54 +128,54 @@
     var csrfToken = "{{ csrf_token }}";
 
     // Function to handle adding to cart
- // Function to handle adding to cart
-function addToCart() {
-    // // Check if a size is selected
-    // if (!selectedSize || !Object.keys(sizesObject).includes(selectedSize)) {
-    //     console.error('Invalid size selected');
-    //     return; // Exit the function if no valid size is selected
-    // }
+    // Function to handle adding to cart
+    function addToCart() {
+        // // Check if a size is selected
+        // if (!selectedSize || !Object.keys(sizesObject).includes(selectedSize)) {
+        //     console.error('Invalid size selected');
+        //     return; // Exit the function if no valid size is selected
+        // }
 
-    // Log selected color and size
-    // console.log('Selected color:', selectedColor);
-    // console.log('Selected size:', selectedSize);
+        // Log selected color and size
+        // console.log('Selected color:', selectedColor);
+        // console.log('Selected size:', selectedSize);
 
-    // Send a POST request to add-to-cart endpoint
-    try{
-        fetch('/add-to-cart/', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-            'X-CSRFToken': csrfToken // Use the CSRF token variable here
-        },
-        body: JSON.stringify({
-            'color': selectedColor,
-            'size': selectedSize
-            // Add other product attributes as needed
+        // Send a POST request to add-to-cart endpoint
+        try{
+            fetch('/add-to-cart/', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'X-CSRFToken': csrfToken // Use the CSRF token variable here
+            },
+            body: JSON.stringify({
+                'color': selectedColor,
+                'size': selectedSize
+                // Add other product attributes as needed
+            })
         })
-    })
-    .then(response => {
-        if (response.ok) {
-            console.log('Product added to cart successfully');
-            // Optionally, you can handle success response here (e.g., show a success message)
-        } else {
-            // Handle the error response
-            response.json().then(data => {
-                console.error('Error:', data.error);
-                // Display the error message to the user (e.g., using an alert or updating the UI)
-            });
+        .then(response => {
+            if (response.ok) {
+                console.log('Product added to cart successfully');
+                // Optionally, you can handle success response here (e.g., show a success message)
+            } else {
+                // Handle the error response
+                response.json().then(data => {
+                    console.error('Error:', data.error);
+                    // Display the error message to the user (e.g., using an alert or updating the UI)
+                });
+            }
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            // Optionally, you can handle other errors here (e.g., network errors)
+        });
         }
-    })
-    .catch(error => {
-        console.error('Error:', error);
-        // Optionally, you can handle other errors here (e.g., network errors)
-    });
+        catch(e){
+            console.log(e)
+        }
+        console.log(selectedColor,selectedSize);
     }
-    catch(e){
-        console.log(e)
-    }
-    console.log(selectedColor,selectedSize);
-}
 
 </script>
 </body>

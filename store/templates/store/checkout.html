@@ -13,7 +13,7 @@
 </head>
 <body>
     <h2>Shipping Details</h2>
-    <form id="payment-form">
+    <form id="form">
         {% csrf_token %}
         <div>
             <label for="name">Name:</label>
@@ -54,40 +54,78 @@
 
     <script type="text/javascript">
         document.addEventListener('DOMContentLoaded', function() {
-            var formButton = document.getElementById('form-button');
-            var form = document.getElementById('payment-form');
-    
-            form.addEventListener('submit', function(e){
-                e.preventDefault();
-                console.log('Form Submitted!!!');
-    
-                // Perform form validation
-                var inputs = form.getElementsByTagName('input');
-                var isValid = true;
-                for (var i = 0; i < inputs.length; i++) {
-                    if (inputs[i].value.trim() === '') {
-                        isValid = false;
-                        break;
-                    }
+        var formButton = document.getElementById('form-button');
+        var form = document.getElementById('form');
+
+        form.addEventListener('submit', function(e){
+            e.preventDefault();
+            console.log('Form Submitted!!!');
+
+            // Perform form validation
+            var inputs = form.getElementsByTagName('input');
+            var isValid = true;
+            for (var i = 0; i < inputs.length; i++) {
+                if (inputs[i].value.trim() === '') {
+                    isValid = false;
+                    break;
                 }
-    
-                if (isValid) {
-                    formButton.classList.add("hidden");
-                    document.getElementById('payment-info').classList.remove("hidden");
-                } else {
-                    alert('Please fill in all fields before continuing.');
-                }
-            });
+            }
+
+            if (isValid) {
+                formButton.classList.add("hidden");
+                document.getElementById('payment-info').classList.remove("hidden");
+            } else {
+                alert('Please fill in all fields before continuing.');
+            }
         });
+    });
 
-        document.getElementById('make-payment').addEventListener('click', function(e){
-            e.preventDefault(); // Prevent default action for the click event
-            submitFormData();
+    var userFormData;  // Declare userFormData outside of the submitFormData function
+    var total = '{{order.get_cart_total}}'
+
+    document.getElementById('make-payment').addEventListener('click', function(e){
+        e.preventDefault(); // Prevent default action for the click event
+        submitFormData();
+    });
+
+    function submitFormData() {
+        console.log('payment button clicked!!!');
+
+        userFormData = {
+            'name': form.name.value,
+            'email': form.email.value,
+            'total': total,
+        };
+
+        var shippingInfo = {
+            'address': form.address.value,
+            'city': form.city.value, 
+            'state': form.state.value,
+            'zipcode': form.pincode.value,
+        };
+
+        var csrftoken = document.querySelector('[name=csrfmiddlewaretoken]').value;  // Get CSRF token from the form
+
+        var url = '/process-order/';
+        fetch(url, {
+            method:'POST',
+            headers:{
+                'Content-Type':'application/json',
+                'X-CSRFToken': csrftoken,
+            },
+            body:JSON.stringify({'form':userFormData, 'shipping':shippingInfo}),
         })
+        .then((response) => response.json())
+        .then((data) => {
+            console.log('Success:', data);
+            alert('Transaction completed!!');
+            window.location.href = "{% url 'home' %}";
+        })
+        .catch((error) => {
+            console.error('Error occurred while submitting form data:', error);
+        });
+    }
 
-        function submitFormData() {
-            console.log('form submitted!!')
-        }
     </script>
 </body>
 </html>
