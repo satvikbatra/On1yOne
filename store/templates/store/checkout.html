@@ -5,10 +5,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <style>
+        .hidden {
+            display: none;
+        }
+    </style>
 </head>
 <body>
-    <h2>Payment Details</h2>
+    <h2>Shipping Details</h2>
     <form id="payment-form">
+        {% csrf_token %}
         <div>
             <label for="name">Name:</label>
             <input type="text" id="name" name="name" required>
@@ -39,6 +45,49 @@
             <input type="text" id="pincode" name="pincode" required>
         </div>
         <br>
-        <button type="submit">Pay</button>
+        <button id="form-button" type="submit">Continue</button>
     </form>
+
+    <div class="box-element hidden" id="payment-info">
+        <button id="make-payment">Pay</button>
+    </div>
+
+    <script type="text/javascript">
+        document.addEventListener('DOMContentLoaded', function() {
+            var formButton = document.getElementById('form-button');
+            var form = document.getElementById('payment-form');
+    
+            form.addEventListener('submit', function(e){
+                e.preventDefault();
+                console.log('Form Submitted!!!');
+    
+                // Perform form validation
+                var inputs = form.getElementsByTagName('input');
+                var isValid = true;
+                for (var i = 0; i < inputs.length; i++) {
+                    if (inputs[i].value.trim() === '') {
+                        isValid = false;
+                        break;
+                    }
+                }
+    
+                if (isValid) {
+                    formButton.classList.add("hidden");
+                    document.getElementById('payment-info').classList.remove("hidden");
+                } else {
+                    alert('Please fill in all fields before continuing.');
+                }
+            });
+        });
+
+        document.getElementById('make-payment').addEventListener('click', function(e){
+            e.preventDefault(); // Prevent default action for the click event
+            submitFormData();
+        })
+
+        function submitFormData() {
+            console.log('form submitted!!')
+        }
+    </script>
+</body>
 </html>
