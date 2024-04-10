@@ -56,11 +56,13 @@ def cart(request):
         customer = request.user.customer
         order, created = Order.objects.get_or_create(customer=customer, complete=False)
         items = order.orderitem_set.all()
+        print("Items:", items)
     else:
-        order = {'get_cart_total':0, 'get_cart_items':0}
+        order = {'get_cart_total': 0, 'get_cart_items': 0}
         items = []
-    context = {'items':items, 'order':order}
+    context = {'items': items, 'order': order}
     return render(request, 'store/cart.html', context)
+
 
 
 def checkout(request):
@@ -85,24 +87,18 @@ def add_to_cart(request):
         data = json.loads(request.body)
         selected_color = data.get('color')
         selected_size = data.get('size')
+        tshirt_back_image = data.get('tshirt_back_image')  # Retrieve back image URL
 
-
-        # Log the received data for debugging
-        print(f"Received color: {selected_color}, size: {selected_size}")
-
-        # Check if the selected_size value is valid
-        # if selected_size is None or selected_size not in Product.SIZES:
-        #     print(f"Size '{selected_size}' is not valid")
-        #     return JsonResponse({'error': 'Invalid size selected'}, status=400)
-
-        # Create a new Product instance with the received color and size
-        product = Product.objects.create(
+        # Create or get the Product instance
+        product, created = Product.objects.get_or_create(
+            product_type='t-shirt',  # Replace with actual product type
+            name='Your T-Shirt Product Name',  # Replace with actual product name
             colour=selected_color,
             size=selected_size,
-            product_type='t-shirt'
+            defaults={'image': tshirt_back_image}  # Set default values
         )
 
-        # Get the customer and order
+        # Get or create the Order and associate it with the customer
         customer = request.user.customer
         order, created = Order.objects.get_or_create(customer=customer, complete=False)
 
@@ -112,17 +108,13 @@ def add_to_cart(request):
             order=order
         )
 
-        # Log a success message
-        print("Product added to cart successfully")
-
         # Return a JSON response indicating success
         return JsonResponse({'message': 'Product added to cart successfully'}, status=200)
     else:
-        # Log a message indicating that the request method is not POST
-        print("Request method is not POST")
-
-        # Return an appropriate response, such as a JSON response with an error message
+        # Return an appropriate response if the request method is not POST
         return JsonResponse({'error': 'Invalid request method'}, status=405)
+
+
     
 def update_cart(request):
     if request.method == 'POST':
