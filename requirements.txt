@@ -1,2 +1,5 @@
 django==5.0.2
 pillow==10.2.0
+django-allauth==0.61.1
+django-allauth==0.2.2
+django-widget-tweaks==1.5.0
