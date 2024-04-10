@@ -1,1 +1,77 @@
-<h1>hoodie</h1>
+{% load static %}
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Urbanist:ital,wght@0,100..900;1,100..900&display=swap')
+        </style>
+        <link rel="stylesheet" href="{% static 'css/store_hoodie.css' %}">
+  </head>
+  <body>
+    <div class="hoodie-page">
+      <div class="div">
+        <div class="navbar">
+          <div class="navbar-2">
+            <img src="images/On1lyOne-White.png" class="one-logo-1" >
+            <div class="home">HOME</div>
+            <div class="about">ABOUT</div>
+            <div class="shop">SHOP</div>
+            <div class="contact">CONTACT</div>
+          </div>
+        </div>
+        <div class="overlap">
+          <div class="change-color">Change Colour</div>
+          <div class="frame">
+            <button onclick="changecolor('{% static "images1/H-White-Front.png" %}','{% static "images1/H-White-Back.png" %}')" class="ellipse"></button>
+            <button onclick="changecolor('{% static "images1/H-Black-Front.png" %}','{% static "images1/H-Black-Back.png" %}')" class="ellipse-2"></button>
+            <button onclick="changecolor('{% static "images1/H-Maroon-Front.png" %}','{% static "images1/H-Maroon-Back.png" %}')" class="ellipse-3"></button>
+            <button onclick="changecolor('{% static "images1/H-Yellow-Front.png" %}','{% static "images1/H-Yellow-Back.png" %}')" class="ellipse-4"></button>
+        </div>
+        <div class="frame-ex">
+            <button onclick="changecolor('{% static "images1/H-LightBeige-Front.png" %}','{% static "images1/H-LightBeige-Back.png" %}')" class="ellipse-5"></button>
+            <button onclick="changecolor('{% static "images1/H-Pink-Front.png" %}','{% static "images1/H-Pink-Back.png" %}')" class="ellipse-6"></button>
+            <button onclick="changecolor('{% static "images1/H-Green-Front.png" %}','{% static "images1/H-Green-Back.png" %}')" class="ellipse-7"></button>
+            <button onclick="changecolor('{% static "images1/H-Brown-Front.png" %}','{% static "images1/H-Brown-Back.png" %}')" class="ellipse-8"></button>
+        </div>
+
+          <div class="select-size">
+                <div class="select">Select Size</div>
+                <div class="size">
+                    <button onclick="selectSize('XS')" id="btnXS">XS</button>
+                    <button onclick="selectSize('S')" id="btnS">S</button>
+                    <button onclick="selectSize('M')" id="btnM">M</button>
+                    <button onclick="selectSize('L')" id="btnL">L</button>
+                    <button onclick="selectSize('XL')" id="btnXL">XL</button>
+                    <button onclick="selectSize('XXL')" id="btnXXL">XXL</button>
+                </div>
+            </div>
+          <div class="group">
+            <div class="overlap-2"><div class="text-wrapper-5">Get a new design</div></div>
+          </div>
+          <div class="frame-wrapper">
+            <div class="frame-2">
+              <div class="frame-3"><div class="text-wrapper-6">Add to cart</div></div>
+            </div>
+          </div>
+        </div>
+        <div class="frame-4">
+          <div class="rectangle">
+            <div class="h-front">
+              <img id="hoodie-front" src="images/H-White-front.png">
+            </div>
+          </div>
+          <div class="rectangle">
+            <div class="h-back">
+              <img id="hoodie-back" src="images/H-White-back.png">
+            </div>
+          </div>
+        </div>
+        <div class="text-wrapper-7">Front</div>
+        <div class="text-wrapper-8">Hoodie</div>
+        <div class="text-wrapper-9">Back</div>
+      </div>
+    </div>
+    <script src="{% static 'js/hoodie.js' %}"></script>
+  </body>
+</html>

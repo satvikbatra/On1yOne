@@ -1,41 +1,44 @@
 {% load static %}
 <!DOCTYPE html>
 <html>
-<head>
+  <head>
     <meta charset="utf-8" />
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Urbanist:ital,wght@0,100..900;1,100..900&display=swap');
-    </style>
-    <link rel="stylesheet" type="text/css" href="{% static 'css/store_tshirt.css' %}" />
-</head>
-<body>
-<div class="tshirt-page">
-    <div class="div">
+        @import url('https://fonts.googleapis.com/css2?family=Urbanist:ital,wght@0,100..900;1,100..900&display=swap')
+        </style>
+        <link rel="stylesheet" href="{% static 'css/store_tshirt.css' %}">
+  </head>
+  <body>
+    <div class="tshirt-page">
+      <div class="div">
         <div class="navbar">
-            <div class="navbar-2">
-                <img src="on1y-One-logo_white.png" class="one-logo-1">
-                <div class="home">HOME</div>
-                <div class="about">ABOUT</div>
-                <div class="shop">SHOP</div>
-                <div class="contact">CONTACT</div>
-            </div>
+          <div class="navbar-2">
+            <img src="images/On1lyOne-White.png" class="one-logo-1" >
+            <div class="home">HOME</div>
+            <div class="about">ABOUT</div>
+            <div class="shop">SHOP</div>
+            <div class="contact">CONTACT</div>
+          </div>
         </div>
         <div class="overlap">
-            <div class="frame">
-                <button class="ellipse-1" onclick="selectColor(this, 'white')"></button>
-                <button class="ellipse-2" onclick="selectColor(this, 'black')"></button>
-                <button class="ellipse-3" onclick="selectColor(this, 'off-white')"></button>
-                <button class="ellipse-4" onclick="selectColor(this, 'red')"></button>
-                <button class="ellipse-5" onclick="selectColor(this, 'brown')"></button>
-                <button class="ellipse-6" onclick="selectColor(this, 'green')"></button>
-                <button class="ellipse-7" onclick="selectColor(this, 'yellow')"></button>
-                <button class="ellipse-8" onclick="selectColor(this, 'pink')"></button>
+          <div class="change-color">Change Colour</div>
+          <div class="frame">
+                <button onclick="changecolor('{% static "images1/T-White-Front.png" %}', '{% static "images1/T-White-Back.png" %}')" class="ellipse"></button>
+                <button onclick="changecolor('{% static "images1/T-Black-Front.png" %}', '{% static "images1/T-Black-Back.png" %}')" class="ellipse-2"></button>
+                <button onclick="changecolor('{% static "images1/T-Maroon-Front.png" %}', '{% static "images1/T-Maroon-Back.png" %}')" class="ellipse-3"></button>
+                <button onclick="changecolor('{% static "images1/T-Yellow-Front.png" %}', '{% static "images1/T-Yellow-Back.png" %}')" class="ellipse-4"></button>
             </div>
-            <div id="selectedColor"></div>
+            <div class="frame-ex">
+                <button onclick="changecolor('{% static "images1/T-LightBeige-Front.png" %}', '{% static "images1/T-LightBeige-Back.png" %}')" class="ellipse-5"></button>
+                <button onclick="changecolor('{% static "images1/T-Pink-Front.png" %}', '{% static "images1/T-Pink-Back.png" %}')" class="ellipse-6"></button>
+                <button onclick="changecolor('{% static "images1/T-Green-Front.png" %}', '{% static "images1/T-Green-Back.png" %}')" class="ellipse-7"></button>
+                <button onclick="changecolor('{% static "images1/T-Brown-Front.png" %}', '{% static "images1/T-Brown-Back.png" %}')" class="ellipse-8"></button>
+            </div>
 
-            <br><br><br>
-            <div class="text-wrapper-4">
-                <h3>Select Size</h3>
+
+
+          <div class="select-size">
+                <div class="select">Select Size</div>
                 <div class="size">
                     <button onclick="selectSize('XS')" id="btnXS">XS</button>
                     <button onclick="selectSize('S')" id="btnS">S</button>
@@ -44,139 +47,33 @@
                     <button onclick="selectSize('XL')" id="btnXL">XL</button>
                     <button onclick="selectSize('XXL')" id="btnXXL">XXL</button>
                 </div>
-            </div> <!-- Changed position to size -->
-
-            <div class="group">
-                <div class="overlap-2"><div class="text-wrapper-5">Get a new design</div></div>
             </div>
-
-            <!-- Add the "Add to Cart" button -->
-            <button onclick="addToCart()">Add to Cart</button>
-
-            <div class="frame-wrapper">
-                <div class="frame-2">
-                    <div class="frame-3"><div class="text-wrapper-6">Add to cart</div></div>
-                </div>
+          <div class="group">
+            <div class="overlap-2"><div class="text-wrapper-5">Get a new design</div></div>
+          </div>
+          <div class="frame-wrapper">
+            <div class="frame-2">
+              <div class="frame-3"><div class="text-wrapper-6">Add to cart</div></div>
             </div>
+          </div>
         </div>
         <div class="frame-4">
-            <div class="rectangle"></div>
-            <div class="rectangle"></div>
+          <div class="rectangle">
+            <div class="t-front">
+              <img id="tshirt-front" src="images/T-White-front.png">
+            </div>
+          </div>
+          <div class="rectangle">
+            <div class="t-back">
+              <img id="tshirt-back" src="images/T-White-back.png">
+            </div>
+          </div>
         </div>
         <div class="text-wrapper-7">Front</div>
         <div class="text-wrapper-8">T-shirt</div>
         <div class="text-wrapper-9">Back</div>
+      </div>
     </div>
-</div>
-<script>
-
-    var sizesObject = {
-        "XS": "Extra Small",
-        "S": "Small",
-        "M": "Medium",
-        "L": "Large",
-        "XL": "Extra Large",
-        "XXL": "Double Extra Large",
-    };
-    let selectedSize = null; // Declare a variable to store the selected size
-
-    function selectSize(size) {
-        // Log selected size
-        // console.log('Selected size:', size);
-
-        // Check if the selected size is a valid choice
-        // if (!Object.keys(sizesObject).includes(size)) {
-        //     console.error(`Invalid size: ${size}`);
-        //     return; // Exit the function if the size is invalid
-        // }
-
-        // Reset all button colors to default
-        document.querySelectorAll('.size button').forEach(button => {
-            button.style.background = '#fff'; // Reset to default color
-        });
-
-        // Change the color of the clicked button
-        document.getElementById('btn' + size).style.background = 'red'; // Change to desired color
-
-        // Update selected size
-        selectedSize = size;
-    }
-
-
-
-    let selectedColor = null; // Declare a variable to store the selected color
-
-    function selectColor(button, color) {
-        // Log class of selected button
-        // console.log('Selected color class:', button.classList[0]);
-
-        // Remove 'selected' class from all buttons
-        document.querySelectorAll('.frame button').forEach(btn => {
-            btn.classList.remove('selected');
-        });
-
-        // Add 'selected' class to the clicked button
-        button.classList.add('selected');
-
-
-        // Update the selected color name display (optional)
-        document.getElementById('selectedColor').textContent = 'Selected Color: ' + color;
-
-        // Update the selected color variable
-        selectedColor = color;
-    }
-    var csrfToken = "{{ csrf_token }}";
-
-    // Function to handle adding to cart
-    // Function to handle adding to cart
-    function addToCart() {
-        // // Check if a size is selected
-        // if (!selectedSize || !Object.keys(sizesObject).includes(selectedSize)) {
-        //     console.error('Invalid size selected');
-        //     return; // Exit the function if no valid size is selected
-        // }
-
-        // Log selected color and size
-        // console.log('Selected color:', selectedColor);
-        // console.log('Selected size:', selectedSize);
-
-        // Send a POST request to add-to-cart endpoint
-        try{
-            fetch('/add-to-cart/', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-                'X-CSRFToken': csrfToken // Use the CSRF token variable here
-            },
-            body: JSON.stringify({
-                'color': selectedColor,
-                'size': selectedSize
-                // Add other product attributes as needed
-            })
-        })
-        .then(response => {
-            if (response.ok) {
-                console.log('Product added to cart successfully');
-                // Optionally, you can handle success response here (e.g., show a success message)
-            } else {
-                // Handle the error response
-                response.json().then(data => {
-                    console.error('Error:', data.error);
-                    // Display the error message to the user (e.g., using an alert or updating the UI)
-                });
-            }
-        })
-        .catch(error => {
-            console.error('Error:', error);
-            // Optionally, you can handle other errors here (e.g., network errors)
-        });
-        }
-        catch(e){
-            console.log(e)
-        }
-        console.log(selectedColor,selectedSize);
-    }
-
-</script>
-</body>
+    <script src="{% static 'js/tshirt.js' %}"></script>
+  </body>
 </html>
