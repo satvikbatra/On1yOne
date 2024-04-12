@@ -1,50 +1,89 @@
 {% load static %}
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sign Up</title>
-
-    <link rel="stylesheet" type="text/css" href="{% static 'css/signup.css' %}">
-</head>
-<body>
-    <div>
-        <h2>Registration</h2>
-        <form method="POST" action="{% url 'signup' %}">
-            {% csrf_token %}
-            <label for="full_name">Full Name:</label><br>
-            <input type="text" id="full_name" name="full_name" required><br><br>
-            
-            <label for="username">Username:</label><br>
-            <input type="text" id="username" name="username" required><br><br>
-            
-            <label for="email">Email:</label><br>
-            <input type="email" id="email" name="email" required><br><br>
-            
-            <label for="phone_number">Phone Number:</label><br>
-            <input type="text" id="phone_number" name="phone_number" required><br><br>
-            
-            <label for="password1">Password:</label><br>
-            <input type="password" id="password1" name="password1" required><br><br>
-            
-            <label for="password2">Confirm Password:</label><br>
-            <input type="password" id="password2" name="password2" required><br><br>
-
-            <input type="submit" value="Register">
-        </form>
+<html>
+    <head>
+        <meta charset="utf-8"/>
+        <link rel="stylesheet" type="text/css" href="{% static 'css/signup.css' %}">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+    </head>
+    <body>
+        <div class="login">
+            <div class="div">
+                <div class="navbar">
+                    <div class="navbar-2">
+                        <img src="logo1.png">
+                    </div>
+                </div>
+                <div class="group">
+                    <div class="text-wrapper">SignUp</div>
+                    <div class="frame">
+                        <div class="frame-2">
+                            <form method="POST" action="{% url 'signup' %}">
+                                {% csrf_token %}
+                                <label for="full_name">Full Name:</label><br>
+                                <input type="text" id="full_name" name="full_name" required><br><br>
+                                
+                                <label for="username">Username:</label><br>
+                                <input type="text" id="username" name="username" required><br><br>
+                                
+                                <label for="email">Email:</label><br>
+                                <input type="email" id="email" name="email" required><br><br>
+                                
+                                <label for="phone_number">Phone Number:</label><br>
+                                <input type="text" id="phone_number" name="phone_number" required><br><br>
+                                
+                                <label for="password1">Password:</label><br>
+                                <input type="password" id="password1" name="password1" required><br><br>
+                                
+                                <label for="password2">Confirm Password:</label><br>
+                                <input type="password" id="password2" name="password2" required><br><br>
+                    
+                                <input type="submit" value="Register">
+                            </form>
+                        <button class="button" style="vertical-align:middle"><span>Login </span></button>
+                    </div>
+                </div>
+                <div class="footer">
+                    <img class="social" src="facebook.png" />
+                    <div class="social-2"></div>
+                    <img class="img" src="youtube.png" />
+                    <div class="social-3"></div>
+                    <div class="menu-footer">
+                        <div class="text-wrapper-5">Product</div>
+                        <div class="text-wrapper-6">Landing Page</div>
+                        <div class="text-wrapper-7">Popup Builder</div>
+                        <div class="text-wrapper-8">Web-design</div>
+                        <div class="text-wrapper-9">Content</div>
+                        <div class="text-wrapper-10">Integrations</div>
+                    </div>
+                    <div class="menu-footer-vert">
+                        <div class="text-wrapper-5">Use Cases</div>
+                        <div class="text-wrapper-6">Web-designers</div>
+                        <div class="text-wrapper-7">Marketers</div>
+                        <div class="text-wrapper-8">Small Business</div>
+                        <div class="text-wrapper-9">Website Builder</div>
+                    </div>
+                    <div class="menu-footer-2">
+                        <div class="text-wrapper-5">Company</div>
+                        <div class="text-wrapper-6">About Us</div>
+                        <div class="text-wrapper-7">Careers</div>
+                        <div class="text-wrapper-8">FAQs</div>
+                        <div class="text-wrapper-9">Teams</div>
+                        <div class="text-wrapper-10">Contact Us</div>
+                    </div>
+                    <div class="overlap">
+                        <p class="p">High level experience in web design and development knowledge, producing quality work.</p>
+                        <img class="one-logo" src="logo.png" />
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div>
         {% for message in messages %}
         {% if message %}
             <h3>{{message}}</h3>
         {% endif %}
         {% endfor %}
-    </div>
-    <!-- <div>
-        {% for message in messages %}
-        {% if message %}
-            <h3>{{message}}</h3>
-        {% endif %}
-        {% endfor %}
-    </div> -->
-</body>
+        </div>
+    </body>
 </html>

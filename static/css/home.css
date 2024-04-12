@@ -1,0 +1,650 @@
+@import url('https://fonts.googleapis.com/css2?family=Urbanist:ital,wght@0,100..900;1,100..900&display=swap');
+
+.index {
+    background-color: #ffffff;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    width: 100%;
+}
+
+.index .div {
+    background-color: #ffffff;
+    overflow: hidden;
+    width: 1440px;
+    height: 1917px;
+    position: relative;
+}
+
+.index .navbar {
+    position: absolute;
+    width: 1448px;
+    height: 63px;
+    top: 0;
+    left: 0;
+}
+
+.index .navbar-2 {
+    position: relative;
+    width: 1440px;
+    height: 63px;
+    background-image: url(bg.jpeg);
+    background-size: 100% 100%
+}
+
+.index .navbar-2 a{
+    color: #ffffff;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 16px;
+}
+
+.index .navbar-2 img{
+    height: 45px;
+    width: 110px;
+    padding-left: 10px;
+    padding-top: 8.5px;
+}
+
+.index .home {
+    width: 38px;
+    left: 596px;
+    position: absolute;
+    top: 24px;
+    font-family: "Urbanist", sans-serif;
+    font-weight: 400;
+    color: #ffffff;
+    letter-spacing: 0;
+    line-height: normal;
+}
+
+.index .home a:hover,
+.index .home a.active{
+    color: #00ffd5;
+}
+
+.index .about {
+    width: 42px;
+    left: 721px;
+    position: absolute;
+    top: 24px;
+    font-family: "Urbanist", sans-serif;
+    font-weight: 400;
+    color: #ffffff;
+    letter-spacing: 0;
+    line-height: normal;
+}
+
+.index .about a:hover,
+.index .about a.active{
+    color: #00ffd5;
+}
+
+.index .shop {
+    width: 34px;
+    left: 663px;
+    position: absolute;
+    top: 24px;
+    font-family: "Urbanist", sans-serif;
+    font-weight: 400;
+    color: #ffffff;
+    letter-spacing: 0;
+    line-height: normal;
+}
+
+.index .shop a:hover,
+.index .shop a.active{
+    color: #00ffd5;
+}
+
+.index .contact {
+    position: absolute;
+    width: 57px;
+    top: 24px;
+    left: 785px;
+    font-family: "Urbanist", sans-serif;
+    font-weight: 400;
+    color: #ffffff;
+    letter-spacing: 0;
+    line-height: normal;
+}
+
+.index .contact a:hover,
+.index .contact a.active{
+    color: #00ffd5;
+}
+
+.index .navbar-2 .icons{
+    padding-left: 79rem;
+    margin-top: -2.4rem;
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+}
+
+.index .navbar-2 .icons a:hover,
+.index .navbar-2 .icons a.active{
+    color: #00ffd5;
+}
+
+
+.index .hero {
+    position: absolute;
+    width: 1181px;
+    height: 461px;
+    top: 93px;
+    left: 132px;
+}
+
+.index .overlap {
+    position: relative;
+    width: 1177px;
+    height: 461px;
+    background-color: #e8edeb;
+    background-image: url(banner-1.jpeg);
+    box-shadow: 1px 2px 10px 5px #8BA799;
+}
+
+.index .overlap-group {
+    position: absolute;
+    width: 702px;
+    height: 174px;
+    top: 127px;
+    left: 92px;
+}
+
+.index .super-value-deals-on {
+    position: absolute;
+    width: 702px;
+    top: 21px;
+    left: 0;
+    font-family: "Urbanist", sans-serif;
+    font-weight: 600;
+    color: #e8edeb;
+    font-size: 54px;
+    letter-spacing: 0;
+    line-height: normal;
+}
+
+.index .save-more-with {
+    position: absolute;
+    width: 316px;
+    top: 0;
+    left: 0;
+    font-family: "Urbanist", sans-serif;
+    font-weight: 400;
+    color: #000000;
+    font-size: 18px;
+    letter-spacing: 0;
+    line-height: normal;
+}
+
+.index .button-85 {
+    padding: 0.6em 2em;
+    border: none;
+    outline: none;
+    color: rgb(255, 255, 255);
+    background: #111;
+    cursor: pointer;
+    position: relative;
+    z-index: 0;
+    border-radius: 10px;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    margin: 5rem;
+    margin-top: 23rem;
+    margin-left: 6rem;
+    
+  }
+  
+.button-85:before {
+    content: "";
+    background: linear-gradient(
+      45deg,
+      #ff0000,
+      #ff7300,
+      #fffb00,
+      #48ff00,
+      #00ffd5,
+      #002bff,
+      #7a00ff,
+      #ff00c8,
+      #ff0000
+    );
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    background-size: 400%;
+    z-index: -1;
+    filter: blur(5px);
+    -webkit-filter: blur(5px);
+    width: calc(100% + 4px);
+    height: calc(100% + 4px);
+    animation: glowing-button-85 20s linear infinite;
+    transition: opacity 0.3s ease-in-out;
+    border-radius: 10px;
+  }
+  
+@keyframes glowing-button-85 {
+    0% {
+      background-position: 0 0;
+    }
+    50% {
+      background-position: 400% 0;
+    }
+    100% {
+      background-position: 0 0;
+    }
+  }
+  
+.button-85:after {
+    z-index: -1;
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: #222;
+    left: 0;
+    top: 0;
+    border-radius: 10px;
+    height: 29px;
+}
+
+#shopButton{
+    margin-top: 32rem;
+    margin-left: 6rem;
+}
+
+.index .div-wrapper {
+    position: relative;
+    width: 101px;
+    height: 29px;
+    background-color: #000000;
+}
+
+.index .text-wrapper {
+    position: absolute;
+    top: 7px;
+    left: 23px;
+    font-family: "Urbanist", sans-serif;
+    font-weight: 400;
+    color: #ffffff;
+    font-size: 12px;
+    letter-spacing: 0;
+    line-height: normal;
+    white-space: nowrap;
+}
+
+.index .cards-section {
+    position: absolute;
+    width: 1177px;
+    height: 624px;
+    top: 606px;
+    left: 132px;
+}
+
+.index .group {
+    left: 0;
+    position: absolute;
+    width: 576px;
+    height: 624px;
+    top: 0;
+}
+
+.index .overlap-group-2 {
+    position: relative;
+    width: 570px;
+    height: 624px;
+    background-color: #e8edeb;
+    background-image: url(pic.jpeg);
+    background-size: cover;
+    box-shadow: 1px 2px 10px 5px #8BA799;
+}
+
+.overlap-wrapper .overlap-group-2{
+    background-image: url(pic-1.jpeg);
+    box-shadow: 1px 2px 10px 5px #8BA799;
+}
+
+.index .text-wrapper-2 {
+    position: absolute;
+    width: 162px;
+    top: 71px;
+    left: 31px;
+    font-family: "Urbanist", sans-serif;
+    font-weight: 500;
+    color: #000000;
+    font-size: 32px;
+    letter-spacing: 0;
+    line-height: normal;
+    white-space: nowrap;
+}
+
+.index .text-wrapper-3 {
+    width: 194px;
+    left: 31px;
+    position: absolute;
+    top: 115px;
+    font-family: "Urbanist", sans-serif;
+    font-weight: 400;
+    color: #000000;
+    font-size: 16px;
+    letter-spacing: 0;
+    line-height: normal;
+    white-space: nowrap;
+}
+
+.index .overlap-wrapper {
+    left: 607px;
+    position: absolute;
+    width: 576px;
+    height: 624px;
+    top: 0;
+}
+
+.index .text-wrapper-6 {
+    width: 147px;
+    left: 46px;
+    position: absolute;
+    top: 115px;
+    font-family: "Urbanist", sans-serif;
+    font-weight: 400;
+    color: #000000;
+    font-size: 16px;
+    letter-spacing: 0;
+    line-height: normal;
+    white-space: nowrap;
+}
+
+.index .text-wrapper-7 {
+    position: absolute;
+    width: 117px;
+    top: 71px;
+    left: 46px;
+    font-family: "Urbanist", sans-serif;
+    font-weight: 500;
+    color: #000000;
+    font-size: 32px;
+    letter-spacing: 0;
+    line-height: normal;
+    white-space: nowrap;
+}
+
+.index .coming-soon {
+    position: absolute;
+    width: 100%;
+    height: auto;
+    top: 1240px;
+    background-image: url(banner-2.jpeg);
+    background-size: cover;
+    background-position: 1px;
+}
+
+.overlap-group-wrapper {
+    padding: 0.6em 2em;
+    border: none;
+    outline: none;
+    color: rgb(255, 255, 255);
+    background: #111;
+    cursor: pointer;
+    position: relative;
+    z-index: 0;
+    border-radius: 10px;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    margin: 8.5rem;
+    align-content: center;
+    top: 80px;
+    left: 500px;
+}
+
+.overlap-group-wrapper:before {
+    content: "";
+    background: linear-gradient(
+      45deg,
+      #ff0000,
+      #ff7300,
+      #fffb00,
+      #48ff00,
+      #00ffd5,
+      #002bff,
+      #7a00ff,
+      #ff00c8,
+      #ff0000
+    );
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    background-size: 400%;
+    z-index: -1;
+    filter: blur(5px);
+    -webkit-filter: blur(5px);
+    width: calc(100% + 4px);
+    height: calc(100% + 4px);
+    animation: glowing-button-85 20s linear infinite;
+    transition: opacity 0.3s ease-in-out;
+    border-radius: 10px;
+  }
+  
+@keyframes glowing-button-85 {
+    0% {
+      background-position: 0 0;
+    }
+    50% {
+      background-position: 400% 0;
+    }
+    100% {
+      background-position: 0 0;
+    }
+  }
+  
+.overlap-group-wrapper:after {
+    z-index: -1;
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: #222;
+    left: 0;
+    top: 0;
+    border-radius: 10px;
+    height: 29px;
+}
+
+.index .text-wrapper-9 {
+    position: absolute;
+    top: 30px;
+    left: 620px;
+    font-family: "Urbanist", sans-serif;
+    font-weight: 400;
+    color: #e8edeb;
+    font-size: 24px;
+    letter-spacing: 0;
+    line-height: normal;
+    white-space: nowrap;
+}
+
+.index .laptop-sleeves {
+    position: absolute;
+    top: 110px;
+    left: 475px;
+    font-family: "Urbanist", sans-serif;
+    font-weight: 900;
+    color: #00ffd5;
+    font-size: 48px;
+    letter-spacing: 0;
+    line-height: normal;
+}
+
+.index .footer {
+    position: absolute;
+    width: 1440px;
+    height: 408px;
+    top: 1550px;
+    left: 0;
+    background-color: #e8edeb;
+}
+
+.index .social {
+    position: absolute;
+    width: 13px;
+    height: 23px;
+    top: 282px;
+    left: 148px;
+}
+
+.index .social-2 {
+    position: absolute;
+    width: 22px;
+    height: 22px;
+    top: 283px;
+    left: 185px;
+    background-image: url(instagram.png);
+    background-size: 100% 100%;
+}
+
+.index .img {
+    position: absolute;
+    width: 31px;
+    height: 24px;
+    top: 282px;
+    left: 231px;
+}
+
+.index .social-3 {
+    position: absolute;
+    width: 23px;
+    height: 22px;
+    top: 283px;
+    left: 286px;
+    background-image: url(linkedin.png);
+    background-size: 100% 100%;
+}
+
+.index .menu-footer {
+    position: absolute;
+    width: 202px;
+    height: 197px;
+    top: 80px;
+    left: 619px;
+}
+
+.index .text-wrapper-10 {
+    position: absolute;
+    top: -1px;
+    left: 0;
+    font-family: "Urbanist", sans-serif;
+    font-weight: 700;
+    color: #000000;
+    font-size: 18px;
+    letter-spacing: 0;
+    line-height: normal;
+}
+
+.index .text-wrapper-11 {
+    position: absolute;
+    top: 52px;
+    left: 0;
+    font-family: "Urbanist", sans-serif;
+    font-weight: 400;
+    color: #000000;
+    font-size: 14px;
+    letter-spacing: 0;
+    line-height: normal;
+}
+
+.index .text-wrapper-12 {
+    position: absolute;
+    top: 84px;
+    left: 0;
+    font-family: "Urbanist", sans-serif;
+    font-weight: 400;
+    color: #000000;
+    font-size: 14px;
+    letter-spacing: 0;
+    line-height: normal;
+}
+
+.index .text-wrapper-13 {
+    top: 116px;
+    position: absolute;
+    left: 0;
+    font-family: "Urbanist", sans-serif;
+    font-weight: 400;
+    color: #000000;
+    font-size: 14px;
+    letter-spacing: 0;
+    line-height: normal;
+}
+
+.index .text-wrapper-14 {
+    position: absolute;
+    top: 148px;
+    left: 0;
+    font-family: "Urbanist", sans-serif;
+    font-weight: 400;
+    color: #000000;
+    font-size: 14px;
+    letter-spacing: 0;
+    line-height: normal;
+}
+
+.index .text-wrapper-15 {
+    position: absolute;
+    top: 180px;
+    left: 0;
+    font-family: "Urbanist", sans-serif;
+    font-weight: 400;
+    color: #000000;
+    font-size: 14px;
+    letter-spacing: 0;
+    line-height: normal;
+}
+
+.index .menu-footer-vert {
+    position: absolute;
+    width: 203px;
+    height: 165px;
+    top: 80px;
+    left: 853px;
+}
+
+.index .menu-footer-2 {
+    position: absolute;
+    width: 203px;
+    height: 197px;
+    top: 80px;
+    left: 1088px;
+}
+
+.index .overlap-2 {
+    position: absolute;
+    width: 453px;
+    height: 304px;
+    top: -34px;
+    left: 134px;
+}
+
+.index .p {
+    position: absolute;
+    width: 438px;
+    top: 227px;
+    left: 15px;
+    font-family: "Urbanist", sans-serif;
+    font-weight: 400;
+    color: #000000;
+    font-size: 18px;
+    letter-spacing: 0;
+    line-height: 26px;
+}
+
+.index .one-logo {
+    position: absolute;
+    width: 430px;
+    height: 304px;
+    top: 0;
+    left: 0;
+    object-fit: cover;
+}
