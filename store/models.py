@@ -1,19 +1,27 @@
 from django.db import models
 from django.contrib.auth.models import User
+from django.db.models.signals import post_save
+from django.dispatch import receiver
 
-# Create your models here.
-
-# OneToOneFeild() means a user can have only one customer and a customer has only one user
-# on_delete=models.CASCADE use to delete the item if we delete user item
 class Customer(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE, null=True, blank=True) 
     name = models.CharField(max_length=30, null=True)
     email = models.CharField(max_length=100, null=True)
 
-    # this value will show in the admin panel when we create the model
     def __str__(self):
         return self.name
-    
+
+# Signal to create a Customer instance whenever a new User is created
+@receiver(post_save, sender=User)
+def create_customer(sender, instance, created, **kwargs):
+    if created:
+        Customer.objects.create(user=instance)
+
+# Signal to save the Customer instance whenever the related User instance is saved
+@receiver(post_save, sender=User)
+def save_customer(sender, instance, **kwargs):
+    instance.customer.save()  # Ensure the corresponding Customer instance is saved whenever the related User is saved
+
 class Product(models.Model):
     SIZES = {
         "XS": "Extra Small",
@@ -44,12 +52,11 @@ class Product(models.Model):
     image = models.ImageField(null=True, blank=True)
     size = models.CharField(max_length=3, choices=SIZES, default='L')
     
-
     def __str__(self):
         return self.name
     
     def save(self, *args, **kwargs):
-    # Set price based on product type
+        # Set price based on product type
         if self.product_type == 't-shirt':
             self.price = 1999
             self.name = 't-shirt'
@@ -65,11 +72,7 @@ class Product(models.Model):
         except:
             url = ''
         return url
-    
 
-# ForeignKey is used to create many to one relationship i.e a customer can have multiple orders
-# on_delete=models.SET_NULL is used for if the user is deleted we don't have to delete the order, just have to set the value of user to null
-# if complete is false this means the cart is open and we can continue adding items in the cart
 class Order(models.Model):
     customer = models.ForeignKey(Customer, on_delete=models.SET_NULL, null=True, blank=True)
     date_ordered = models.DateField(auto_now_add=True)
@@ -89,7 +92,6 @@ class Order(models.Model):
         orderitems = self.orderitem_set.all()
         total = sum([1 for item in orderitems])
         return total
-
 
 class OrderItem(models.Model):
     product = models.ForeignKey(Product, on_delete=models.SET_NULL, null=True)
@@ -115,4 +117,3 @@ class ShippingAddress(models.Model):
 
     def __str__(self):
         return self.address
-    
