@@ -1,77 +1,168 @@
 {% load static %}
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8" />
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Urbanist:ital,wght@0,100..900;1,100..900&display=swap')
-        </style>
-        <link rel="stylesheet" href="{% static 'css/store_hoodie.css' %}">
-  </head>
-  <body>
-    <div class="hoodie-page">
-      <div class="div">
-        <div class="navbar">
-          <div class="navbar-2">
-            <img src="images/On1lyOne-White.png" class="one-logo-1" >
-            <div class="home">HOME</div>
-            <div class="about">ABOUT</div>
-            <div class="shop">SHOP</div>
-            <div class="contact">CONTACT</div>
-          </div>
-        </div>
-        <div class="overlap">
-          <div class="change-color">Change Colour</div>
-          <div class="frame">
-            <button onclick="changecolor('{% static "images1/H-White-Front.png" %}','{% static "images1/H-White-Back.png" %}')" class="ellipse"></button>
-            <button onclick="changecolor('{% static "images1/H-Black-Front.png" %}','{% static "images1/H-Black-Back.png" %}')" class="ellipse-2"></button>
-            <button onclick="changecolor('{% static "images1/H-Maroon-Front.png" %}','{% static "images1/H-Maroon-Back.png" %}')" class="ellipse-3"></button>
-            <button onclick="changecolor('{% static "images1/H-Yellow-Front.png" %}','{% static "images1/H-Yellow-Back.png" %}')" class="ellipse-4"></button>
-        </div>
-        <div class="frame-ex">
-            <button onclick="changecolor('{% static "images1/H-LightBeige-Front.png" %}','{% static "images1/H-LightBeige-Back.png" %}')" class="ellipse-5"></button>
-            <button onclick="changecolor('{% static "images1/H-Pink-Front.png" %}','{% static "images1/H-Pink-Back.png" %}')" class="ellipse-6"></button>
-            <button onclick="changecolor('{% static "images1/H-Green-Front.png" %}','{% static "images1/H-Green-Back.png" %}')" class="ellipse-7"></button>
-            <button onclick="changecolor('{% static "images1/H-Brown-Front.png" %}','{% static "images1/H-Brown-Back.png" %}')" class="ellipse-8"></button>
-        </div>
+<head>
+  <meta charset="utf-8" />
+  <style>
+      @import url('https://fonts.googleapis.com/css2?family=Urbanist:ital,wght@0,100..900;1,100..900&display=swap');
+  </style>
+  <link rel="stylesheet" href="{% static 'css/store_hoodie.css' %}">
 
-          <div class="select-size">
-                <div class="select">Select Size</div>
-                <div class="size">
-                    <button onclick="selectSize('XS')" id="btnXS">XS</button>
-                    <button onclick="selectSize('S')" id="btnS">S</button>
-                    <button onclick="selectSize('M')" id="btnM">M</button>
-                    <button onclick="selectSize('L')" id="btnL">L</button>
-                    <button onclick="selectSize('XL')" id="btnXL">XL</button>
-                    <button onclick="selectSize('XXL')" id="btnXXL">XXL</button>
-                </div>
-            </div>
-          <div class="group">
-            <div class="overlap-2"><div class="text-wrapper-5">Get a new design</div></div>
-          </div>
-          <div class="frame-wrapper">
-            <div class="frame-2">
-              <div class="frame-3"><div class="text-wrapper-6">Add to cart</div></div>
-            </div>
-          </div>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+<body>
+  <div class="hoodie-page">
+    <div class="div">
+      <div class="navbar">
+        <div class="navbar-2">
+          <img src="{% static 'images1/On1lyOne-White.png' %}" class="one-logo-1" >
+          <div class="home">HOME</div>
+          <div class="about">ABOUT</div>
+          <div class="shop">SHOP</div>
+          <div class="contact">CONTACT</div>
         </div>
-        <div class="frame-4">
-          <div class="rectangle">
-            <div class="h-front">
-              <img id="hoodie-front" src="images/H-White-front.png">
-            </div>
-          </div>
-          <div class="rectangle">
-            <div class="h-back">
-              <img id="hoodie-back" src="images/H-White-back.png">
-            </div>
-          </div>
-        </div>
-        <div class="text-wrapper-7">Front</div>
-        <div class="text-wrapper-8">Hoodie</div>
-        <div class="text-wrapper-9">Back</div>
       </div>
+      <div class="overlap">
+        <div class="change-color">Change Colour</div>
+        <div class="frame">
+          <button onclick="selectColor(this, 'white', '{% static "images1/H-White-Front.png" %}', '{% static "images1/H-White-Back.png" %}')" class="ellipse" id="white"></button>
+          <button onclick="selectColor(this, 'black', '{% static "images1/H-Black-Front.png" %}', '{% static "images1/H-Black-Back.png" %}')" class="ellipse-2" id="black"></button>
+          <button onclick="selectColor(this, 'maroon', '{% static "images1/H-Maroon-Front.png" %}', '{% static "images1/H-Maroon-Back.png" %}')" class="ellipse-3" id="maroon"></button>
+          <button onclick="selectColor(this, 'yellow', '{% static "images1/H-Yellow-Front.png" %}', '{% static "images1/H-Yellow-Back.png" %}')" class="ellipse-4" id="yellow"></button>
+      </div>
+      <div class="frame-ex">
+          <button onclick="selectColor(this, 'lightbeige', '{% static "images1/H-LightBeige-Front.png" %}', '{% static "images1/H-LightBeige-Back.png" %}')" class="ellipse-5" id="lightbeige"></button>
+          <button onclick="selectColor(this, 'pink', '{% static "images1/H-Pink-Front.png" %}', '{% static "images1/H-Pink-Back.png" %}')" class="ellipse-6" id="pink"></button>
+          <button onclick="selectColor(this, 'green', '{% static "images1/H-Green-Front.png" %}', '{% static "images1/H-Green-Back.png" %}')" class="ellipse-7" id="green"></button>
+          <button onclick="selectColor(this, 'brown', '{% static "images1/H-Brown-Front.png" %}', '{% static "images1/H-Brown-Back.png" %}')" class="ellipse-8" id="brown"></button>
+      </div>
+      <div class="select-size">
+            <div class="select">Select Size</div>
+            <div class="size">
+                <button onclick="selectSize('XS')" id="btnXS">XS</button>
+                <button onclick="selectSize('S')" id="btnS">S</button>
+                <button onclick="selectSize('M')" id="btnM">M</button>
+                <button onclick="selectSize('L')" id="btnL">L</button>
+                <button onclick="selectSize('XL')" id="btnXL">XL</button>
+                <button onclick="selectSize('XXL')" id="btnXXL">XXL</button>
+            </div>
+        </div>
+        <div class="price">
+          Price: 3999
+      </div>
+        <div class="group">
+          <div class="overlap-2"><div class="text-wrapper-5">Get a new design</div></div>
+        </div>
+        <div class="frame-wrapper">
+          <div class="frame-2">
+            <div class="frame-3"><button id="addToCartBtn" onclick="addToCart()">Add to Cart</button></div>
+          </div>
+        </div>
+        <div id="selectedColor">Selected Color:</div>
+      </div>
+      <div class="frame-4">
+        <div class="rectangle">
+          <div class="h-front">
+            <img id="hoodie-front" src="images/H-White-front.png">
+          </div>
+        </div>
+        <div class="rectangle">
+          <div class="h-back">
+            <img id="hoodie-back" src="images/H-White-back.png">
+          </div>
+        </div>
+      </div>
+      <div class="text-wrapper-7">Front</div>
+      <div class="text-wrapper-8">Hoodie</div>
+      <div class="text-wrapper-9">Back</div>
     </div>
-    <script src="{% static 'js/hoodie.js' %}"></script>
-  </body>
+  </div>
+  <script>
+      function changecolor(frontImg, backImg) {
+        let img = document.querySelector("#hoodie-front");
+        let img2 = document.querySelector("#hoodie-back");
+        console.log("Found img element:", img);
+        img.setAttribute('src', frontImg);
+        img2.setAttribute('src', backImg);
+        console.log("Image source set successfully.");
+      }
+
+      var sizesObject = {
+        "XS": "Extra Small",
+        "S": "Small",
+        "M": "Medium",
+        "L": "Large",
+        "XL": "Extra Large",
+        "XXL": "Double Extra Large",
+      };
+
+      let selectedSize = null;
+      function selectSize(size) {
+        document.querySelectorAll('.size button').forEach(button => {
+          button.style.background = '#fff';
+        });
+
+        document.getElementById('btn' + size).style.background = 'red';
+        selectedSize = size;
+      }
+
+      let selectedColor = null;
+
+      function selectColor(button, color, frontImg, backImg) {
+        document.querySelectorAll('.frame button').forEach(btn => {
+            btn.classList.remove('selected');
+        });
+        button.classList.add('selected');
+        document.getElementById('selectedColor').textContent = 'Selected Color: ' + color;
+        selectedColor = color;
+        changecolor(frontImg, backImg); // Call changecolor function with the selected color's image URLs
+      }
+
+      var csrfToken = "{{ csrf_token }}";
+
+      function addToCart() {
+        if(!selectedColor || !selectedSize) {
+          console.error('Please select a color and size before adding to cart');
+          return;
+        }
+
+        let backImg = document.querySelector("#hoodie-back").getAttribute('src');
+
+        fetch('/add-to-cart-hoodie/', {
+          method: 'POST',
+          headers: {
+              'Content-Type': 'application/json',
+              'X-CSRFToken': csrfToken
+          },
+          body: JSON.stringify({
+              'color': selectedColor,
+              'size': selectedSize,
+              'product_type': 'hoodie',
+              'name': 'Your Hoodie Product Name',
+              'price': 3999,
+              'hoodie_back_image': backImg
+          })
+        })
+        .then(response => {
+          if(response.ok) {
+            console.log(backImg)
+            console.log('Product added to cart successfully');
+          } else {
+            return response.json();
+          }
+        })
+        .then(data => {
+          if(data && data.error) {
+            console.error('Error:', data.error);
+          }
+        })
+        .catch(error => {
+          console.error('Error:', error);
+        });
+      }
+
+
+
+  </script>
+</body>
 </html>

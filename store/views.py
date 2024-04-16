@@ -115,6 +115,33 @@ def add_to_cart(request):
         return JsonResponse({'error': 'Invalid request method'}, status=405)
 
 
+def add_to_cart_hoodie(request):
+    if request.method == 'POST':
+        data = json.loads(request.body)
+        selected_color = data.get('color')
+        selected_size = data.get('size')
+        hoodie_back_image = data.get('hoodie_back_image')
+
+        product, created = Product.objects.get_or_create(
+            product_type='hoodie',  # Replace with actual product type
+            name='Your Hoodie Product Name',  # Replace with actual product name
+            colour=selected_color,
+            size=selected_size,
+            defaults={'image': hoodie_back_image}  # Set default values
+        )
+
+        customer = request.user.customer
+        order, created = Order.objects.get_or_create(customer=customer, complete=False)
+
+        order_item = OrderItem.objects.create(
+            product=product,
+            order=order
+        )
+
+        return JsonResponse({'message': 'Product added to cart successfully'}, status=200)
+    else:
+        return JsonResponse({'error': 'Invalid request method'}, status=405)
+
     
 def update_cart(request):
     if request.method == 'POST':
