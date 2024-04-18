@@ -8,6 +8,9 @@ from django.http import JsonResponse
 import json
 # from .models import SIZES
 import datetime
+import requests
+from django.conf import settings
+import os
 
 # Create your views here.
 def signup_view(request):
@@ -88,6 +91,7 @@ def add_to_cart(request):
         selected_color = data.get('color')
         selected_size = data.get('size')
         tshirt_back_image = data.get('tshirt_back_image')  # Retrieve back image URL
+        prod_design_image = data.get('design_image')
 
         # Create or get the Product instance
         product, created = Product.objects.get_or_create(
@@ -95,7 +99,7 @@ def add_to_cart(request):
             name='Your T-Shirt Product Name',  # Replace with actual product name
             colour=selected_color,
             size=selected_size,
-            defaults={'image': tshirt_back_image}  # Set default values
+            defaults={'image': tshirt_back_image, 'design': prod_design_image}  # Set default values
         )
 
         # Get or create the Order and associate it with the customer
@@ -121,13 +125,15 @@ def add_to_cart_hoodie(request):
         selected_color = data.get('color')
         selected_size = data.get('size')
         hoodie_back_image = data.get('hoodie_back_image')
+        prod_design_image = data.get('design_image')
 
         product, created = Product.objects.get_or_create(
             product_type='hoodie',  # Replace with actual product type
             name='Your Hoodie Product Name',  # Replace with actual product name
             colour=selected_color,
             size=selected_size,
-            defaults={'image': hoodie_back_image}  # Set default values
+            defaults={'image': hoodie_back_image, 'design': prod_design_image}  # Set default values
+            # design_image = prod_design_image
         )
 
         customer = request.user.customer
@@ -197,3 +203,50 @@ def processOrder(request):
             
 
     return JsonResponse('payment complete', safe=False)
+
+
+
+def generate_image_tshirt(request):
+    api_url = 'http://127.0.0.1:8000/get_image'
+
+    response = requests.get(api_url)
+
+    if response.status_code == 200:
+        generated_image_bytes = response.content
+
+        image_dir = settings.STATIC_ROOT
+        
+        if not os.path.exists(image_dir):
+            os.makedirs(image_dir)
+
+        image_path = os.path.join(image_dir, 'generated_image.jpg')
+
+        with open(image_path, 'wb') as f:
+            f.write(generated_image_bytes)
+
+        return redirect('t-shirt')
+    else:
+        return JsonResponse("Error: Unable to generate image", status=response.status_code, safe=False)
+    
+
+def generate_image_hoodie(request):
+    api_url = 'http://127.0.0.1:8000/get_image'
+
+    response = requests.get(api_url)
+
+    if response.status_code == 200:
+        generated_image_bytes = response.content
+
+        image_dir = settings.STATIC_ROOT
+        
+        if not os.path.exists(image_dir):
+            os.makedirs(image_dir)
+
+        image_path = os.path.join(image_dir, 'generated_image1.jpg')
+
+        with open(image_path, 'wb') as f:
+            f.write(generated_image_bytes)
+
+        return redirect('hoodie')
+    else:
+        return JsonResponse("Error: Unable to generate image", status=response.status_code, safe=False)

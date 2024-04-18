@@ -13,6 +13,7 @@
                 <div class="p">{{ item.product.name }}</div>
                 <br>
                 <div>Price: ₹{{ item.product.price }}</div>
+                <img src="{{ item.product.designURL }}" alt="">
                 <!-- <div>{{ item.product.id }}</div> -->
                 <div class="text-wrapper-5">Size: {{ item.product.size }}</div>
                 <button data-product="{{item.product.id}}" data-action="remove" class="update-cart">Remove</button>

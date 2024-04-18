@@ -37,7 +37,9 @@
                     </div>
                 </div>
                 <div class="group">
-                    <button class="getDesign">Get a new design</button>
+                    <a href="{% url 'generate_image_hoodie' %}">
+                        <button class="getDesign">Get a new design</button>
+                    </a>
                 </div>
                 <div class="frame-wrapper">
                     <div class="frame-2">
@@ -56,7 +58,7 @@
                 </div>
                 <div class="rectangle">
                     <div class="h-design">
-                        <img id="tshirt-design" src="">
+                        <img id="hoodie-design" src="/static/images/generated_image1.jpg">
                     </div>
                 </div>
                 <div class="rectangle">
@@ -127,6 +129,7 @@
             }
 
             let backImg = document.querySelector("#hoodie-back").getAttribute('src');
+            let design_image = document.querySelector('#hoodie-design').getAttribute('src');
 
             fetch('/add-to-cart-hoodie/', {
                 method: 'POST',
@@ -140,7 +143,8 @@
                     'product_type': 'hoodie',
                     'name': 'Your Hoodie Product Name',
                     'price': 3999,
-                    'hoodie_back_image': backImg
+                    'hoodie_back_image': backImg,
+                    'design_image': design_image,
                 })
             })
                 .then(response => {

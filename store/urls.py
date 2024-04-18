@@ -12,6 +12,9 @@ urlpatterns = [
     path('add-to-cart/', views.add_to_cart, name='add-to-cart'),
     path('update-cart/', views.update_cart, name='update-cart'),
     path('process-order/', views.processOrder, name='process-order'),
-    path('add-to-cart-hoodie/', views.add_to_cart_hoodie, name='add-to-cart-hoodie')
+    path('add-to-cart-hoodie/', views.add_to_cart_hoodie, name='add-to-cart-hoodie'),
+    path('generate_image_tshirt/', views.generate_image_tshirt, name='generate_image_tshirt'),
+    path('generate_image_hoodie/', views.generate_image_hoodie, name='generate_image_hoodie'),
+
 ]
 

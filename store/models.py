@@ -50,6 +50,7 @@ class Product(models.Model):
     price = models.IntegerField(default=1999)
     colour = models.CharField(max_length=10, choices=COLOURS, default='off-white')
     image = models.ImageField(null=True, blank=True)
+    design = models.ImageField(null=True, blank=True)
     size = models.CharField(max_length=3, choices=SIZES, default='L')
     
     def __str__(self):
@@ -71,6 +72,14 @@ class Product(models.Model):
             url = self.image.url
         except:
             url = ''
+        return url
+    
+    @property
+    def designURL(self):
+        try:
+            url = self.design.url
+        except:
+            url = ""
         return url
 
 class Order(models.Model):
