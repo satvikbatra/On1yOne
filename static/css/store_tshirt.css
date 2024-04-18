@@ -4,135 +4,241 @@
     flex-direction: row;
     justify-content: center;
     width: 100%;
-  }
-  
-  .tshirt-page .div {
+}
+
+.tshirt-page .one-logo-1{
+    position:fixed;
+}
+
+.tshirt-page .div {
     background-color: #ffffff;
     overflow: hidden;
     width: 100%;
     height: 1080px;
     position: static;
-  }
-  
-  .tshirt-page .navbar {
+}
+
+.tshirt-page .navbar {
     position: absolute;
     width: 100%;
     height: 63px;
     top: 0;
     left: 0;
-  }
-  
-  .tshirt-page .navbar-2 {
+}
+
+.tshirt-page .navbar-2 {
     position: absolute;
     width: 100%;
     height: 63px;
     background-color: #384037;
-  }
+}
 
-  .tshirt-page .navbar-2 img {
-    position: fixed;
+.tshirt-page .navbar-2 img {
+    position: absolute;
     height: 60px;
     padding-left: 10px;
     width: 100px;
     margin-top: 0px;
     padding-top: 0px;
-  }
-  
-  .tshirt-page .home {
-    width: 38px;
-    left: 596px;
-    position: absolute;
-    top: 24px;
-    font-family: "Urbanist", sans-serif;
-    font-style: normal;
-    font-weight: 200;
-    color: #ffffff;
-    font-size: 12px;
-    letter-spacing: 0;
-    line-height: normal;
-  }
-  
-  .tshirt-page .about {
+}
+
+.tshirt-page .home {
     width: 42px;
-    left: 721px;
+    left: 525px;
     position: absolute;
-    top: 24px;
+    top: 22px;
     font-family: "Urbanist", sans-serif;
     font-style: normal;
     font-weight: 200;
-    color: #ffffff;
-    font-size: 12px;
+    background:transparent;
+    color: white;
+    border-color: #384037;
+    border-style: solid;
+    font-size: 15px;
     letter-spacing: 0;
     line-height: normal;
-  }
-  
-  .tshirt-page .shop {
+}
+
+.tshirt-page .home:hover{
+    color: #bbc4bf;
+}
+
+.tshirt-page .shop {
     width: 34px;
-    left: 663px;
+    left: 625px;
     position: absolute;
-    top: 24px;
+    top: 22px;
     font-family: "Urbanist", sans-serif;
     font-style: normal;
     font-weight: 200;
-    color: #ffffff;
-    font-size: 12px;
+    background:transparent;
+    color: white;
+    border-color: #384037;
+    border-style: solid;
+    font-size: 15px;
     letter-spacing: 0;
     line-height: normal;
-  }
-  
-  .tshirt-page .contact {
+}
+
+.tshirt-page .shop:hover{
+    color: #bbc4bf;
+}
+
+.tshirt-page .about {
+    width: 42px;
+    left: 725px;
+    position: absolute;
+    top: 22px;
+    font-family: "Urbanist", sans-serif;
+    font-style: normal;
+    font-weight: 200;
+    background:transparent;
+    color: white;
+    border-color: #384037;
+    border-style: solid;
+    font-size: 15px;
+    letter-spacing: 0;
+    line-height: normal;
+}
+
+.tshirt-page .about:hover{
+    color: #bbc4bf;
+}
+
+.tshirt-page #selectedColor{
+    color:#e8edeb;
+}
+
+.tshirt-page #selectedColor:hover{
+    cursor:default;
+    color:#e8edeb;
+}
+
+.tshirt-page .contact {
     position: absolute;
     width: 57px;
-    top: 24px;
-    left: 785px;
+    top: 22px;
+    left: 825px;
     font-family: "Urbanist", sans-serif;
     font-style: normal;
     font-weight: 200;
-    color: #ffffff;
-    font-size: 12px;
+    background:transparent;
+    color: white;
+    border-color: #384037;
+    border-style: solid;
+    font-size: 15px;
     letter-spacing: 0;
     line-height: normal;
-  }
-  
-  .tshirt-page .overlap {
+}
+
+.tshirt-page .contact:hover{
+    color: #bbc4bf;
+}
+
+.tshirt-page .cart{
     position: absolute;
-    width: 1446px;
-    height: 274px;
-    top: 806px;
+    top:15px;
+    width: 57px;
+    height: 20px;
+    left: 1350px;
+    color: white;
+    background: transparent;
+    border:none;
+    font-size: 27px;
+}
+
+.tshirt-page .cart:hover{
+    color: #bbc4bf;
+}
+
+.tshirt-page .overlap {
+    position: absolute;
+    width: 100%;
+    height: 320px;
+    top: 750px;
     left: 0;
     background-color: #e8edeb;
-  }
-  
-  .tshirt-page .frame {
+}
+
+.tshirt-page .frame {
     display: inline-flex;
     align-items: flex-start;
     gap: 45px;
     position: absolute;
-    top: 80px;
-    left: 535px;
-  }
+    top: 120px;
+    left: 520px;
+}
 
-  .tshirt-page .frame-ex {
+.tshirt-page .frame-ex {
     display: inline-flex;
     align-items: flex-start;
     gap: 45px;
     position: absolute;
-    top: 150px;
-    left: 535px;
-  }
+    top: 200px;
+    left: 520px;
+}
 
-  .tshirt-page .change-color{
+.tshirt-page .change-color{
     display: inline-flex;
     align-items: flex-start;
     position: absolute;
     font-family: "Urbanist", sans-serif;
     font-style: normal;
     font-weight: 200;
-    left:650px;
-    top: 30px;
-  }
-  
-  .tshirt-page .ellipse {
+    font-size: larger;
+    left:600px;
+    top: 50px;
+}
+
+.tshirt-page .select-size{
+    display: inline-flex;
+    align-items: flex-start;
+    font-family: "Urbanist", sans-serif;
+    font-style: normal;
+    font-weight: 300;
+    font-size: larger;
+    left: 1000px;
+    top:50px;
+    position:absolute;
+}
+
+.tshirt-page .select{
+    position: relative;
+    display: inline-flex;
+    align-items: flex-start;
+    left:120px;
+}
+
+.tshirt-page .size{
+    display: inline-flex;
+    align-items: flex-start;
+    position: absolute;
+    background: transparent;
+    top: 50px;
+    gap:20px;
+}
+
+.tshirt-page .sizebtn{
+    top: 3px;
+    font-family: "Urbanist", sans-serif;
+    font-style: normal;
+    font-weight: 300;
+    color: black;
+    font-size: 16px;
+    letter-spacing: 0;
+    line-height: normal;
+    white-space: nowrap;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    width:40px;
+    height: 32px;
+    position: relative;
+    background:transparent;
+}
+
+.tshirt-page .ellipse {
     width: 40px;
     height: 40px;
     margin-top: -1px;
@@ -147,14 +253,14 @@
     cursor: pointer; 
     outline: none; 
     transition: 0.2s all;
-  }
+}
 
-  .tshirt-page .ellipse:active { 
+.tshirt-page .ellipse:active { 
     transform: scale(0.98); 
     box-shadow: 3px 2px 22px 1px rgba(0, 0, 0, 0.24); 
-  }
-  
-  .tshirt-page .ellipse-2 {
+}
+
+.tshirt-page .ellipse-2 {
     width: 40px;
     height: 40px;
     margin-top: -1px;
@@ -169,14 +275,14 @@
     cursor: pointer; 
     outline: none; 
     transition: 0.2s all;
-  }
+}
 
-  .tshirt-page .ellipse-2:active { 
+.tshirt-page .ellipse-2:active { 
     transform: scale(0.98); 
     box-shadow: 3px 2px 22px 1px rgba(0, 0, 0, 0.24); 
-  }
-  
-  .tshirt-page .ellipse-3 {
+}
+
+.tshirt-page .ellipse-3 {
     width: 40px;
     height: 40px;
     margin-top: -1px;
@@ -190,14 +296,14 @@
     cursor: pointer; 
     outline: none; 
     transition: 0.2s all;
-  }
+}
 
-  .tshirt-page .ellipse-3:active { 
+.tshirt-page .ellipse-3:active { 
     transform: scale(0.98); 
     box-shadow: 3px 2px 22px 1px rgba(0, 0, 0, 0.24); 
-  }
-  
-  .tshirt-page .ellipse-4 {
+}
+
+.tshirt-page .ellipse-4 {
     width: 40px;
     height: 40px;
     margin-top: -1px;
@@ -211,14 +317,14 @@
     cursor: pointer; 
     outline: none; 
     transition: 0.2s all;
-  }
+}
 
-  .tshirt-page .ellipse-4:active { 
+.tshirt-page .ellipse-4:active { 
     transform: scale(0.98); 
     box-shadow: 3px 2px 22px 1px rgba(0, 0, 0, 0.24); 
-  }
-  
-  .tshirt-page .ellipse-5 {
+}
+
+.tshirt-page .ellipse-5 {
     width: 40px;
     height: 40px;
     margin-top: -1px;
@@ -233,14 +339,14 @@
     cursor: pointer; 
     outline: none; 
     transition: 0.2s all;
-  }
+}
 
-  .tshirt-page .ellipse-5:active { 
+.tshirt-page .ellipse-5:active { 
     transform: scale(0.98); 
     box-shadow: 3px 2px 22px 1px rgba(0, 0, 0, 0.24); 
-  }
+}
 
-  .tshirt-page .ellipse-6 {
+.tshirt-page .ellipse-6 {
     width: 40px;
     height: 40px;
     margin-top: -1px;
@@ -255,14 +361,14 @@
     cursor: pointer; 
     outline: none; 
     transition: 0.2s all;
-  }
+}
 
-  .tshirt-page .ellipse-6:active { 
+.tshirt-page .ellipse-6:active { 
     transform: scale(0.98); 
     box-shadow: 3px 2px 22px 1px rgba(0, 0, 0, 0.24); 
-  }
+}
 
-  .tshirt-page .ellipse-7 {
+.tshirt-page .ellipse-7 {
     width: 40px;
     height: 40px;
     margin-top: -1px;
@@ -277,14 +383,14 @@
     cursor: pointer; 
     outline: none; 
     transition: 0.2s all;
-  }
+}
 
-  .tshirt-page .ellipse-7:active { 
+.tshirt-page .ellipse-7:active { 
     transform: scale(0.98); 
     box-shadow: 3px 2px 22px 1px rgba(0, 0, 0, 0.24); 
-  }
+}
 
-  .tshirt-page .ellipse-8 {
+.tshirt-page .ellipse-8 {
     width: 40px;
     height: 40px;
     margin-top: -1px;
@@ -299,14 +405,14 @@
     cursor: pointer; 
     outline: none; 
     transition: 0.2s all;
-  }
+}
 
-  .tshirt-page .ellipse-8:active { 
+.tshirt-page .ellipse-8:active { 
     transform: scale(0.98); 
     box-shadow: 3px 2px 22px 1px rgba(0, 0, 0, 0.24); 
-  }
-  
-  .tshirt-page .text-wrapper {
+}
+
+.tshirt-page .text-wrapper {
     position: absolute;
     top: 158px;
     left: 600px;
@@ -319,9 +425,9 @@
     line-height: normal;
     padding-top: 10px;
     padding-left: 8px;
-  }
-  
-  .tshirt-page .overlap-group {
+}
+
+.tshirt-page .overlap-group {
     position: absolute;
     width: 88px;
     height: 33px;
@@ -330,9 +436,10 @@
     background-color: #e8edeb;
     border: 1px solid;
     border-color: #000000;
-  }
-  
-  .tshirt-page .text-wrapper-2 {
+    padding:0px;
+}
+
+.tshirt-page .text-wrapper-2 {
     top: 6px;
     left: 27px;
     font-family: "Urbanist", sans-serif;
@@ -343,9 +450,9 @@
     position: absolute;
     letter-spacing: 0;
     line-height: normal;
-  }
-  
-  .tshirt-page .div-wrapper {
+}
+
+.tshirt-page .div-wrapper {
     position: absolute;
     width: 88px;
     height: 33px;
@@ -359,9 +466,9 @@
     border-bottom-width: 1px;
     border-bottom-style: solid;
     border-color: #000000;
-  }
-  
-  .tshirt-page .text-wrapper-3 {
+}
+
+.tshirt-page .text-wrapper-3 {
     top: 6px;
     left: 28px;
     font-family: "Urbanist", sans-serif;
@@ -372,9 +479,9 @@
     position: absolute;
     letter-spacing: 0;
     line-height: normal;
-  }
-  
-  .tshirt-page .text-wrapper-4 {
+}
+
+.tshirt-page .text-wrapper-4 {
     position: absolute;
     top: 78px;
     left: 1174px;
@@ -385,29 +492,28 @@
     letter-spacing: 0;
     line-height: normal;
     white-space: nowrap;
-  }
-  
-  .tshirt-page .group {
+}
+
+.tshirt-page .group {
     position: absolute;
     width: 174px;
     height: 33px;
     top: 111px;
-    left: 179px;
-  }
-  
-  .tshirt-page .overlap-2 {
+    left: 100px;
+}
+
+.tshirt-page .overlap-2 {
     position: relative;
     width: 172px;
     height: 33px;
     background-color: #e8edeb;
     border: 1px solid;
     border-color: #000000;
-  }
-  
-  .tshirt-page .text-wrapper-5 {
-    position: absolute;
-    top: 6px;
-    left: 24px;
+}
+
+.tshirt-page .getDesign {
+    top: 25px;
+    left: 50px;
     font-family: "Urbanist", sans-serif;
     font-style: normal;
     font-weight: 300;
@@ -416,35 +522,64 @@
     letter-spacing: 0;
     line-height: normal;
     white-space: nowrap;
-  }
-  
-  .tshirt-page .frame-wrapper {
-    position: absolute;
-    width: 174px;
-    height: 33px;
-    top: 111px;
-    left: 1100px;
-  }
-  
-  .tshirt-page .frame-2 {
-    height: 39px;
-  }
-  
-  .tshirt-page .frame-3 {
     display: inline-flex;
     align-items: center;
     justify-content: center;
     gap: 10px;
     padding: 7px 25px;
     position: relative;
-    top: 3px;
-    left: 2px;
     background-color: #e8edeb;
-    border: 1px solid;
-    border-color: #000000;
-  }
-  
-  .tshirt-page .text-wrapper-6 {
+}
+
+.tshirt-page .frame-wrapper {
+    position: absolute;
+    width: 174px;
+    height: 33px;
+    top: 140px;
+    left: 960px;
+}
+
+.tshirt-page .frame-2 {
+    height: 39px;
+}
+
+.tshirt-page .price{
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-family: "Urbanist", sans-serif;
+    font-style: normal;
+    font-weight: 300;
+    font-size: larger;
+    gap: 10px;
+    padding: 0px 0px 0px 0px;
+    position: relative;
+    top: 48px;
+    left:70px;
+    background-color: #e8edeb;
+}
+
+.tshirt-page .addToCartBtn{
+    top: 60px;
+    left: 200px;
+    font-family: "Urbanist", sans-serif;
+    font-style: normal;
+    font-weight: 300;
+    color: #000000;
+    font-size: 16px;
+    letter-spacing: 0;
+    line-height: normal;
+    white-space: nowrap;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 7px 25px;
+    position: absolute;
+    background-color: #e8edeb;
+}
+
+.tshirt-page .text-wrapper-6 {
     position: relative;
     width: fit-content;
     margin-top: -1px;
@@ -456,9 +591,9 @@
     letter-spacing: 0;
     line-height: normal;
     white-space: nowrap;
-  }
-  
-  .tshirt-page .frame-4 {
+}
+
+.tshirt-page .frame-4 {
     display: inline-flex;
     height: 517px;
     align-items: center;
@@ -466,37 +601,46 @@
     gap: 100px;
     position: absolute;
     top: 206px;
-    left: 187px;
-  }
-  
-  .tshirt-page .rectangle {
+    left: 50px;
+    gap:70px;
+}
+
+.tshirt-page .rectangle {
     position: relative;
-    width: 483px;
-    height: 514px;
+    width: 400px;
+    height: 400px;
     background-color: #e8edeb;
     overflow: hidden;
-  }
+}
 
-  .tshirt-page .t-front{
+.tshirt-page .t-front{
     display: flex;
     align-items: center;
     justify-content: center;
     height: 100%;
     z-index: 0;
     left: 100px;
-  }
+}
 
-  .tshirt-page .t-back{
+.tshirt-page .t-design{
     display: flex;
     align-items: center;
     justify-content: center;
     height: 100%;
     z-index: 0;
-  }
-  
-  .tshirt-page .text-wrapper-7 {
-    top: 167px;
-    left: 187px;
+}
+
+.tshirt-page .t-back{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    z-index: 0;
+}
+
+.tshirt-page .text-wrapper-7 {
+    top: 200px;
+    left: 210px;
     font-family: "Urbanist", sans-serif;
     font-style: normal;
     font-weight: 400;
@@ -506,12 +650,12 @@
     position: absolute;
     letter-spacing: 0;
     line-height: normal;
-  }
-  
-  .tshirt-page .text-wrapper-8 {
+}
+
+.tshirt-page .text-wrapper-8 {
     position: absolute;
-    top: 85px;
-    left: 132px;
+    top: 105px;
+    left: 44%;
     font-family: "Urbanist", sans-serif;
     font-optical-sizing: auto;
     font-weight: 650;
@@ -520,11 +664,11 @@
     font-size: 48px;
     letter-spacing: 0;
     line-height: normal;
-  }
-  
-  .tshirt-page .text-wrapper-9 {
-    top: 168px;
-    left: 770px;
+}
+
+.tshirt-page .text-wrapper-0 {
+    top: 200px;
+    left: 660px;
     font-family: "Urbanist", sans-serif;
     font-style: normal;
     font-weight: 400;
@@ -534,506 +678,11 @@
     position: absolute;
     letter-spacing: 0;
     line-height: normal;
-  }
-  .tshirt-page {
-    background-color: #ffffff;
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    width: 100%;
-  }
-  
-  .tshirt-page .div {
-    background-color: #ffffff;
-    overflow: hidden;
-    width: 100%;
-    height: 1080px;
-    position: static;
-  }
-  
-  .tshirt-page .navbar {
-    position: absolute;
-    width: 100%;
-    height: 63px;
-    top: 0;
-    left: 0;
-  }
-  
-  .tshirt-page .navbar-2 {
-    position: absolute;
-    width: 100%;
-    height: 63px;
-    background-color: #384037;
-  }
+}
 
-  .tshirt-page .navbar-2 img {
-    position: fixed;
-    height: 60px;
-    padding-left: 10px;
-    width: 100px;
-    margin-top: 0px;
-    padding-top: 0px;
-  }
-  
-  .tshirt-page .home {
-    width: 38px;
-    left: 596px;
-    position: absolute;
-    top: 24px;
-    font-family: "Urbanist", sans-serif;
-    font-style: normal;
-    font-weight: 200;
-    color: #ffffff;
-    font-size: 12px;
-    letter-spacing: 0;
-    line-height: normal;
-  }
-  
-  .tshirt-page .about {
-    width: 42px;
-    left: 721px;
-    position: absolute;
-    top: 24px;
-    font-family: "Urbanist", sans-serif;
-    font-style: normal;
-    font-weight: 200;
-    color: #ffffff;
-    font-size: 12px;
-    letter-spacing: 0;
-    line-height: normal;
-  }
-  
-  .tshirt-page .shop {
-    width: 34px;
-    left: 663px;
-    position: absolute;
-    top: 24px;
-    font-family: "Urbanist", sans-serif;
-    font-style: normal;
-    font-weight: 200;
-    color: #ffffff;
-    font-size: 12px;
-    letter-spacing: 0;
-    line-height: normal;
-  }
-  
-  .tshirt-page .contact {
-    position: absolute;
-    width: 57px;
-    top: 24px;
-    left: 785px;
-    font-family: "Urbanist", sans-serif;
-    font-style: normal;
-    font-weight: 200;
-    color: #ffffff;
-    font-size: 12px;
-    letter-spacing: 0;
-    line-height: normal;
-  }
-  
-  .tshirt-page .overlap {
-    position: absolute;
-    width: 1446px;
-    height: 274px;
-    top: 806px;
-    left: 0;
-    background-color: #e8edeb;
-  }
-  
-  .tshirt-page .frame {
-    display: inline-flex;
-    align-items: flex-start;
-    gap: 45px;
-    position: absolute;
-    top: 80px;
-    left: 535px;
-  }
-
-  .tshirt-page .frame-ex {
-    display: inline-flex;
-    align-items: flex-start;
-    gap: 45px;
-    position: absolute;
-    top: 150px;
-    left: 535px;
-  }
-
-  .tshirt-page .change-color{
-    display: inline-flex;
-    align-items: flex-start;
-    position: absolute;
-    font-family: "Urbanist", sans-serif;
-    font-style: normal;
-    font-weight: 200;
-    left:650px;
-    top: 30px;
-  }
-  
-  .tshirt-page .ellipse {
-    width: 40px;
-    height: 40px;
-    margin-top: -1px;
-    margin-bottom: -1px;
-    margin-left: -1px;
-    background-color: #ffffff;
-    border-radius: 20px;
-    border: 1px solid;
-    position: relative;
-    border-color: #00000026;
-    box-shadow: 14px 12px 56px 2px rgba(0, 0, 0, 0.24); 
-    cursor: pointer; 
-    outline: none; 
-    transition: 0.2s all;
-  }
-
-  .tshirt-page .ellipse:active { 
-    transform: scale(0.98); 
-    box-shadow: 3px 2px 22px 1px rgba(0, 0, 0, 0.24); 
-  }
-  
-  .tshirt-page .ellipse-2 {
-    width: 40px;
-    height: 40px;
-    margin-top: -1px;
-    margin-bottom: -1px;
-    margin-left: -1px;
-    background-color: #000000;
-    border-radius: 20px;
-    border: 1px solid;
-    position: relative;
-    border-color: #00000026;
-    box-shadow: 14px 12px 56px 2px rgba(0, 0, 0, 0.24); 
-    cursor: pointer; 
-    outline: none; 
-    transition: 0.2s all;
-  }
-
-  .tshirt-page .ellipse-2:active { 
-    transform: scale(0.98); 
-    box-shadow: 3px 2px 22px 1px rgba(0, 0, 0, 0.24); 
-  }
-  
-  .tshirt-page .ellipse-3 {
-    width: 40px;
-    height: 40px;
-    margin-top: -1px;
-    margin-bottom: -1px;
-    background-color: #B0143C;
-    border-radius: 20px;
-    border: 1px solid;
-    position: relative;
-    border-color: #00000026;
-    box-shadow: 14px 12px 56px 2px rgba(0, 0, 0, 0.24); 
-    cursor: pointer; 
-    outline: none; 
-    transition: 0.2s all;
-  }
-
-  .tshirt-page .ellipse-3:active { 
-    transform: scale(0.98); 
-    box-shadow: 3px 2px 22px 1px rgba(0, 0, 0, 0.24); 
-  }
-  
-  .tshirt-page .ellipse-4 {
-    width: 40px;
-    height: 40px;
-    margin-top: -1px;
-    margin-bottom: -1px;
-    background-color: #FFE59D;
-    border-radius: 20px;
-    border: 1px solid;
-    position: relative;
-    border-color: #00000026;
-    box-shadow: 14px 12px 56px 2px rgba(0, 0, 0, 0.24); 
-    cursor: pointer; 
-    outline: none; 
-    transition: 0.2s all;
-  }
-
-  .tshirt-page .ellipse-4:active { 
-    transform: scale(0.98); 
-    box-shadow: 3px 2px 22px 1px rgba(0, 0, 0, 0.24); 
-  }
-  
-  .tshirt-page .ellipse-5 {
-    width: 40px;
-    height: 40px;
-    margin-top: -1px;
-    margin-bottom: -1px;
-    margin-right: -1px;
-    background-color: #EBEDE9;
-    border-radius: 20px;
-    border: 1px solid;
-    position: relative;
-    border-color: #00000026;
-    box-shadow: 14px 12px 56px 2px rgba(0, 0, 0, 0.24); 
-    cursor: pointer; 
-    outline: none; 
-    transition: 0.2s all;
-  }
-
-  .tshirt-page .ellipse-5:active { 
-    transform: scale(0.98); 
-    box-shadow: 3px 2px 22px 1px rgba(0, 0, 0, 0.24); 
-  }
-
-  .tshirt-page .ellipse-6 {
-    width: 40px;
-    height: 40px;
-    margin-top: -1px;
-    margin-bottom: -1px;
-    margin-right: -1px;
-    background-color: #FFF6F8;
-    border-radius: 20px;
-    border: 1px solid;
-    position: relative;
-    border-color: #00000026;
-    box-shadow: 14px 12px 56px 2px rgba(0, 0, 0, 0.24); 
-    cursor: pointer; 
-    outline: none; 
-    transition: 0.2s all;
-  }
-
-  .tshirt-page .ellipse-6:active { 
-    transform: scale(0.98); 
-    box-shadow: 3px 2px 22px 1px rgba(0, 0, 0, 0.24); 
-  }
-
-  .tshirt-page .ellipse-7 {
-    width: 40px;
-    height: 40px;
-    margin-top: -1px;
-    margin-bottom: -1px;
-    margin-right: -1px;
-    background-color: #00755A;
-    border-radius: 20px;
-    border: 1px solid;
-    position: relative;
-    border-color: #00000026;
-    box-shadow: 14px 12px 56px 2px rgba(0, 0, 0, 0.24); 
-    cursor: pointer; 
-    outline: none; 
-    transition: 0.2s all;
-  }
-
-  .tshirt-page .ellipse-7:active { 
-    transform: scale(0.98); 
-    box-shadow: 3px 2px 22px 1px rgba(0, 0, 0, 0.24); 
-  }
-
-  .tshirt-page .ellipse-8 {
-    width: 40px;
-    height: 40px;
-    margin-top: -1px;
-    margin-bottom: -1px;
-    margin-right: -1px;
-    background-color: #74512B;
-    border-radius: 20px;
-    border: 1px solid;
-    position: relative;
-    border-color: #00000026;
-    box-shadow: 14px 12px 56px 2px rgba(0, 0, 0, 0.24); 
-    cursor: pointer; 
-    outline: none; 
-    transition: 0.2s all;
-  }
-
-  .tshirt-page .ellipse-8:active { 
-    transform: scale(0.98); 
-    box-shadow: 3px 2px 22px 1px rgba(0, 0, 0, 0.24); 
-  }
-  
-  .tshirt-page .text-wrapper {
-    position: absolute;
-    top: 158px;
-    left: 600px;
-    font-family: "Urbanist", sans-serif;
-    font-style: normal;
-    font-weight: 250;
-    color: #000000;
-    font-size: 14px;
-    letter-spacing: 0;
-    line-height: normal;
-    padding-top: 10px;
-    padding-left: 8px;
-  }
-  
-  .tshirt-page .overlap-group {
-    position: absolute;
-    width: 88px;
-    height: 33px;
-    top: 111px;
-    left: 1109px;
-    background-color: #e8edeb;
-    border: 1px solid;
-    border-color: #000000;
-  }
-  
-  .tshirt-page .text-wrapper-2 {
-    top: 6px;
-    left: 27px;
-    font-family: "Urbanist", sans-serif;
-    font-style: normal;
-    font-weight: 300;
-    color: #000000;
-    font-size: 14px;
-    position: absolute;
-    letter-spacing: 0;
-    line-height: normal;
-  }
-  
-  .tshirt-page .div-wrapper {
-    position: absolute;
-    width: 88px;
-    height: 33px;
-    top: 111px;
-    left: 1197px;
-    background-color: #384037;
-    border-top-width: 1px;
-    border-top-style: solid;
-    border-right-width: 1px;
-    border-right-style: solid;
-    border-bottom-width: 1px;
-    border-bottom-style: solid;
-    border-color: #000000;
-  }
-  
-  .tshirt-page .text-wrapper-3 {
-    top: 6px;
-    left: 28px;
-    font-family: "Urbanist", sans-serif;
-    font-style: normal;
-    font-weight: 300;
-    color: #ffffff;
-    font-size: 14px;
-    position: absolute;
-    letter-spacing: 0;
-    line-height: normal;
-  }
-  
-  .tshirt-page .text-wrapper-4 {
-    position: absolute;
-    top: 78px;
-    left: 1174px;
-    font-family: "Urbanist-Light", Helvetica;
-    font-weight: 300;
-    color: #000000;
-    font-size: 16px;
-    letter-spacing: 0;
-    line-height: normal;
-    white-space: nowrap;
-  }
-  
-  .tshirt-page .group {
-    position: absolute;
-    width: 174px;
-    height: 33px;
-    top: 111px;
-    left: 179px;
-  }
-  
-  .tshirt-page .overlap-2 {
-    position: relative;
-    width: 172px;
-    height: 33px;
-    background-color: #e8edeb;
-    border: 1px solid;
-    border-color: #000000;
-  }
-  
-  .tshirt-page .text-wrapper-5 {
-    position: absolute;
-    top: 6px;
-    left: 24px;
-    font-family: "Urbanist", sans-serif;
-    font-style: normal;
-    font-weight: 300;
-    color: #000000;
-    font-size: 16px;
-    letter-spacing: 0;
-    line-height: normal;
-    white-space: nowrap;
-  }
-  
-  .tshirt-page .frame-wrapper {
-    position: absolute;
-    width: 174px;
-    height: 33px;
-    top: 111px;
-    left: 1100px;
-  }
-  
-  .tshirt-page .frame-2 {
-    height: 39px;
-  }
-  
-  .tshirt-page .frame-3 {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
-    padding: 7px 25px;
-    position: relative;
-    top: 3px;
-    left: 2px;
-    background-color: #e8edeb;
-    border: 1px solid;
-    border-color: #000000;
-  }
-  
-  .tshirt-page .text-wrapper-6 {
-    position: relative;
-    width: fit-content;
-    margin-top: -1px;
-    font-family: "Urbanist", sans-serif;
-    font-style: normal;
-    font-weight: 300;
-    color: #000000;
-    font-size: 16px;
-    letter-spacing: 0;
-    line-height: normal;
-    white-space: nowrap;
-  }
-  
-  .tshirt-page .frame-4 {
-    display: inline-flex;
-    height: 517px;
-    align-items: center;
-    justify-content: center;
-    gap: 100px;
-    position: absolute;
-    top: 206px;
-    left: 187px;
-  }
-  
-  .tshirt-page .rectangle {
-    position: relative;
-    width: 483px;
-    height: 514px;
-    background-color: #e8edeb;
-    overflow: hidden;
-  }
-
-  .tshirt-page .t-front{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 100%;
-    z-index: 0;
-    left: 100px;
-  }
-
-  .tshirt-page .t-back{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 100%;
-    z-index: 0;
-  }
-  
-  .tshirt-page .text-wrapper-7 {
-    top: 167px;
-    left: 187px;
+.tshirt-page .text-wrapper-9 {
+    top: 200px;
+    left: 1140px;
     font-family: "Urbanist", sans-serif;
     font-style: normal;
     font-weight: 400;
@@ -1043,33 +692,4 @@
     position: absolute;
     letter-spacing: 0;
     line-height: normal;
-  }
-  
-  .tshirt-page .text-wrapper-8 {
-    position: absolute;
-    top: 85px;
-    left: 132px;
-    font-family: "Urbanist", sans-serif;
-    font-optical-sizing: auto;
-    font-weight: 650;
-    font-style: normal;
-    color: #000000;
-    font-size: 48px;
-    letter-spacing: 0;
-    line-height: normal;
-  }
-  
-  .tshirt-page .text-wrapper-9 {
-    top: 168px;
-    left: 770px;
-    font-family: "Urbanist", sans-serif;
-    font-style: normal;
-    font-weight: 400;
-    color: #000000;
-    font-size: 32px;
-    white-space: nowrap;
-    position: absolute;
-    letter-spacing: 0;
-    line-height: normal;
-  }
-  
+}

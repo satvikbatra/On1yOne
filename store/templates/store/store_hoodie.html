@@ -7,7 +7,7 @@
       @import url('https://fonts.googleapis.com/css2?family=Urbanist:ital,wght@0,100..900;1,100..900&display=swap');
   </style>
   <link rel="stylesheet" href="{% static 'css/store_hoodie.css' %}">
-
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
 <body>
@@ -15,11 +15,13 @@
     <div class="div">
       <div class="navbar">
         <div class="navbar-2">
-          <img src="{% static 'images1/On1lyOne-White.png' %}" class="one-logo-1" >
-          <div class="home">HOME</div>
-          <div class="about">ABOUT</div>
-          <div class="shop">SHOP</div>
-          <div class="contact">CONTACT</div>
+          <img src="{% static 'images1/On1yOne-White.png' %}" class="one-logo-1" >
+                    <button class="home">HOME</button>
+                    <button class="about">ABOUT</button>
+                    <button class="shop">SHOP</button>
+                    <button class="contact">CONTACT</button>
+                    <a href="{% url 'cart' %}"><button class="cart"><i class="fa fa-shopping-cart"></i></button></a>
+
         </div>
       </div>
       <div class="overlap">
@@ -39,42 +41,47 @@
       <div class="select-size">
             <div class="select">Select Size</div>
             <div class="size">
-                <button onclick="selectSize('XS')" id="btnXS">XS</button>
-                <button onclick="selectSize('S')" id="btnS">S</button>
-                <button onclick="selectSize('M')" id="btnM">M</button>
-                <button onclick="selectSize('L')" id="btnL">L</button>
-                <button onclick="selectSize('XL')" id="btnXL">XL</button>
-                <button onclick="selectSize('XXL')" id="btnXXL">XXL</button>
+                <button class="sizebtn" onclick="selectSize('XS')" id="btnXS">XS</button>
+                <button class="sizebtn" onclick="selectSize('S')" id="btnS">S</button>
+                <button class="sizebtn" onclick="selectSize('M')" id="btnM">M</button>
+                <button class="sizebtn" onclick="selectSize('L')" id="btnL">L</button>
+                <button class="sizebtn" onclick="selectSize('XL')" id="btnXL">XL</button>
+                <button class="sizebtn" onclick="selectSize('XXL')" id="btnXXL">XXL</button>
             </div>
         </div>
-        <div class="price">
-          Price: 3999
-      </div>
         <div class="group">
-          <div class="overlap-2"><div class="text-wrapper-5">Get a new design</div></div>
+          <button class="getDesign">Get a new design</button>
+      </div>
+      <div class="frame-wrapper">
+        <div class="frame-2">
+            <p class="price">
+            Rs. 3999</p>
+            <button class="addToCartBtn" onclick="addToCart()">Add to Cart</button>
         </div>
-        <div class="frame-wrapper">
-          <div class="frame-2">
-            <div class="frame-3"><button id="addToCartBtn" onclick="addToCart()">Add to Cart</button></div>
-          </div>
-        </div>
+    </div>
         <div id="selectedColor">Selected Color:</div>
       </div>
       <div class="frame-4">
         <div class="rectangle">
           <div class="h-front">
-            <img id="hoodie-front" src="images/H-White-front.png">
+            <img id="hoodie-front" src="{% static 'images1/H-White-Front.png' %}">
           </div>
         </div>
         <div class="rectangle">
+          <div class="h-design">
+              <img id="tshirt-design" src="">
+          </div>
+          </div>
+        <div class="rectangle">
           <div class="h-back">
-            <img id="hoodie-back" src="images/H-White-back.png">
+            <img id="hoodie-back" src="{% static 'images1/H-White-Back.png' %}">
           </div>
         </div>
       </div>
       <div class="text-wrapper-7">Front</div>
-      <div class="text-wrapper-8">Hoodie</div>
-      <div class="text-wrapper-9">Back</div>
+            <div class="text-wrapper-8">Hoodie</div>
+            <div class="text-wrapper-0">Design</div>
+            <div class="text-wrapper-9">Back</div>
     </div>
   </div>
   <script>
