@@ -37,7 +37,7 @@
                     </div>
                 </div>
                 <div class="group">
-                    <a href="{% url 'generate_image_hoodie' %}">
+                    <a href="{% url 'generate_image_hoodie' %}?refresh=true">
                         <button class="getDesign">Get a new design</button>
                     </a>
                 </div>
@@ -164,8 +164,19 @@
                     console.error('Error:', error);
                 });
         }
-
+    
 
     </script>
+    <script>
+        // Check if the URL contains the refresh parameter
+        var urlParams = new URLSearchParams(window.location.search);
+        var refreshParam = urlParams.get('refresh');
+        // If the refresh parameter is true, perform a hard refresh
+        if (refreshParam === 'true') {
+            window.location.reload(true);
+        }
+    </script>
+    
+    
 {% endblock %}
 
