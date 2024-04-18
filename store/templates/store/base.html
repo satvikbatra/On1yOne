@@ -23,25 +23,24 @@
 <body>
 
 
-<div class="navbar">
-            <div class="navbar-2">
-                <img src="{% static 'images1/On1yOne-White.png' %}" class="one-logo-1">
-                <a href="/">
+    <div class="navbar">
+        <div class="navbar-2">
+            <img src="{% static 'images1/On1yOne-White.png' %}" class="one-logo-1">
+            <a href="/">
                 <button class="home">Home</button>
-                    </a>
-                <a href="/store/t_shirt">
+            </a>
+            <a href="{% url 't-shirt' %}">
                 <button class="shop">T_shirt</button>
-                    </a>
-                  <a href="/store/hoodie">
+            </a>
+            <a href="{% url 'hoodie' %}">
                 <button class="about">Hoodie</button>
-                    </a>
-{#                <button class="contact">CONTACT</button>#}
-                <a href="{% url 'cart' %}">
-                    <button class="cart"><i class="fa fa-shopping-cart"></i></button>
-                </a>
-
-            </div>
+            </a>
+            {#<button class="contact">CONTACT</button>#}
+            <a href="{% url 'cart' %}">
+                <button class="cart"><i class="fa fa-shopping-cart"></i></button>
+            </a>
         </div>
+    </div>
 
 {#<nav class="nav flex flex-wrap items-center justify-between py-4 px-2 ">#}
 {#    <div class="flex flex-no-shrink items-center mr-6  text-gray-500">#}
