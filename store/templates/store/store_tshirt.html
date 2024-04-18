@@ -1,90 +1,80 @@
-{% load static %}
-<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="utf-8" />
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Urbanist:ital,wght@0,100..900;1,100..900&display=swap');
-    </style>
-    <link rel="stylesheet" href="{% static 'css/store_tshirt.css' %}">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-</head>
-<body>
+{% extends "store/base.html" %} {% block content %}
+    {% load static %}
+
     <div class="tshirt-page">
         <div class="div">
-            <div class="navbar">
-                <div class="navbar-2">
-                    <img src="images/On1lyOne-White.png" class="one-logo-1" >
-                    <button class="home">HOME</button>
-                    <button class="about">ABOUT</button>
-                    <button class="shop">SHOP</button>
-                    <button class="contact">CONTACT</button>
-                    <a href="{% url 'cart' %}"><button class="cart"><i class="fa fa-shopping-cart"></i></button></a>
+
+        </div>
+        <div class="overlap">
+            <div class="change-color">Change Colour</div>
+            <div class="frame">
+                <button onclick="selectColor(this, 'black', '{% static "images1/T-White-Front.png" %}', '{% static "images1/T-White-Back.png" %}')"
+                        class="ellipse" id="white"></button>
+                <button onclick="selectColor(this, 'black', '{% static "images1/T-Black-Front.png" %}', '{% static "images1/T-Black-Back.png" %}')"
+                        class="ellipse-2" id="black"></button>
+                <button onclick="selectColor(this, 'maroon', '{% static "images1/T-Maroon-Front.png" %}', '{% static "images1/T-Maroon-Back.png" %}')"
+                        class="ellipse-3" id="maroon"></button>
+                <button onclick="selectColor(this, 'yellow', '{% static "images1/T-Yellow-Front.png" %}', '{% static "images1/T-Yellow-Back.png" %}')"
+                        class="ellipse-4" id="yellow"></button>
+            </div>
+            <div class="frame-ex">
+                <button onclick="selectColor(this, 'lightbeige', '{% static "images1/T-LightBeige-Front.png" %}', '{% static "images1/T-LightBeige-Back.png" %}')"
+                        class="ellipse-5" id="lightbeige"></button>
+                <button onclick="selectColor(this, 'pink', '{% static "images1/T-Pink-Front.png" %}', '{% static "images1/T-Pink-Back.png" %}')"
+                        class="ellipse-6" id="pink"></button>
+                <button onclick="selectColor(this, 'green', '{% static "images1/T-Green-Front.png" %}', '{% static "images1/T-Green-Back.png" %}')"
+                        class="ellipse-7" id="green"></button>
+                <button onclick="selectColor(this, 'brown', '{% static "images1/T-Brown-Front.png" %}', '{% static "images1/T-Brown-Back.png" %}')"
+                        class="ellipse-8" id="brown"></button>
+            </div>
+            <div class="select-size">
+                <div class="select">Select Size</div>
+                <div class="size">
+                    <button class="sizebtn" onclick="selectSize('XS')" id="btnXS">XS</button>
+                    <button class="sizebtn" onclick="selectSize('S')" id="btnS">S</button>
+                    <button class="sizebtn" onclick="selectSize('M')" id="btnM">M</button>
+                    <button class="sizebtn" onclick="selectSize('L')" id="btnL">L</button>
+                    <button class="sizebtn" onclick="selectSize('XL')" id="btnXL">XL</button>
+                    <button class="sizebtn" onclick="selectSize('XXL')" id="btnXXL">XXL</button>
                 </div>
             </div>
-            <div class="overlap">
-                <div class="change-color">Change Colour</div>
-                <div class="frame">
-                    <button onclick="selectColor(this, 'black', '{% static "images1/T-White-Front.png" %}', '{% static "images1/T-White-Back.png" %}')" class="ellipse" id="white"></button>
-                    <button onclick="selectColor(this, 'black', '{% static "images1/T-Black-Front.png" %}', '{% static "images1/T-Black-Back.png" %}')" class="ellipse-2" id="black"></button>
-                    <button onclick="selectColor(this, 'maroon', '{% static "images1/T-Maroon-Front.png" %}', '{% static "images1/T-Maroon-Back.png" %}')" class="ellipse-3" id="maroon"></button>
-                    <button onclick="selectColor(this, 'yellow', '{% static "images1/T-Yellow-Front.png" %}', '{% static "images1/T-Yellow-Back.png" %}')" class="ellipse-4" id="yellow"></button>
-                </div>
-                <div class="frame-ex">
-                    <button onclick="selectColor(this, 'lightbeige', '{% static "images1/T-LightBeige-Front.png" %}', '{% static "images1/T-LightBeige-Back.png" %}')" class="ellipse-5" id="lightbeige"></button>
-                    <button onclick="selectColor(this, 'pink', '{% static "images1/T-Pink-Front.png" %}', '{% static "images1/T-Pink-Back.png" %}')" class="ellipse-6" id="pink"></button>
-                    <button onclick="selectColor(this, 'green', '{% static "images1/T-Green-Front.png" %}', '{% static "images1/T-Green-Back.png" %}')" class="ellipse-7" id="green"></button>
-                    <button onclick="selectColor(this, 'brown', '{% static "images1/T-Brown-Front.png" %}', '{% static "images1/T-Brown-Back.png" %}')" class="ellipse-8" id="brown"></button>
-                </div>
-                <div class="select-size">
-                    <div class="select">Select Size</div>
-                    <div class="size">
-                        <button class="sizebtn" onclick="selectSize('XS')" id="btnXS">XS</button>
-                        <button class="sizebtn" onclick="selectSize('S')" id="btnS">S</button>
-                        <button class="sizebtn" onclick="selectSize('M')" id="btnM">M</button>
-                        <button class="sizebtn" onclick="selectSize('L')" id="btnL">L</button>
-                        <button class="sizebtn" onclick="selectSize('XL')" id="btnXL">XL</button>
-                        <button class="sizebtn" onclick="selectSize('XXL')" id="btnXXL">XXL</button>
-                    </div>
-                </div>
-                <div class="group">
-                    <button class="getDesign">Get a new design</button>
-                </div>
-                <div class="frame-wrapper">
-                    <div class="frame-2">
-                        <p class="price">
+            <div class="group">
+                <button class="getDesign">Get a new design</button>
+            </div>
+            <div class="frame-wrapper">
+                <div class="frame-2">
+                    <p class="price">
                         Rs. 1999</p>
-                        <button class="addToCartBtn" onclick="addToCart()">Add to Cart</button>
-                    </div>
+                    <button class="addToCartBtn" onclick="addToCart()">Add to Cart</button>
                 </div>
-                <div id="selectedColor">Selected Color:</div>
             </div>
-            <div class="frame-4">
-                <div class="rectangle">
+            <div id="selectedColor">Selected Color:</div>
+        </div>
+        <div class="frame-4">
+            <div class="rectangle">
                 <div class="t-front">
                     <img id="tshirt-front" src="images/T-White-Front.png">
                 </div>
+            </div>
+            <div class="rectangle">
+                <div class="t-design">
+                    <img id="tshirt-design" src="images/T-White-Design.png">
                 </div>
-                <div class="rectangle">
-                    <div class="t-design">
-                        <img id="tshirt-design" src="images/T-White-Design.png">
-                    </div>
-                    </div>
-                <div class="rectangle">
+            </div>
+            <div class="rectangle">
                 <div class="t-back">
                     <img id="tshirt-back" src="images/T-White-Back.png">
                 </div>
-                </div>
             </div>
-            <div class="text-wrapper-7">Front</div>
-            <div class="text-wrapper-8">T-shirt</div>
-            <div class="text-wrapper-0">Design</div>
-            <div class="text-wrapper-9">Back</div>
         </div>
+        <div class="text-wrapper-7">Front</div>
+        <div class="text-wrapper-8">T-shirt</div>
+        <div class="text-wrapper-0">Design</div>
+        <div class="text-wrapper-9">Back</div>
+    </div>
     </div>
     <script>
-        function changecolor(frontImg, backImg){
+        function changecolor(frontImg, backImg) {
             console.log("Changing color");
             let img = document.querySelector("#tshirt-front");
             let img2 = document.querySelector("#tshirt-back");
@@ -92,7 +82,7 @@
             img.setAttribute('src', frontImg);
             img2.setAttribute('src', backImg);
             console.log("Image source set successfully.");
-        } 
+        }
 
         var sizesObject = {
             "XS": "Extra Small",
@@ -103,26 +93,30 @@
             "XXL": "Double Extra Large",
         };
         let selectedSize = null;
+
         function selectSize(size) {
             document.querySelectorAll('.size button').forEach(button => {
-                button.style.background = '#fff';
+                button.style.background = '#e8edeb';
+                button.style.color = 'black';
             });
 
-            document.getElementById('btn' + size).style.background = 'red';
+            document.getElementById('btn' + size).style.background = '#384037';
+            document.getElementById('btn' + size).style.color = 'white';
             selectedSize = size;
         }
 
         let selectedColor = null;
 
         function selectColor(button, color, frontImg, backImg) {
-        document.querySelectorAll('.frame button').forEach(btn => {
-            btn.classList.remove('selected');
-        });
-        button.classList.add('selected');
-        document.getElementById('selectedColor').textContent = 'Selected Color: ' + color;
-        selectedColor = color;
-          changecolor(frontImg, backImg); // Call changecolor function with the selected color's image URLs
-    }
+            document.querySelectorAll('.frame button').forEach(btn => {
+                btn.classList.remove('selected');
+            });
+            button.classList.add('selected');
+            document.getElementById('selectedColor').textContent = 'Selected Color: ' + color;
+            selectedColor = color;
+            changecolor(frontImg, backImg); // Call changecolor function with the selected color's image URLs
+        }
+
         var csrfToken = "{{ csrf_token }}";
 
         function addToCart() {
@@ -133,7 +127,7 @@
 
             // Get the selected back image URL
             let backImg = document.querySelector("#tshirt-back").getAttribute('src');
-            
+
             // Ensure that only the back image URL is passed to the backend
             fetch('/add-to-cart/', {
                 method: 'POST',
@@ -150,23 +144,22 @@
                     'tshirt_back_image': backImg // Pass only back image URL
                 })
             })
-            .then(response => {
-                if (response.ok) {
-                    console.log(backImg)
-                    console.log('Product added to cart successfully');
-                } else {
-                    return response.json();
-                }
-            })
-            .then(data => {
-                if (data && data.error) {
-                    console.error('Error:', data.error);
-                }
-            })
-            .catch(error => {
-                console.error('Error:', error);
-            });
+                .then(response => {
+                    if (response.ok) {
+                        console.log(backImg)
+                        console.log('Product added to cart successfully');
+                    } else {
+                        return response.json();
+                    }
+                })
+                .then(data => {
+                    if (data && data.error) {
+                        console.error('Error:', data.error);
+                    }
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                });
         }
     </script>
-</body>
-</html>
+{% endblock %}

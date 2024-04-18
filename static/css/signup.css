@@ -16,28 +16,6 @@
     position: relative;
 }
 
-.login .navbar {
-    position: absolute;
-    width: 1448px;
-    height: 63px;
-    top: 0;
-    left: 0;
-}
-
-.login .navbar-2 {
-    position: relative;
-    width: 1440px;
-    height: 63px;
-    background-image: url(bg.jpeg);
-    background-size: 100% 100%;
-}
-
-.login .navbar-2 img{
-    height: 45px;
-    width: 110px;
-    padding-left: 10px;
-    padding-top: 8.5px;
-}
 
 .login .group {
     position: absolute;
@@ -172,7 +150,7 @@
     position: relative;
     transition: 0.5s;
 }
-  
+
 .login .button span:after {
     content: '\00bb';
     position: absolute;
@@ -181,11 +159,11 @@
     right: -20px;
     transition: 0.5s;
 }
-  
+
 .login .button:hover span {
     padding-right: 25px;
 }
-  
+
 .login .button:hover span:after {
     opacity: 1;
     right: 0;

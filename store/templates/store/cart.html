@@ -1,26 +1,8 @@
+{% extends "store/base.html" %} {% block content %}
 {% load static %}
-<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="utf-8" />
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Urbanist:ital,wght@0,100..900;1,100..900&display=swap');
-        /* Add your CSS styles here */
-    </style>
-    <link rel="stylesheet" href="{% static 'css/cart1.css' %}">
-</head>
-<body>
+
 <div class="checkout-page">
     <div class="div">
-        <div class="navbar">
-            <div class="navbar-2">
-                <img src="on1y-One-logo_white.png" class="one-logo-1" >
-                <div class="home">HOME</div>
-                <div class="about">ABOUT</div>
-                <div class="shop">SHOP</div>
-                <div class="contact">CONTACT</div>
-            </div>
-        </div>
         <div class="text-wrapper">Bag</div>
         <div class="text-wrapper-2">Summary</div>
         <h3>Items:{{order.get_cart_items}}</h3>
@@ -149,5 +131,5 @@
 
 
 </script>
-</body>
-</html>
+{% endblock %}
+
