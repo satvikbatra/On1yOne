@@ -1,81 +1,82 @@
-{% extends "store/base.html" %} {% block content %}
+{% extends "store/base.html" %}
     {% load static %}
+    {% block title %}T-Shirt{% endblock %}
+ {% block content %}
 
-    <div class="tshirt-page">
-        <div class="div">
+    <div class="flex flex-col items-center justify-center">
+        <h1 class="font-black text-9xl py-24 h-1/3 flex justify-center">T-Shirt</h1>
 
-        </div>
-        <div class="overlap">
-            <div class="change-color">Change Colour</div>
-            <div class="frame">
-                <button onclick="selectColor(this, 'black', '{% static "images1/T-White-Front.png" %}', '{% static "images1/T-White-Back.png" %}')"
-                        class="ellipse" id="white"></button>
-                <button onclick="selectColor(this, 'black', '{% static "images1/T-Black-Front.png" %}', '{% static "images1/T-Black-Back.png" %}')"
-                        class="ellipse-2" id="black"></button>
-                <button onclick="selectColor(this, 'maroon', '{% static "images1/T-Maroon-Front.png" %}', '{% static "images1/T-Maroon-Back.png" %}')"
-                        class="ellipse-3" id="maroon"></button>
-                <button onclick="selectColor(this, 'yellow', '{% static "images1/T-Yellow-Front.png" %}', '{% static "images1/T-Yellow-Back.png" %}')"
-                        class="ellipse-4" id="yellow"></button>
-            </div>
-            <div class="frame-ex">
-                <button onclick="selectColor(this, 'lightbeige', '{% static "images1/T-LightBeige-Front.png" %}', '{% static "images1/T-LightBeige-Back.png" %}')"
-                        class="ellipse-5" id="lightbeige"></button>
-                <button onclick="selectColor(this, 'pink', '{% static "images1/T-Pink-Front.png" %}', '{% static "images1/T-Pink-Back.png" %}')"
-                        class="ellipse-6" id="pink"></button>
-                <button onclick="selectColor(this, 'green', '{% static "images1/T-Green-Front.png" %}', '{% static "images1/T-Green-Back.png" %}')"
-                        class="ellipse-7" id="green"></button>
-                <button onclick="selectColor(this, 'brown', '{% static "images1/T-Brown-Front.png" %}', '{% static "images1/T-Brown-Back.png" %}')"
-                        class="ellipse-8" id="brown"></button>
-            </div>
-            <div class="select-size">
-                <div class="select">Select Size</div>
-                <div class="size">
-                    <button class="sizebtn" onclick="selectSize('XS')" id="btnXS">XS</button>
-                    <button class="sizebtn" onclick="selectSize('S')" id="btnS">S</button>
-                    <button class="sizebtn" onclick="selectSize('M')" id="btnM">M</button>
-                    <button class="sizebtn" onclick="selectSize('L')" id="btnL">L</button>
-                    <button class="sizebtn" onclick="selectSize('XL')" id="btnXL">XL</button>
-                    <button class="sizebtn" onclick="selectSize('XXL')" id="btnXXL">XXL</button>
+        <div class="flex pt-24  items-center h-1/3">
+            <div class="flex  space-x-24 ">
+                <div class="card w-1/3 bg-base-100 shadow-xl">
+                    <figure class="px-10 pt-10">
+                        <img id="tshirt-front" class="h-full w-auto" src="{% static 'images1/T-White-Front.png' %}">
+                    </figure>
+
                 </div>
-            </div>
-            <div class="group">
-                <a href="{% url 'generate_image_tshirt' %}?refresh=true">
-                    <button class="getDesign">Get a new design</button>
-                </a>
-                
-            </div>
-            <div class="frame-wrapper">
-                <div class="frame-2">
-                    <p class="price">
-                        Rs. 1999</p>
-                    <button class="addToCartBtn" onclick="addToCart()">Add to Cart</button>
+                <div class="card w-1/3 bg-base-100 shadow-xl">
+                    <figure class="px-10 pt-24">
+                        <img id="tshirt-design" class="h-full w-auto" src="{% static 'images/generated_image1.jpg' %}">
+                    </figure>
                 </div>
-            </div>
-            <div id="selectedColor">Selected Color:</div>
-        </div>
-        <div class="frame-4">
-            <div class="rectangle">
-                <div class="t-front">
-                    <img id="tshirt-front" src="{% static 'images1/T-White-Front.png' %}">
-                </div>
-            </div>
-            <div class="rectangle">
-                <div class="t-design">
-                    <img id="tshirt-design" src="{% static 'images/generated_image.jpg' %}">
-                </div>
-            </div>
-            <div class="rectangle">
-                <div class="t-back">
-                    <img id="tshirt-back" src="{% static 'images1/T-White-Back.png' %}">
+                <div class="card w-1/3 bg-base-100 shadow-xl">
+                    <figure class="px-10 pt-10">
+                        <img id="tshirt-back" class="h-full w-auto" src="{% static 'images1/T-White-Back.png' %}">
+                    </figure>
                 </div>
             </div>
         </div>
-        <div class="text-wrapper-7">Front</div>
-        <div class="text-wrapper-8">T-shirt</div>
-        <div class="text-wrapper-0">Design</div>
-        <div class="text-wrapper-9">Back</div>
+        <div class="fixed bottom-0  w-full h-1/3 bg-base justify-center">
+            <div class="grid grid-cols-3 justify-items-stretch  grid-flow-row gap-4 h-full p-12 ">
+                <div class="flex justify-center items-center">
+                    <a href="{% url 'generate_image_hoodie' %}?refresh=true">
+                        <button class="btn btn-outline btn-secondary">Get a New Design</button>
+                    </a>
+                </div>
+                <div class="flex flex-col justify-center items-center">
+                    <div class="flex">
+                        <h1 class="font-black text-5xl">Change Color</h1>
+                    </div>
+                    <div class="flex p-6">
+                        <div class="grid grid-cols-4 gap-4">
+                            <button onclick="selectColor(this, 'black', '{% static "images1/T-White-Front.png" %}', '{% static "images1/T-White-Back.png" %}')"
+                                    class="btn btn-circle bg-white" id="white"></button>
+                            <button onclick="selectColor(this, 'black', '{% static "images1/T-Black-Front.png" %}', '{% static "images1/T-Black-Back.png" %}')"
+                                    class="btn btn-circle bg-black " id="black"></button>
+                            <button onclick="selectColor(this, 'maroon', '{% static "images1/T-Maroon-Front.png" %}', '{% static "images1/T-Maroon-Back.png" %}')"
+                                    class="btn btn-circle bg-rose-500" id="maroon"></button>
+                            <button onclick="selectColor(this, 'yellow', '{% static "images1/T-Yellow-Front.png" %}', '{% static "images1/T-Yellow-Back.png" %}')"
+                                    class="btn btn-circle bg-amber-200" id="yellow"></button>
+                            <button onclick="selectColor(this, 'lightbeige', '{% static "images1/T-LightBeige-Front.png" %}', '{% static "images1/T-LightBeige-Back.png" %}')"
+                                    class="btn btn-circle bg-amber-50" id="lightbeige"></button>
+                            <button onclick="selectColor(this, 'pink', '{% static "images1/T-Pink-Front.png" %}', '{% static "images1/T-Pink-Back.png" %}')"
+                                    class="btn btn-circle bg-pink-100" id="pink"></button>
+                            <button onclick="selectColor(this, 'green', '{% static "images1/T-Green-Front.png" %}', '{% static "images1/T-Green-Back.png" %}')"
+                                    class="btn btn-circle bg-teal-700" id="teal"></button>
+                            <button onclick="selectColor(this, 'brown', '{% static "images1/T-Brown-Front.png" %}', '{% static "images1/T-Brown-Back.png" %}')"
+                                    class="btn btn-circle bg-amber-950" id="brown"></button>
+
+                        </div>
+                    </div>
+                    <div id="selectedColor" class="hidden">Selected Color:</div>
+                </div>
+                <div class="flex flex-col justify-center items-center">
+                    <div class="grid grid-cols-6 gap-4 py-12">
+                        <button class="btn btn-outline" onclick="selectSize('XS')" id="btnXS">XS</button>
+                        <button class="btn btn-outline" onclick="selectSize('S')" id="btnS">S</button>
+                        <button class="btn btn-outline" onclick="selectSize('M')" id="btnM">M</button>
+                        <button class="btn btn-outline" onclick="selectSize('L')" id="btnL">L</button>
+                        <button class="btn btn-outline" onclick="selectSize('XL')" id="btnXL">XL</button>
+                        <button class="btn btn-outline" onclick="selectSize('XXL')" id="btnXXL">XXL</button>
+                    </div>
+                    <p class="pb-3 font-bold text-lg"> Rs. 3999</p>
+                    <button class="btn btn-outline btn-primary " onclick="addToCart()">Add to Cart</button>
+                </div>
+            </div>
+        </div>
+
     </div>
-    </div>
+
     <script>
         function changecolor(frontImg, backImg) {
             console.log("Changing color");
