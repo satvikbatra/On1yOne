@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Urbanist:ital,wght@0,100..900;1,100..900&display=swap');
+html, body {margin: 0; height: 100%}
 
 .index {
     background-color: #ffffff;
@@ -28,8 +28,8 @@
     position: relative;
     width: 1440px;
     height: 63px;
-    background-image: url(bg.jpeg);
-    background-size: 100% 100%
+    background-color: #384037;
+    background-size: 100% 100%;
 }
 
 .index .navbar-2 a{
@@ -40,10 +40,10 @@
 }
 
 .index .navbar-2 img{
-    height: 45px;
+    height: 55px;
     width: 110px;
-    padding-left: 10px;
-    padding-top: 8.5px;
+    padding-left: 30px;
+    padding-top: 5px;
 }
 
 .index .home {
@@ -127,7 +127,6 @@
     color: #00ffd5;
 }
 
-
 .index .hero {
     position: absolute;
     width: 1181px;
@@ -141,8 +140,6 @@
     width: 1177px;
     height: 461px;
     background-color: #e8edeb;
-    background-image: url(banner-1.jpeg);
-    box-shadow: 1px 2px 10px 5px #8BA799;
 }
 
 .index .overlap-group {
@@ -156,20 +153,20 @@
 .index .super-value-deals-on {
     position: absolute;
     width: 702px;
-    top: 21px;
+    top: -25px;
     left: 0;
     font-family: "Urbanist", sans-serif;
     font-weight: 600;
-    color: #e8edeb;
+    color: #000000;
     font-size: 54px;
     letter-spacing: 0;
-    line-height: normal;
+    line-height: normal;   
 }
 
 .index .save-more-with {
     position: absolute;
     width: 316px;
-    top: 0;
+    top: -60px;
     left: 0;
     font-family: "Urbanist", sans-serif;
     font-weight: 400;
@@ -181,74 +178,13 @@
 
 .index .button-85 {
     padding: 0.6em 2em;
-    border: none;
-    outline: none;
     color: rgb(255, 255, 255);
     background: #111;
     cursor: pointer;
     position: relative;
-    z-index: 0;
-    border-radius: 10px;
-    user-select: none;
-    -webkit-user-select: none;
-    touch-action: manipulation;
     margin: 5rem;
-    margin-top: 23rem;
+    margin-top: 21rem;
     margin-left: 6rem;
-    
-  }
-  
-.button-85:before {
-    content: "";
-    background: linear-gradient(
-      45deg,
-      #ff0000,
-      #ff7300,
-      #fffb00,
-      #48ff00,
-      #00ffd5,
-      #002bff,
-      #7a00ff,
-      #ff00c8,
-      #ff0000
-    );
-    position: absolute;
-    top: -2px;
-    left: -2px;
-    background-size: 400%;
-    z-index: -1;
-    filter: blur(5px);
-    -webkit-filter: blur(5px);
-    width: calc(100% + 4px);
-    height: calc(100% + 4px);
-    animation: glowing-button-85 20s linear infinite;
-    transition: opacity 0.3s ease-in-out;
-    border-radius: 10px;
-  }
-  
-@keyframes glowing-button-85 {
-    0% {
-      background-position: 0 0;
-    }
-    50% {
-      background-position: 400% 0;
-    }
-    100% {
-      background-position: 0 0;
-    }
-  }
-  
-.button-85:after {
-    z-index: -1;
-    content: "";
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    background: #222;
-    left: 0;
-    top: 0;
-    border-radius: 10px;
-    height: 29px;
 }
 
 #shopButton{
@@ -297,14 +233,7 @@
     width: 570px;
     height: 624px;
     background-color: #e8edeb;
-    background-image: url(pic.jpeg);
     background-size: cover;
-    box-shadow: 1px 2px 10px 5px #8BA799;
-}
-
-.overlap-wrapper .overlap-group-2{
-    background-image: url(pic-1.jpeg);
-    box-shadow: 1px 2px 10px 5px #8BA799;
 }
 
 .index .text-wrapper-2 {
@@ -376,90 +305,29 @@
     width: 100%;
     height: auto;
     top: 1240px;
-    background-image: url(banner-2.jpeg);
     background-size: cover;
     background-position: 1px;
 }
 
 .overlap-group-wrapper {
     padding: 0.6em 2em;
-    border: none;
-    outline: none;
     color: rgb(255, 255, 255);
     background: #111;
     cursor: pointer;
     position: relative;
-    z-index: 0;
-    border-radius: 10px;
-    user-select: none;
-    -webkit-user-select: none;
-    touch-action: manipulation;
     margin: 8.5rem;
     align-content: center;
-    top: 80px;
-    left: 500px;
-}
-
-.overlap-group-wrapper:before {
-    content: "";
-    background: linear-gradient(
-      45deg,
-      #ff0000,
-      #ff7300,
-      #fffb00,
-      #48ff00,
-      #00ffd5,
-      #002bff,
-      #7a00ff,
-      #ff00c8,
-      #ff0000
-    );
-    position: absolute;
-    top: -2px;
-    left: -2px;
-    background-size: 400%;
-    z-index: -1;
-    filter: blur(5px);
-    -webkit-filter: blur(5px);
-    width: calc(100% + 4px);
-    height: calc(100% + 4px);
-    animation: glowing-button-85 20s linear infinite;
-    transition: opacity 0.3s ease-in-out;
-    border-radius: 10px;
-  }
-  
-@keyframes glowing-button-85 {
-    0% {
-      background-position: 0 0;
-    }
-    50% {
-      background-position: 400% 0;
-    }
-    100% {
-      background-position: 0 0;
-    }
-  }
-  
-.overlap-group-wrapper:after {
-    z-index: -1;
-    content: "";
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    background: #222;
-    left: 0;
-    top: 0;
-    border-radius: 10px;
-    height: 29px;
+    top: 50px;
+    left: 515px;
 }
 
 .index .text-wrapper-9 {
     position: absolute;
     top: 30px;
-    left: 620px;
+    left: 645px;
     font-family: "Urbanist", sans-serif;
     font-weight: 400;
-    color: #e8edeb;
+    color: #000000;
     font-size: 24px;
     letter-spacing: 0;
     line-height: normal;
@@ -468,183 +336,117 @@
 
 .index .laptop-sleeves {
     position: absolute;
-    top: 110px;
-    left: 475px;
+    top: 90px;
+    left: 510px;
     font-family: "Urbanist", sans-serif;
     font-weight: 900;
-    color: #00ffd5;
+    color: #000000;
     font-size: 48px;
     letter-spacing: 0;
     line-height: normal;
 }
 
-.index .footer {
+footer{
     position: absolute;
-    width: 1440px;
-    height: 408px;
-    top: 1550px;
+    bottom: -1.5rem;
     left: 0;
-    background-color: #e8edeb;
-}
-
-.index .social {
-    position: absolute;
-    width: 13px;
-    height: 23px;
-    top: 282px;
-    left: 148px;
-}
-
-.index .social-2 {
-    position: absolute;
-    width: 22px;
-    height: 22px;
-    top: 283px;
-    left: 185px;
-    background-image: url(instagram.png);
-    background-size: 100% 100%;
-}
-
-.index .img {
-    position: absolute;
-    width: 31px;
-    height: 24px;
-    top: 282px;
-    left: 231px;
-}
-
-.index .social-3 {
-    position: absolute;
-    width: 23px;
-    height: 22px;
-    top: 283px;
-    left: 286px;
-    background-image: url(linkedin.png);
-    background-size: 100% 100%;
-}
-
-.index .menu-footer {
-    position: absolute;
-    width: 202px;
-    height: 197px;
-    top: 80px;
-    left: 619px;
-}
-
-.index .text-wrapper-10 {
-    position: absolute;
-    top: -1px;
-    left: 0;
-    font-family: "Urbanist", sans-serif;
-    font-weight: 700;
+    right: 0;
+    background: #e8edeb;
+    height: auto;
+    width: 100vw;
+    font-family: "Open Sans";
+    padding-top: 40px;
     color: #000000;
-    font-size: 18px;
-    letter-spacing: 0;
-    line-height: normal;
 }
 
-.index .text-wrapper-11 {
-    position: absolute;
-    top: 52px;
-    left: 0;
-    font-family: "Urbanist", sans-serif;
-    font-weight: 400;
-    color: #000000;
+footer img{
+    height: 130px;
+    width: 210px;
+}
+
+.footer-content{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+}
+
+.footer-content p{
+    max-width: 500px;
+    margin: 10px auto;
+    line-height: 28px;
     font-size: 14px;
-    letter-spacing: 0;
-    line-height: normal;
 }
 
-.index .text-wrapper-12 {
-    position: absolute;
-    top: 84px;
-    left: 0;
-    font-family: "Urbanist", sans-serif;
-    font-weight: 400;
+.socials{
+    list-style: none;
+    display: flex;
+    padding-left: 0;
+    margin: 1rem 0 3rem 0;
+}
+
+.links{
+    list-style: none;
+    display: flex;
+    padding-left: 0;
+    margin: 1rem 0 3rem 0;
+}
+
+.links li{
+    margin: 0 10px;
+}
+
+.links a{
+    text-decoration: none;
     color: #000000;
-    font-size: 14px;
-    letter-spacing: 0;
-    line-height: normal;
 }
 
-.index .text-wrapper-13 {
-    top: 116px;
-    position: absolute;
-    left: 0;
-    font-family: "Urbanist", sans-serif;
-    font-weight: 400;
+.links a {
+    font-size: 1.2rem;
+    transition: color .4s ease;
+}
+
+.links a:hover {
+    color: #999999;
+}
+
+.socials li{
+    margin: 0 10px;
+}
+
+.socials a{
+    text-decoration: none;
     color: #000000;
-    font-size: 14px;
-    letter-spacing: 0;
-    line-height: normal;
 }
 
-.index .text-wrapper-14 {
-    position: absolute;
-    top: 148px;
-    left: 0;
-    font-family: "Urbanist", sans-serif;
-    font-weight: 400;
-    color: #000000;
-    font-size: 14px;
-    letter-spacing: 0;
-    line-height: normal;
+.socials a i{
+    font-size: 1.5rem;
+    transition: color .4s ease;
 }
 
-.index .text-wrapper-15 {
-    position: absolute;
-    top: 180px;
-    left: 0;
-    font-family: "Urbanist", sans-serif;
-    font-weight: 400;
-    color: #000000;
-    font-size: 14px;
-    letter-spacing: 0;
-    line-height: normal;
+.socials a:hover i{
+    color: #999999;
 }
 
-.index .menu-footer-vert {
-    position: absolute;
-    width: 203px;
-    height: 165px;
-    top: 80px;
-    left: 853px;
+.footer-bottom{
+    background: #384037;
+    width: 100vw;
+    padding: 20px 0;
+    text-align: center;
 }
 
-.index .menu-footer-2 {
-    position: absolute;
-    width: 203px;
-    height: 197px;
-    top: 80px;
-    left: 1088px;
+.footer-bottom p{
+    font-size: 16px;
+    word-spacing: 2px;
+    text-transform: capitalize;
+    color: #ffffff;
+    padding-bottom: 10px;
+    
 }
 
-.index .overlap-2 {
-    position: absolute;
-    width: 453px;
-    height: 304px;
-    top: -34px;
-    left: 134px;
-}
-
-.index .p {
-    position: absolute;
-    width: 438px;
-    top: 227px;
-    left: 15px;
-    font-family: "Urbanist", sans-serif;
-    font-weight: 400;
-    color: #000000;
-    font-size: 18px;
-    letter-spacing: 0;
-    line-height: 26px;
-}
-
-.index .one-logo {
-    position: absolute;
-    width: 430px;
-    height: 304px;
-    top: 0;
-    left: 0;
-    object-fit: cover;
+.footer-bottom span{
+    text-transform: uppercase;
+    opacity: .4;
+    font-weight: 200;
 }

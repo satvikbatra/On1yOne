@@ -24,6 +24,7 @@
     height: 63px;
     top: 0;
     left: 0;
+    z-index: 999;
 }
 
 .navbar-2 {
@@ -1847,4 +1848,665 @@
     margin-top: 15vh;
     overflow-y: scroll;
     overflow-x: hidden;
+}
+
+
+
+
+.index {
+    background-color: #ffffff;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    width: 100%;
+}
+
+.index .div {
+    /* background-color: #ffffff; */
+    overflow: hidden;
+    width: 1440px;
+    height: 1917px;
+    position: relative;
+}
+
+
+.index .hero {
+    position: absolute;
+    width: 1181px;
+    height: 461px;
+    top: 93px;
+    left: 132px;
+}
+
+.index .overlap {
+    position: relative;
+    width: 1177px;
+    height: 461px;
+    background-color: #e8edeb;
+}
+
+.index .overlap-group {
+    position: absolute;
+    width: 702px;
+    height: 174px;
+    top: 127px;
+    left: 92px;
+}
+
+.index .super-value-deals-on {
+    position: absolute;
+    width: 702px;
+    top: -25px;
+    left: 0;
+    font-family: "Urbanist", sans-serif;
+    font-weight: 600;
+    color: #000000;
+    font-size: 54px;
+    letter-spacing: 0;
+    line-height: normal;   
+}
+
+.index .save-more-with {
+    position: absolute;
+    width: 316px;
+    top: -60px;
+    left: 0;
+    font-family: "Urbanist", sans-serif;
+    font-weight: 400;
+    color: #000000;
+    font-size: 18px;
+    letter-spacing: 0;
+    line-height: normal;
+}
+
+.index .button-85 {
+    padding: 0.6em 2em;
+    color: rgb(255, 255, 255);
+    background: #111;
+    cursor: pointer;
+    position: relative;
+    margin: 5rem;
+    margin-top: 21rem;
+    margin-left: 6rem;
+}
+
+#shopButton{
+    margin-top: 32rem;
+    margin-left: 6rem;
+}
+
+.index .div-wrapper {
+    position: relative;
+    width: 101px;
+    height: 29px;
+    background-color: #000000;
+}
+
+.index .text-wrapper {
+    position: absolute;
+    top: 7px;
+    left: 23px;
+    font-family: "Urbanist", sans-serif;
+    font-weight: 400;
+    color: #ffffff;
+    font-size: 12px;
+    letter-spacing: 0;
+    line-height: normal;
+    white-space: nowrap;
+}
+
+.index .cards-section {
+    position: absolute;
+    width: 1177px;
+    height: 624px;
+    top: 606px;
+    left: 132px;
+}
+
+.index .group {
+    left: 0;
+    position: absolute;
+    width: 576px;
+    height: 624px;
+    top: 0;
+}
+
+.index .overlap-group-2 {
+    position: relative;
+    width: 570px;
+    height: 624px;
+    background-color: #e8edeb;
+    background-size: cover;
+}
+
+.index .text-wrapper-2 {
+    position: absolute;
+    width: 162px;
+    top: 71px;
+    left: 31px;
+    font-family: "Urbanist", sans-serif;
+    font-weight: 500;
+    color: #000000;
+    font-size: 32px;
+    letter-spacing: 0;
+    line-height: normal;
+    white-space: nowrap;
+}
+
+.index .text-wrapper-3 {
+    width: 194px;
+    left: 31px;
+    position: absolute;
+    top: 115px;
+    font-family: "Urbanist", sans-serif;
+    font-weight: 400;
+    color: #000000;
+    font-size: 16px;
+    letter-spacing: 0;
+    line-height: normal;
+    white-space: nowrap;
+}
+
+.index .overlap-wrapper {
+    left: 607px;
+    position: absolute;
+    width: 576px;
+    height: 624px;
+    top: 0;
+}
+
+.index .text-wrapper-6 {
+    width: 147px;
+    left: 46px;
+    position: absolute;
+    top: 115px;
+    font-family: "Urbanist", sans-serif;
+    font-weight: 400;
+    color: #000000;
+    font-size: 16px;
+    letter-spacing: 0;
+    line-height: normal;
+    white-space: nowrap;
+}
+
+.index .text-wrapper-7 {
+    position: absolute;
+    width: 117px;
+    top: 71px;
+    left: 46px;
+    font-family: "Urbanist", sans-serif;
+    font-weight: 500;
+    color: #000000;
+    font-size: 32px;
+    letter-spacing: 0;
+    line-height: normal;
+    white-space: nowrap;
+}
+
+.index .coming-soon {
+    position: absolute;
+    width: 100%;
+    height: auto;
+    top: 1240px;
+    background-size: cover;
+    background-position: 1px;
+}
+
+.overlap-group-wrapper {
+    padding: 0.6em 2em;
+    color: rgb(255, 255, 255);
+    background: #111;
+    cursor: pointer;
+    position: relative;
+    margin: 8.5rem;
+    align-content: center;
+    top: 50px;
+    left: 515px;
+}
+
+.index .text-wrapper-9 {
+    position: absolute;
+    top: 30px;
+    left: 645px;
+    font-family: "Urbanist", sans-serif;
+    font-weight: 400;
+    color: #000000;
+    font-size: 24px;
+    letter-spacing: 0;
+    line-height: normal;
+    white-space: nowrap;
+}
+
+.index .laptop-sleeves {
+    position: absolute;
+    top: 90px;
+    left: 510px;
+    font-family: "Urbanist", sans-serif;
+    font-weight: 900;
+    color: #000000;
+    font-size: 48px;
+    letter-spacing: 0;
+    line-height: normal;
+}
+
+footer{
+    position: absolute;
+    bottom: -1.5rem;
+    left: 0;
+    right: 0;
+    background: #e8edeb;
+    height: auto;
+    width: 100vw;
+    font-family: "Open Sans";
+    padding-top: 40px;
+    color: #000000;
+}
+
+footer img{
+    height: 130px;
+    width: 210px;
+}
+
+.footer-content{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+}
+
+.footer-content p{
+    max-width: 500px;
+    margin: 10px auto;
+    line-height: 28px;
+    font-size: 14px;
+}
+
+.socials{
+    list-style: none;
+    display: flex;
+    padding-left: 0;
+    margin: 1rem 0 3rem 0;
+}
+
+.links{
+    list-style: none;
+    display: flex;
+    padding-left: 0;
+    margin: 1rem 0 3rem 0;
+}
+
+.links li{
+    margin: 0 10px;
+}
+
+.links a{
+    text-decoration: none;
+    color: #000000;
+}
+
+.links a {
+    font-size: 1.2rem;
+    transition: color .4s ease;
+}
+
+.links a:hover {
+    color: #999999;
+}
+
+.socials li{
+    margin: 0 10px;
+}
+
+.socials a{
+    text-decoration: none;
+    color: #000000;
+}
+
+.socials a i{
+    font-size: 1.5rem;
+    transition: color .4s ease;
+}
+
+.socials a:hover i{
+    color: #999999;
+}
+
+.footer-bottom{
+    background: #384037;
+    width: 100vw;
+    padding: 20px 0;
+    text-align: center;
+}
+
+.footer-bottom p{
+    font-size: 16px;
+    word-spacing: 2px;
+    text-transform: capitalize;
+    color: #ffffff;
+    padding-bottom: 10px;
+    
+}
+
+.footer-bottom span{
+    text-transform: uppercase;
+    opacity: .4;
+    font-weight: 200;
+}
+
+/* Login Page */
+
+
+
+.login {
+    background-color: #ffffff;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    width: 100%;
+}
+
+.login .div {
+    background-color: #ffffff;
+    overflow: hidden;
+    width: 100%;
+    height: 1080px;
+    position: relative;
+}
+
+.login .navbar {
+    position: absolute;
+    width: 100%;
+    height: 63px;
+    top: 0;
+    left: 0;
+}
+
+.login .navbar-2 {
+    position: static;
+    width: 100%;
+    height: 63px;
+    background-color: #384037;
+}
+
+.login .navbar-2 img{
+    height: 55px;
+    width: 110px;
+    padding-left: 30px;
+    padding-top: 5px;
+}
+
+.login .group {
+    position: absolute;
+    width: 337px;
+    height: 316px;
+    top: 224px;
+    left: 553px;
+}
+
+.login .text-wrapper {
+    top: 0;
+    left: 109px;
+    font-family: "Urbanist", sans-serif;
+    font-weight: 700;
+    color: #000000;
+    font-size: 48px;
+    position: absolute;
+    letter-spacing: 0;
+    line-height: normal;
+}
+
+.login .frame {
+    flex-direction: column;
+    align-items: center;
+    gap: 40px;
+    position: relative;
+    display: inline-flex;
+    flex: 0 0 auto;
+    top: 100px;
+    left: 25px;
+}
+
+.login input[type="text"],
+.login input[type="password"] {
+  width: 19rem;
+  padding: 12px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #E8EDEB;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+.login #username{
+    background-color: #E8EDEB;
+}
+
+.login #password{
+    background-color: #E8EDEB;
+}
+
+.login label{
+    font-family: "Urbanist", sans-serif;
+    font-weight: 400;
+    color: #000000;
+    font-size: 18px;
+    letter-spacing: 0;
+    line-height: normal;
+}
+
+.login .frame-2 {
+    align-items: flex-start;
+    gap: 43px;
+    position: relative;
+    flex: 0 0 auto;
+    display: inline-flex;
+    flex-direction: column;
+}
+
+.login .button {
+    display: inline-block;
+    border-radius: 4px;
+    background-color: #000000;
+    border: none;
+    color: #FFFFFF;
+    text-align: center;
+    font-size: 16px;
+    padding: 10px;
+    width: 130px;
+    transition: all 0.5s;
+    cursor: pointer;
+}
+
+.login .button span {
+    cursor: pointer;
+    display: inline-block;
+    position: relative;
+    transition: 0.5s;
+}
+  
+.login .button span:after {
+    content: '\00bb';
+    position: absolute;
+    opacity: 0;
+    top: 0;
+    right: -20px;
+    transition: 0.5s;
+}
+  
+.login .button:hover span {
+    padding-right: 25px;
+}
+  
+.login .button:hover span:after {
+    opacity: 1;
+    right: 0;
+}
+
+/* SignUp Page */
+
+html, body {margin: 0; height: 100%; overflow: hidden}
+
+.signup {
+    background-color: #ffffff;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    width: 100%;
+}
+
+.signup .div {
+    background-color: #ffffff;
+    overflow: hidden;
+    width: 1440px;
+    height: 1080px;
+    position: relative;
+}
+
+.signup .navbar {
+    position: absolute;
+    width: 1448px;
+    height: 63px;
+    top: 0;
+    left: 0;
+}
+
+.signup .navbar-2 {
+    position: static;
+    width: 2200px;
+    height: 63px;
+    background-color: #384037;
+}
+
+.signup .navbar-2 img{
+    height: 55px;
+    width: 110px;
+    padding-left: 30px;
+    padding-top: 5px;
+}
+
+.signup .group {
+    position: absolute;
+    width: 337px;
+    height: 316px;
+    top: 140px;
+    left: 530px;
+}
+
+.signup .text-wrapper {
+    top: -20px;
+    left: 90px;
+    font-family: "Urbanist", sans-serif;
+    font-weight: 700;
+    color: #000000;
+    font-size: 48px;
+    position: absolute;
+    letter-spacing: 0;
+    line-height: normal;
+}
+
+.signup .frame {
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    position: relative;
+    display: inline-flex;
+    flex: 0 0 auto;
+    top: 80px;
+    left: 20px;
+}
+
+.signup .frame-2 {
+    display: inline-flex;
+    flex-direction: column;
+    align-items: flex-start;
+    position: relative;
+    flex: 0 0 auto;
+    gap: 20px;
+    align-items: center;
+}
+
+.signup input[type="text"],
+.signup input[type="password"],
+.signup input[type="email"]{
+  width: 19rem;
+  padding: 12px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #E8EDEB;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+.signup #username{
+    background-color: #E8EDEB;
+}
+
+.signup #full_name{
+    background-color: #E8EDEB;
+}
+
+.signup #phone_number{
+    background-color: #E8EDEB;
+
+} 
+
+.signup #password1{
+    background-color: #E8EDEB;
+}
+
+.signup #password2{
+    background-color: #E8EDEB;
+}
+
+.signup #email{
+    background-color: #E8EDEB;
+}
+
+.signup .button {
+    display: inline-block;
+    border-radius: 4px;
+    background-color: #000000;
+    border: none;
+    color: #FFFFFF;
+    text-align: center;
+    font-size: 16px;
+    padding: 10px;
+    width: 130px;
+    transition: all 0.5s;
+    cursor: pointer;
+}
+
+.signup label{
+    font-family: "Urbanist", sans-serif;
+    font-weight: 400;
+    color: #000000;
+    font-size: 18px;
+    letter-spacing: 0;
+    line-height: normal;
+}
+
+.signup .button span {
+    cursor: pointer;
+    display: inline-block;
+    position: relative;
+    transition: 0.5s;
+}
+  
+.signup .button span:after {
+    content: '\00bb';
+    position: absolute;
+    opacity: 0;
+    top: 0;
+    right: -20px;
+    transition: 0.5s;
+}
+  
+.signup .button:hover span {
+    padding-right: 25px;
+}
+  
+.signup .button:hover span:after {
+    opacity: 1;
+    right: 0;
 }
