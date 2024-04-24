@@ -156,7 +156,7 @@ def add_to_cart_hoodie(request):
     else:
         return JsonResponse({'error': 'Invalid request method'}, status=405)
 
-    
+
 def update_cart(request):
     if request.method == 'POST':
         data = json.loads(request.body)
@@ -183,7 +183,7 @@ def update_cart(request):
     else:
         # If the request method is not POST, return an error response
         return JsonResponse({'error': 'Invalid request method'}, status=405)
-    
+
 def processOrder(request):
     transaction_id = datetime.datetime.now().timestamp()
     data = json.loads(request.body)
@@ -196,10 +196,10 @@ def processOrder(request):
 
         if total == order.get_cart_total:
             order.complete = True
-            
+
         order.save()
 
-        
+
         ShippingAddress.objects.create(
         customer=customer,
         order=order,
@@ -208,7 +208,7 @@ def processOrder(request):
         state=data['shipping']['state'],
         zipcode=data['shipping']['zipcode'],
         )
-            
+
 
     return JsonResponse('payment complete', safe=False)
 
@@ -223,7 +223,7 @@ def generate_image_tshirt(request):
         generated_image_bytes = response.content
 
         image_dir = settings.STATIC_ROOT
-        
+
         if not os.path.exists(image_dir):
             os.makedirs(image_dir)
 
@@ -235,7 +235,7 @@ def generate_image_tshirt(request):
         return redirect('t-shirt')
     else:
         return JsonResponse("Error: Unable to generate image", status=response.status_code, safe=False)
-    
+
 
 def generate_image_hoodie(request):
     api_url = 'http://127.0.0.1:8000/get_image'
@@ -246,7 +246,7 @@ def generate_image_hoodie(request):
         generated_image_bytes = response.content
 
         image_dir = settings.STATIC_ROOT
-        
+
         if not os.path.exists(image_dir):
             os.makedirs(image_dir)
 
@@ -266,7 +266,7 @@ def stripe_config(request):
     if request.method == 'GET':
         stripe_config = {'publicKey': settings.STRIPE_PUBLISHABLE_KEY}
         return JsonResponse(stripe_config, safe=False)
-    
+
 
 
 @csrf_exempt
