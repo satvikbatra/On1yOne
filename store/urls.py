@@ -15,6 +15,8 @@ urlpatterns = [
     path('add-to-cart-hoodie/', views.add_to_cart_hoodie, name='add-to-cart-hoodie'),
     path('generate_image_tshirt/', views.generate_image_tshirt, name='generate_image_tshirt'),
     path('generate_image_hoodie/', views.generate_image_hoodie, name='generate_image_hoodie'),
+    path('config/', views.stripe_config),
+    path('create-checkout-session/', views.create_checkout_session),
 
 ]
 

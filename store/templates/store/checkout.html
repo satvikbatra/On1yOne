@@ -11,9 +11,11 @@
             display: none;
         }
     </style>
-    <link rel="stylesheet" href="{% static 'css/checkout.css' %}">
+    <!-- <link rel="stylesheet" href="{% static 'css/checkout.css' %}"> -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://js.stripe.com/v3/"></script>
+    <script src="{% static 'js/checkout.js' %}"></script>
 </head>
 <body>
     <div class="checkout-page">
@@ -65,7 +67,8 @@
     </form>
 
     <div class="box-element hidden" id="payment-info">
-        <button id="make-payment">Pay</button>
+        <!-- <button id="submitBtn">Pay</button> -->
+        <button class="button is-primary" id="submitBtn">Purchase!</button>
     </div>
 </div>
 </div>
@@ -101,10 +104,29 @@
     var userFormData;  // Declare userFormData outside of the submitFormData function
     var total = '{{order.get_cart_total}}'
 
-    document.getElementById('make-payment').addEventListener('click', function(e){
-        e.preventDefault(); // Prevent default action for the click event
-        submitFormData();
-    });
+    document.getElementById('submitBtn').addEventListener('click', function(e){
+    e.preventDefault(); // Prevent default action for the click event
+    fetch("/create-checkout-session/")
+        .then((result) => { return result.json(); })
+        .then((data) => {
+            // Initialize Stripe.js
+            const stripe = Stripe(data.STRIPE_PUBLISHABLE_KEY);
+            // Redirect to Stripe Checkout
+            stripe.redirectToCheckout({sessionId: data.sessionId})
+                .then((res) => {
+                    // Handle any further actions after redirection
+                    console.log(res);
+                })
+                .catch((error) => {
+                    console.error('Error redirecting to checkout:', error);
+                });
+        })
+        .catch((error) => {
+            console.error('Error fetching checkout session:', error);
+        });
+});
+
+
 
     function submitFormData() {
         console.log('payment button clicked!!!');

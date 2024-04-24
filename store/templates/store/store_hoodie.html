@@ -31,7 +31,7 @@
             <div class="grid grid-cols-3 justify-items-stretch  grid-flow-row gap-4 h-full p-12 ">
                 <div class="flex justify-center items-center">
                     <a href="{% url 'generate_image_hoodie' %}?refresh=true">
-                        <button class="btn btn-outline btn-secondary">Get a New Design</button>
+                        <button class="btn btn-outline btn-secondary" onclick="hardRefresh()">Get a New Design</button>
                     </a>
                 </div>
                 <div class="flex flex-col justify-center items-center">
@@ -71,7 +71,10 @@
                         <button class="btn btn-outline" onclick="selectSize('XXL')" id="btnXXL">XXL</button>
                     </div>
                     <p class="pb-3 font-bold text-lg"> Rs. 3999</p>
-                    <button class="btn btn-outline btn-primary " onclick="addToCart()">Add to Cart</button>
+                    <a href="{% url 'generate_image_hoodie' %}?refresh=true">
+                        <button class="btn btn-outline btn-primary " onclick="addToCart()">Add to Cart</button>
+                    </a>
+                    
                 </div>
             </div>
         </div>
@@ -182,7 +185,7 @@
         var refreshParam = urlParams.get('refresh');
         // If the refresh parameter is true, perform a hard refresh
         if (refreshParam === 'true') {
-            window.location.reload(true);
+            window.location.reload(true); // This will reload the page ignoring the cache
         }
     </script>
 

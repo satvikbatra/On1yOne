@@ -11,6 +11,11 @@ import datetime
 import requests
 from django.conf import settings
 import os
+from django.conf import settings # new
+from django.http.response import JsonResponse # new
+from django.views.decorators.csrf import csrf_exempt
+import stripe
+
 
 # Create your views here.
 def signup_view(request):
@@ -46,14 +51,17 @@ def home(request):
     context = {}
     return render(request, 'store/home.html', context)
 
+@login_required
 def store_t_shirt(request):
     context = {}
     return render(request, 'store/store_tshirt.html', context)
 
+@login_required
 def store_hoodie(request):
     context = {}
     return render(request, 'store/store_hoodie.html', context)
 
+@login_required
 def cart(request):
     if request.user.is_authenticated:
         customer = request.user.customer
@@ -67,7 +75,7 @@ def cart(request):
     return render(request, 'store/cart.html', context)
 
 
-
+@login_required
 def checkout(request):
     if request.user.is_authenticated:
         customer = request.user.customer
@@ -250,3 +258,40 @@ def generate_image_hoodie(request):
         return redirect('hoodie')
     else:
         return JsonResponse("Error: Unable to generate image", status=response.status_code, safe=False)
+
+
+
+@csrf_exempt
+def stripe_config(request):
+    if request.method == 'GET':
+        stripe_config = {'publicKey': settings.STRIPE_PUBLISHABLE_KEY}
+        return JsonResponse(stripe_config, safe=False)
+    
+
+
+@csrf_exempt
+def create_checkout_session(request):
+    if request.method == 'GET':
+        domain_url = 'http://localhost:2222/checkout/'  # Update this with your actual domain URL
+        stripe.api_key = settings.STRIPE_SECRET_KEY
+        try:
+            # Create Checkout Session with dynamically generated line items
+            checkout_session = stripe.checkout.Session.create(
+                success_url=domain_url + 'success?session_id={CHECKOUT_SESSION_ID}',
+                cancel_url=domain_url + 'cancelled/',
+                payment_method_types=['card'],
+                mode='payment',
+                line_items=[{
+                    'price_data': {
+                        'currency': 'inr',
+                        'product_data': {
+                            'name': 't-shirt',
+                        },
+                        'unit_amount': 1999,
+                    },
+                    'quantity': 1,
+                }]
+            )
+            return JsonResponse({'sessionId': checkout_session['id'], 'STRIPE_PUBLISHABLE_KEY': settings.STRIPE_PUBLISHABLE_KEY})
+        except Exception as e:
+            return JsonResponse({'error': str(e)})
