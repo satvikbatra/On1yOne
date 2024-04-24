@@ -1,171 +1,286 @@
-{% load static %}
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Urbanist:ital,wght@0,100..900;1,100..900&display=swap');
-        .hidden {
-            display: none;
-        }
-    </style>
-    <!-- <link rel="stylesheet" href="{% static 'css/checkout.css' %}"> -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="https://js.stripe.com/v3/"></script>
-    <script src="{% static 'js/checkout.js' %}"></script>
-</head>
-<body>
-    <div class="checkout-page">
-        <div class="div">
-            <div class="navbar">
-                <div class="navbar-2">
-                    <img src="images/On1lyOne-White.png" class="one-logo-1" >
-                    <button class="home">HOME</button>
-                    <button class="about">ABOUT</button>
-                    <button class="shop">SHOP</button>
-                    <button class="contact">CONTACT</button>
-                    <button class="cart" ><i class="fa fa-shopping-cart"></i></button>
+{% extends "store/base.html" %}
+{% block title %} Home {% endblock %}
+
+{% block content %}
+    {% load static %}
+
+    <section>
+        <div class="w-full lg:w-8/12 px-4 mx-auto mt-6">
+            <div class="relative flex flex-col min-w-0 break-words w-full mb-6 shadow-lg rounded-lg bg-blueGray-100 border-0">
+                <div class="rounded-t bg-white mb-0 px-6 py-6">
+                    <div class="text-center flex justify-between">
+                        <h6 class="text-blueGray-700 text-xl font-bold">
+                            Shipping Details
+                        </h6>
+                    </div>
+                    <form id="form">
+
+                        <div class="flex">
+                            <label class="form-control w-full px-6">
+                                <div class="label">
+                                    <span class="label-text">First Name</span>
+                                </div>
+                                <input type="text" id="first_name" name="first_name" required placeholder="Type here"
+                                       class="input input-bordered w-full "/>
+                            </label>
+                            <label class="form-control w-full px-6">
+                                <div class="label">
+                                    <span class="label-text">Last Name</span>
+                                </div>
+                                <input type="text" id="last_name" name="last_name" required placeholder="Type here"
+                                       class="input input-bordered w-full "/>
+                            </label>
+                        </div>
+                        <label class="form-control w-full px-6">
+                            <div class="label">
+                                <span class="label-text">Email</span>
+                            </div>
+                            <input type="email" id="email" name="email" required placeholder="a@a.com"
+                                   class="input input-bordered w-full "/>
+                        </label>
+
+                        <div class="divider"></div>
+                        <div class="text-center flex justify-between">
+                            <h6 class="text-blueGray-700 text-xl font-bold">
+                                Contact Details
+                            </h6>
+                        </div>
+                        <label class="form-control w-full px-6">
+                            <div class="label">
+                                <span class="label-text">Address/Street</span>
+                            </div>
+                            <input type="text" name="address" id="address" required
+                                   placeholder="Flat/Floor/House_number"
+                                   class="input input-bordered w-full "/>
+                        </label>
+                        <div class="flex">
+                            <label class="form-control w-full px-6">
+                                <div class="label">
+                                    <span class="label-text">City</span>
+                                </div>
+                                <input type="text" id="city" name="city" required placeholder="Type here"
+                                       class="input input-bordered w-full "/>
+                            </label>
+                            <label class="form-control w-full px-6">
+                                <div class="label">
+                                    <span class="label-text">Pincode</span>
+                                </div>
+                                <input type="text" id="pincode" name="pincode" required placeholder="Type here"
+                                       class="input input-bordered w-full "/>
+                            </label>
+                            <label class="form-control w-full max-w-xs">
+                                <div class="label">
+                                    <span class="label-text">State</span>
+                                </div>
+                                <select class="select select-bordered" name="indian_state" id="indian_state" required>
+                                    <option disabled selected>Select an Indian state</option>
+                                    <option value="1">Andhra Pradesh</option>
+                                    <option value="2">Arunachal Pradesh</option>
+                                    <option value="3">Assam</option>
+                                    <option value="4">Bihar</option>
+                                    <option value="5">Chhattisgarh</option>
+                                    <option value="29">Delhi</option>
+                                    <option value="6">Goa</option>
+                                    <option value="7">Gujarat</option>
+                                    <option value="8">Haryana</option>
+                                    <option value="9">Himachal Pradesh</option>
+                                    <option value="10">Jharkhand</option>
+                                    <option value="11">Karnataka</option>
+                                    <option value="12">Kerala</option>
+                                    <option value="13">Madhya Pradesh</option>
+                                    <option value="14">Maharashtra</option>
+                                    <option value="15">Manipur</option>
+                                    <option value="16">Meghalaya</option>
+                                    <option value="17">Mizoram</option>
+                                    <option value="18">Nagaland</option>
+                                    <option value="19">Odisha</option>
+                                    <option value="20">Punjab</option>
+                                    <option value="21">Rajasthan</option>
+                                    <option value="22">Sikkim</option>
+                                    <option value="23">Tamil Nadu</option>
+                                    <option value="24">Telangana</option>
+                                    <option value="25">Tripura</option>
+                                    <option value="26">Uttarakhand</option>
+                                    <option value="27">Uttar Pradesh</option>
+                                    <option value="28">West Bengal</option>
+                                </select>
+
+                            </label>
+                        </div>
+                        <div class="flex items-end h-full p-6">
+                            <button id="form-button" class="btn bg-black text-white" type="submit">Shop Now</button>
+                        </div>
+                    </form>
                 </div>
             </div>
-    <h2>Shipping Details</h2>
-    <form id="form">
-        {% csrf_token %}
-        <div>
-            <label for="name">Name:</label>
-            <input type="text" id="name" name="name" required>
-        </div>
-        <br>
-        <div>
-            <label for="email">Email Address:</label>
-            <input type="email" id="email" name="email" required>
-        </div>
-        <br>
-        <div>
-            <label for="address">Address:</label>
-            <input type="text" name="address" id="address" required>
-        </div>
-        <br>
-        <div>
-            <label for="city">City:</label>
-            <input type="text" id="city" name="city" required>
-        </div>
-        <br>
-        <div>
-            <label for="state">State:</label>
-            <input type="text" id="state" name="state" required>
-        </div>
-        <br>
-        <div>
-            <label for="pincode">Pin Code:</label>
-            <input type="text" id="pincode" name="pincode" required>
-        </div>
-        <br>
-        <button id="form-button" type="submit">Continue</button>
-    </form>
-
-    <div class="box-element hidden" id="payment-info">
-        <!-- <button id="submitBtn">Pay</button> -->
-        <button class="button is-primary" id="submitBtn">Purchase!</button>
-    </div>
-</div>
-</div>
+    </section>
+    {#<!DOCTYPE html>#}
+    {#<html lang="en">#}
+    {#<head>#}
+    {#    <meta charset="UTF-8">#}
+    {#    <meta name="viewport" content="width=device-width, initial-scale=1.0">#}
+    {#    <title>Document</title>#}
+    {#    <style>#}
+    {#        @import url('https://fonts.googleapis.com/css2?family=Urbanist:ital,wght@0,100..900;1,100..900&display=swap');#}
+    {#        .hidden {#}
+    {#            display: none;#}
+    {#        }#}
+    {#    </style>#}
+    {#    <!-- <link rel="stylesheet" href="{% static 'css/checkout.css' %}"> -->#}
+    {#    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">#}
+    {#    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>#}
+    {#    <script src="https://js.stripe.com/v3/"></script>#}
+    {#    <script src="{% static 'js/checkout.js' %}"></script>#}
+    {#</head>#}
+    {#<body>#}
+    {#    <div class="checkout-page">#}
+    {#        <div class="div">#}
+    {#            <div class="navbar">#}
+    {#                <div class="navbar-2">#}
+    {#                    <img src="images/On1lyOne-White.png" class="one-logo-1" >#}
+    {#                    <button class="home">HOME</button>#}
+    {#                    <button class="about">ABOUT</button>#}
+    {#                    <button class="shop">SHOP</button>#}
+    {#                    <button class="contact">CONTACT</button>#}
+    {#                    <button class="cart" ><i class="fa fa-shopping-cart"></i></button>#}
+    {#                </div>#}
+    {#            </div>#}
+    {#    <h2>Shipping Details</h2>#}
+    {#    <form id="form">#}
+    {#        {% csrf_token %}#}
+    {#        <div>#}
+    {#            <label for="name">Name:</label>#}
+    {#            <input type="text" id="name" name="name" required>#}
+    {#        </div>#}
+    {#        <br>#}
+    {#        <div>#}
+    {#            <label for="email">Email Address:</label>#}
+    {#            <input type="email" id="email" name="email" required>#}
+    {#        </div>#}
+    {#        <br>#}
+    {#        <div>#}
+    {#            <label for="address">Address:</label>#}
+    {#            <input type="text" name="address" id="address" required>#}
+    {#        </div>#}
+    {#        <br>#}
+    {#        <div>#}
+    {#            <label for="city">City:</label>#}
+    {#            <input type="text" id="city" name="city" required>#}
+    {#        </div>#}
+    {#        <br>#}
+    {#        <div>#}
+    {#            <label for="state">State:</label>#}
+    {#            <input type="text" id="state" name="state" required>#}
+    {#        </div>#}
+    {#        <br>#}
+    {#        <div>#}
+    {#            <label for="pincode">Pin Code:</label>#}
+    {#            <input type="text" id="pincode" name="pincode" required>#}
+    {#        </div>#}
+    {#        <br>#}
+    {#        <button id="form-button" type="submit">Continue</button>#}
+    {#    </form>#}
+    {##}
+    {#    <div class="box-element hidden" id="payment-info">#}
+    {#        <!-- <button id="submitBtn">Pay</button> -->#}
+    {#        <button class="button is-primary" id="submitBtn">Purchase!</button>#}
+    {#    </div>#}
+    {#</div>#}
+    {#</div>#}
 
     <script type="text/javascript">
-        document.addEventListener('DOMContentLoaded', function() {
-        var formButton = document.getElementById('form-button');
-        var form = document.getElementById('form');
+        document.addEventListener('DOMContentLoaded', function () {
+            var formButton = document.getElementById('form-button');
+            var form = document.getElementById('form');
 
-        form.addEventListener('submit', function(e){
-            e.preventDefault();
-            console.log('Form Submitted!!!');
+            form.addEventListener('submit', function (e) {
+                e.preventDefault();
+                console.log('Form Submitted!!!');
 
-            // Perform form validation
-            var inputs = form.getElementsByTagName('input');
-            var isValid = true;
-            for (var i = 0; i < inputs.length; i++) {
-                if (inputs[i].value.trim() === '') {
-                    isValid = false;
-                    break;
+                // Perform form validation
+                var inputs = form.getElementsByTagName('input');
+                var isValid = true;
+                for (var i = 0; i < inputs.length; i++) {
+                    if (inputs[i].value.trim() === '') {
+                        isValid = false;
+                        break;
+                    }
                 }
-            }
 
-            if (isValid) {
-                formButton.classList.add("hidden");
-                document.getElementById('payment-info').classList.remove("hidden");
-            } else {
-                alert('Please fill in all fields before continuing.');
-            }
+                if (isValid) {
+                    formButton.classList.add("hidden");
+                    document.getElementById('payment-info').classList.remove("hidden");
+                } else {
+                    alert('Please fill in all fields before continuing.');
+                }
+            });
         });
-    });
 
-    var userFormData;  // Declare userFormData outside of the submitFormData function
-    var total = '{{order.get_cart_total}}'
+        var userFormData;  // Declare userFormData outside of the submitFormData function
+        var total = '{{order.get_cart_total}}'
 
-    document.getElementById('submitBtn').addEventListener('click', function(e){
-    e.preventDefault(); // Prevent default action for the click event
-    fetch("/create-checkout-session/")
-        .then((result) => { return result.json(); })
-        .then((data) => {
-            // Initialize Stripe.js
-            const stripe = Stripe(data.STRIPE_PUBLISHABLE_KEY);
-            // Redirect to Stripe Checkout
-            stripe.redirectToCheckout({sessionId: data.sessionId})
-                .then((res) => {
-                    // Handle any further actions after redirection
-                    console.log(res);
+        document.getElementById('submitBtn').addEventListener('click', function (e) {
+            e.preventDefault(); // Prevent default action for the click event
+            fetch("/create-checkout-session/")
+                .then((result) => {
+                    return result.json();
+                })
+                .then((data) => {
+                    // Initialize Stripe.js
+                    const stripe = Stripe(data.STRIPE_PUBLISHABLE_KEY);
+                    // Redirect to Stripe Checkout
+                    stripe.redirectToCheckout({sessionId: data.sessionId})
+                        .then((res) => {
+                            // Handle any further actions after redirection
+                            console.log(res);
+                        })
+                        .catch((error) => {
+                            console.error('Error redirecting to checkout:', error);
+                        });
                 })
                 .catch((error) => {
-                    console.error('Error redirecting to checkout:', error);
+                    console.error('Error fetching checkout session:', error);
                 });
-        })
-        .catch((error) => {
-            console.error('Error fetching checkout session:', error);
         });
-});
 
 
+        function submitFormData() {
+            console.log('payment button clicked!!!');
 
-    function submitFormData() {
-        console.log('payment button clicked!!!');
+            userFormData = {
+                'name': form.name.value,
+                'email': form.email.value,
+                'total': total,
+            };
 
-        userFormData = {
-            'name': form.name.value,
-            'email': form.email.value,
-            'total': total,
-        };
+            var shippingInfo = {
+                'address': form.address.value,
+                'city': form.city.value,
+                'state': form.state.value,
+                'zipcode': form.pincode.value,
+            };
 
-        var shippingInfo = {
-            'address': form.address.value,
-            'city': form.city.value, 
-            'state': form.state.value,
-            'zipcode': form.pincode.value,
-        };
+            var csrftoken = document.querySelector('[name=csrfmiddlewaretoken]').value;  // Get CSRF token from the form
 
-        var csrftoken = document.querySelector('[name=csrfmiddlewaretoken]').value;  // Get CSRF token from the form
-
-        var url = '/process-order/';
-        fetch(url, {
-            method:'POST',
-            headers:{
-                'Content-Type':'application/json',
-                'X-CSRFToken': csrftoken,
-            },
-            body:JSON.stringify({'form':userFormData, 'shipping':shippingInfo}),
-        })
-        .then((response) => response.json())
-        .then((data) => {
-            console.log('Success:', data);
-            alert('Transaction completed!!');
-            window.location.href = "{% url 'home' %}";
-        })
-        .catch((error) => {
-            console.error('Error occurred while submitting form data:', error);
-        });
-    }
+            var url = '/process-order/';
+            fetch(url, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-CSRFToken': csrftoken,
+                },
+                body: JSON.stringify({'form': userFormData, 'shipping': shippingInfo}),
+            })
+                .then((response) => response.json())
+                .then((data) => {
+                    console.log('Success:', data);
+                    alert('Transaction completed!!');
+                    window.location.href = "{% url 'home' %}";
+                })
+                .catch((error) => {
+                    console.error('Error occurred while submitting form data:', error);
+                });
+        }
 
     </script>
-</body>
-</html>
+{% endblock %}
