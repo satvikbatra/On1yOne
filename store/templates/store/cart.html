@@ -1,9 +1,9 @@
-{% extends "store/base.html" %} 
+{% extends "store/base.html" %}
 {% block content %}
     {% load static %}
-    <h1 class="text-9xl font-bold text-center p-12" xmlns="http://www.w3.org/1999/html">Your Cart</h1>
     {% if items %}
-    <h2>{{ order.get_cart_items }}</h2>
+        <h1 class="text-9xl font-bold text-center p-12" xmlns="http://www.w3.org/1999/html">Your Cart</h1>
+        <h2>{{ order.get_cart_items }}</h2>
         <div class="flex flex-col w-full lg:flex-row">
             <div class="grid flex-grow place-items-center">
                 {% for item in items %}
@@ -25,7 +25,9 @@
                                 </div>
                             </div>
                             <div class="card-actions justify-end py-6">
-                                <button class="btn btn-outline btn-accent update-cart" data-product="{{ item.product.id }}" data-action="remove">Remove</button>
+                                <button class="btn btn-outline btn-accent update-cart"
+                                        data-product="{{ item.product.id }}" data-action="remove">Remove
+                                </button>
                             </div>
                         </div>
                     </div>
@@ -47,74 +49,103 @@
                             <h2 class="align-left">Total</h2>
                             <h2>₹ {{ order.get_cart_total | add:1000 }}</h2>
                         </div>
-                        <button class="btn btn-xs sm:btn-sm md:btn-md lg:btn-lg w-full bg-green-300 text-white">Checkout</button>
+                        <button class="btn btn-xs sm:btn-sm md:btn-md lg:btn-lg w-full bg-green-300 text-white">
+                            Checkout
+                        </button>
                     </div>
                 </div>
             </div>
         </div>
     {% else %}
-        <div class="text-center p-6">
-            <p>Please add items to the cart.</p>
+        <h1 class="text-9xl font-bold text-center p-12" xmlns="http://www.w3.org/1999/html">Your Cart is Empty</h1>
+        <h1 class="text-5xl font-bold text-center p-12" xmlns="http://www.w3.org/1999/html">Continue Shoping</h1>
+        <div class="w-full h-1/2 flex justify-center py-12">
+            <div class="grid grid-cols-2 gap-20  h-full w-2/3">
+                <div class="bg-gray-200 p-4 rounded-xl h-full">
+                    <div class="p-12 pl-6 flex flex-col h-full">
+                        <h3 class="text-7xl mb-2 ">T-Shirts</h3>
+                        <p class="text-gray-600 mb-4">Starting at Rs. 1999</p>
+                        <a href="{% url 't-shirt' %}">
+                            <div class="flex items-end h-full">
+                                <button class="btn bg-black text-white">Shop Now</button>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="bg-gray-200 p-4 rounded-xl h-full">
+                    <div class="py-12 pl-6 flex flex-col h-full">
+                        <h3 class="text-7xl mb-2 ">Hoodies</h3>
+                        <p class="text-gray-600 mb-4">Starting at Rs. 3999</p>
+                        <a href="{% url 'hoodie' %}">
+                            <div class="flex items-end h-full">
+                                <button class="btn bg-black text-white">Shop Now</button>
+                            </div>
+                        </a>
+
+                    </div>
+                </div>
+            </div>
         </div>
+
+
     {% endif %}
-</div>
+    </div>
 
-<footer class="footer  items-center p-4 bg-green-300 text-neutral-content">
-    <!-- Footer content -->
-</footer>
 
-<script>
-    document.addEventListener('DOMContentLoaded', function () {
-        var removeButtons = document.querySelectorAll('.update-cart');
 
-        removeButtons.forEach(function (button) {
-            button.addEventListener('click', function () {
-                var productId = button.getAttribute('data-product');
-                var action = button.getAttribute('data-action');
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            var removeButtons = document.querySelectorAll('.update-cart');
 
-                // Construct the data payload
-                var data = {
-                    'product_id': productId,
-                    'action': action
-                };
+            removeButtons.forEach(function (button) {
+                button.addEventListener('click', function () {
+                    var productId = button.getAttribute('data-product');
+                    var action = button.getAttribute('data-action');
 
-                // Send an AJAX request to update the cart
-                fetch('/update-cart/', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                        'X-CSRFToken': getCookie('csrftoken')
-                    },
-                    body: JSON.stringify(data)
-                })
-                    .then(response => response.json())
-                    .then(data => {
-                        // Handle the response from the server
-                        console.log(data);
-                        // Refresh the page upon successful removal
-                        location.reload();
+                    // Construct the data payload
+                    var data = {
+                        'product_id': productId,
+                        'action': action
+                    };
+
+                    // Send an AJAX request to update the cart
+                    fetch('/update-cart/', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'X-CSRFToken': getCookie('csrftoken')
+                        },
+                        body: JSON.stringify(data)
                     })
-                    .catch((error) => {
-                        console.error('Error:', error);
-                    });
+                        .then(response => response.json())
+                        .then(data => {
+                            // Handle the response from the server
+                            console.log(data);
+                            // Refresh the page upon successful removal
+                            location.reload();
+                        })
+                        .catch((error) => {
+                            console.error('Error:', error);
+                        });
+                });
             });
-        });
 
-        // Function to get CSRF token from cookies
-        function getCookie(name) {
-            var cookieValue = null;
-            if (document.cookie && document.cookie !== '') {
-                var cookies = document.cookie.split(';');
-                for (var i = 0; i < cookies.length; i++) {
-                    var cookie = cookies[i].trim();
-                    if (cookie.substring(0, name.length + 1) === (name + '=')) {
-                        cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
-                        break;
+            // Function to get CSRF token from cookies
+            function getCookie(name) {
+                var cookieValue = null;
+                if (document.cookie && document.cookie !== '') {
+                    var cookies = document.cookie.split(';');
+                    for (var i = 0; i < cookies.length; i++) {
+                        var cookie = cookies[i].trim();
+                        if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                            cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                            break;
+                        }
                     }
                 }
+                return cookieValue;
             }
-            return cookieValue;
-        }
-    });
-</script>
+        });
+    </script>
 {% endblock %}
