@@ -1,48 +1,128 @@
 {% extends "store/base.html" %} {% block content %}
     {% load static %}
-        <div class="signup">
-            <div class="div">
-                <div class="navbar">
-                    <div class="navbar-2">
-                        <img src="/static/images/logo1.png">
+    <div class="p-12 flex justify-center">
+        <div class="flex flex-col justify-center w-full md:w-1/2 lg:w-1/4">
+            <h1 class="text-7xl font-medium py-12 text-center">Sign Up</h1>
+            <form method="POST" action="{% url 'signup' %}">
+                {% csrf_token %}
+                <label class="form-control w-full px-16">
+                    <div class="label">
+                        <span class="label-text">What username would you choose?</span>
                     </div>
+                    <input type="text" placeholder="Type here" name="username" id="username"
+                           class="input input-bordered w-full " required/>
+
+                </label>
+                <div class="flex justify-around">
+                    <label class="form-control w-full max-w-xs">
+                        <div class="label">
+                            <span class="label-text">What is your First name?</span>
+                        </div>
+                        <input type="text" placeholder="John" id="first_name" name="first_name"
+                               class="input input-bordered w-full max-w-xs" required/>
+
+                    </label>
+                    <label class="form-control w-full max-w-xs">
+                        <div class="label">
+                            <span class="label-text">What is your Last name?</span>
+                        </div>
+                        <input type="text" placeholder="Doe" id="last_name" name="last_name"
+                               class="input input-bordered w-full max-w-xs" required/>
+
+                    </label>
+
                 </div>
-                <div class="group">
-                    <div class="text-wrapper">SignUp</div>
-                    <div class="frame">
-                        <div class="frame-2">
-                            <form method="POST" action="{% url 'signup' %}">
-                                {% csrf_token %}
-                                <label for="full_name">Full Name:</label><br>
-                                <input type="text" id="full_name" name="full_name" required><br><br>
+             <div class="flex justify-around">
+                    <label class="form-control w-full max-w-xs">
+                        <div class="label">
+                            <span class="label-text">What is your email id?</span>
+                        </div>
+                        <input type="text" placeholder="a@a.com" id="email" name="email"
+                               class="input input-bordered w-full max-w-xs" required/>
 
-                                <label for="username">Username:</label><br>
-                                <input type="text" id="username" name="username" required><br><br>
+                    </label>
+                    <label class="form-control w-full max-w-xs">
+                        <div class="label">
+                            <span class="label-text">What is your Phone Number?</span>
+                        </div>
+                        <input type="number" placeholder="9560511269 " id="phone_number" name="phone_number"
+                               class="input input-bordered w-full max-w-xs" required/>
 
-                                <label for="email">Email:</label><br>
-                                <input type="email" id="email" name="email" required><br><br>
+                    </label>
 
-                                <label for="phone_number">Phone Number:</label><br>
-                                <input type="text" id="phone_number" name="phone_number" required><br><br>
-
-                                <label for="password1">Password:</label><br>
-                                <input type="password" id="password1" name="password1" required><br><br>
-
-                                <label for="password2">Confirm Password:</label><br>
-                                <input type="password" id="password2" name="password2" required><br><br>
-
-                                <button class="button" type="submit" value="Register" style="vertical-align:middle"><span>Sign Up </span></button>
-                            </form>
-
+                </div>
+              <label class="form-control w-full px-16">
+                    <div class="label">
+                        <span class="label-text">Type in your Password</span>
                     </div>
+                    <input type="password" placeholder="***************" name="password1" id="password1"
+                           class="input input-bordered w-full " required/>
+
+                </label>
+            <label class="form-control w-full px-16">
+                    <div class="label">
+                        <span class="label-text">Confirm your Password</span>
+                    </div>
+                    <input type="password" placeholder="***************" name="password2" id="password2"
+                           class="input input-bordered w-full " required/>
+
+                </label>
+
+
+                {% for message in messages %}
+                    {% if message %}
+                        <h3 class="text-red-900">{{ message }}</h3>
+                    {% endif %}
+                {% endfor %}
+                <div class="flex justify-center py-6">
+                    <button type="submit" class="btn btn-slate " value="Login"><span>Sign Up  </span></button>
                 </div>
-            </div>
+            </form>
+
         </div>
-        <div>
-        {% for message in messages %}
+    </div>
+    {#        <div class="signup">#}
+    {#            <div class="div">#}
+    {#                <div class="navbar">#}
+    {#                    <div class="navbar-2">#}
+    {#                        <img src="/static/images/logo1.png">#}
+    {#                    </div>#}
+    {#                </div>#}
+    {#                <div class="group">#}
+    {#                    <div class="text-wrapper">SignUp</div>#}
+    {#                    <div class="frame">#}
+    {#                        <div class="frame-2">#}
+    {#                            <form method="POST" action="{% url 'signup' %}">#}
+    {#                                {% csrf_token %}#}
+    {#                                <label for="full_name">Full Name:</label><br>#}
+    {#                                <input type="text" id="full_name" name="full_name" required><br><br>#}
+    {##}
+    {#                                <label for="username">Username:</label><br>#}
+    {#                                <input type="text" id="username" name="username" required><br><br>#}
+    {##}
+    {#                                <label for="email">Email:</label><br>#}
+    {#                                <input type="email" id="email" name="email" required><br><br>#}
+    {##}
+    {#                                <label for="phone_number">Phone Number:</label><br>#}
+    {#                                <input type="text" id="phone_number" name="phone_number" required><br><br>#}
+    {##}
+    {#                                <label for="password1">Password:</label><br>#}
+    {#                                <input type="password" id="password1" name="password1" required><br><br>#}
+    {##}
+    {#                                <label for="password2">Confirm Password:</label><br>#}
+    {#                                <input type="password" id="password2" name="password2" required><br><br>#}
+    {##}
+    {#                                <button class="button" type="submit" value="Register" style="vertical-align:middle"><span>Sign Up </span></button>#}
+    {#                            </form>#}
+    {##}
+    {#                    </div>#}
+    {#                </div>#}
+    {#            </div>#}
+    {#        </div>#}
+    {% for message in messages %}
         {% if message %}
-            <h3>{{message}}</h3>
+            <h3>{{ message }}</h3>
         {% endif %}
-        {% endfor %}
-        </div>
+    {% endfor %}
+    </div>
 {% endblock %}
