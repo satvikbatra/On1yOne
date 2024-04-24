@@ -172,12 +172,12 @@
     </script>
 
     <script>
-        // Check if the URL contains the refresh parameter
-        var urlParams = new URLSearchParams(window.location.search);
-        var refreshParam = urlParams.get('refresh');
-        // If the refresh parameter is true, perform a hard refresh
-        if (refreshParam === 'true') {
-            window.location.reload(true); // This will reload the page ignoring the cache
+        function hardRefresh() {
+            caches.open("v1").then((cache) => {
+                cache.delete("{% static 'images/generated_image.jpg' %}").then((response) => {
+                    location.reload(true); // Reload the page after deleting the resource from cache
+                });
+            });
         }
     </script>
 {% endblock %}

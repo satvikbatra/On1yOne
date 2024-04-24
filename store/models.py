@@ -2,6 +2,16 @@ from django.db import models
 from django.contrib.auth.models import User
 from django.db.models.signals import post_save
 from django.dispatch import receiver
+import uuid
+import os
+
+def unique_design_image_path(instance, filename):
+    """
+    Generate a unique file path for design images.
+    """
+    ext = filename.split('.')[-1]
+    unique_filename = f"design_{uuid.uuid4().hex}.{ext}"
+    return os.path.join('static', 'images', unique_filename)
 
 class Customer(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE, null=True, blank=True) 
@@ -50,7 +60,7 @@ class Product(models.Model):
     price = models.IntegerField(default=1999)
     colour = models.CharField(max_length=10, choices=COLOURS, default='off-white')
     image = models.ImageField(null=True, blank=True)
-    design = models.ImageField(null=True, blank=True)
+    design = models.ImageField(upload_to=unique_design_image_path, null=True, blank=True)  # Updated upload_to
     size = models.CharField(max_length=3, choices=SIZES, default='L')
     
     def __str__(self):
@@ -81,6 +91,9 @@ class Product(models.Model):
         except:
             url = ""
         return url
+
+
+
 
 class Order(models.Model):
     customer = models.ForeignKey(Customer, on_delete=models.SET_NULL, null=True, blank=True)

@@ -93,55 +93,93 @@ def checkout(request):
 from django.http import JsonResponse
 from .models import Product, Order, OrderItem
 
+import os
+import uuid
+
+import requests
+
 def add_to_cart(request):
     if request.method == 'POST':
         data = json.loads(request.body)
+        print("Received data:", data) 
         selected_color = data.get('color')
         selected_size = data.get('size')
-        tshirt_back_image = data.get('tshirt_back_image')  # Retrieve back image URL
-        prod_design_image = data.get('design_image')
+        tshirt_back_image = data.get('tshirt_back_image') 
+        prod_design_image_url = data.get('design_image') 
+        
+        if not prod_design_image_url.startswith(('http://', 'https://')):
+            prod_design_image_url = request.scheme + '://' + request.get_host() + prod_design_image_url
+        
+        try:
+            response = requests.get(prod_design_image_url)
+            response.raise_for_status()
+            prod_design_image = response.content
+        except requests.exceptions.RequestException as e:
+            error_message = f"Error retrieving design image: {e}"
+            print(error_message)
+            return JsonResponse({'error': error_message}, status=400)
+        
+        unique_filename = f"design_{uuid.uuid4().hex}.jpg"
 
-        # Create or get the Product instance
+        image_path = os.path.join('static', 'images', unique_filename)
+        with open(image_path, 'wb') as f:
+            f.write(prod_design_image)
+
         product, created = Product.objects.get_or_create(
-            product_type='t-shirt',  # Replace with actual product type
-            name='Your T-Shirt Product Name',  # Replace with actual product name
+            product_type='t-shirt',
+            name='Your T-Shirt Product Name',
             colour=selected_color,
             size=selected_size,
-            defaults={'image': tshirt_back_image, 'design': prod_design_image}  # Set default values
+            defaults={'image': tshirt_back_image, 'design': image_path}
         )
 
-        # Get or create the Order and associate it with the customer
         customer = request.user.customer
         order, created = Order.objects.get_or_create(customer=customer, complete=False)
 
-        # Create an OrderItem with the new product and order
         order_item = OrderItem.objects.create(
             product=product,
             order=order
         )
 
-        # Return a JSON response indicating success
         return JsonResponse({'message': 'Product added to cart successfully'}, status=200)
     else:
-        # Return an appropriate response if the request method is not POST
         return JsonResponse({'error': 'Invalid request method'}, status=405)
+
 
 
 def add_to_cart_hoodie(request):
     if request.method == 'POST':
         data = json.loads(request.body)
+        print("Received data:", data) 
         selected_color = data.get('color')
         selected_size = data.get('size')
-        hoodie_back_image = data.get('hoodie_back_image')
-        prod_design_image = data.get('design_image')
+        hoodie_back_image = data.get('hoodie_back_image') 
+        prod_design_image_url = data.get('design_image') 
+        
+        if not prod_design_image_url.startswith(('http://', 'https://')):
+            prod_design_image_url = request.scheme + '://' + request.get_host() + prod_design_image_url
+        
+        try:
+            response = requests.get(prod_design_image_url)
+            response.raise_for_status()
+            prod_design_image = response.content
+        except requests.exceptions.RequestException as e:
+            error_message = f"Error retrieving design image: {e}"
+            print(error_message)
+            return JsonResponse({'error': error_message}, status=400)
+        
+        unique_filename = f"design_{uuid.uuid4().hex}.jpg"
+
+        image_path = os.path.join('static', 'images', unique_filename)
+        with open(image_path, 'wb') as f:
+            f.write(prod_design_image)
 
         product, created = Product.objects.get_or_create(
-            product_type='hoodie',  # Replace with actual product type
-            name='Your Hoodie Product Name',  # Replace with actual product name
+            product_type='hoodie',
+            name='Your Hoodie Product Name',
             colour=selected_color,
             size=selected_size,
-            defaults={'image': hoodie_back_image, 'design': prod_design_image}  # Set default values
-            # design_image = prod_design_image
+            defaults={'image': hoodie_back_image, 'design': image_path}
         )
 
         customer = request.user.customer
@@ -155,6 +193,7 @@ def add_to_cart_hoodie(request):
         return JsonResponse({'message': 'Product added to cart successfully'}, status=200)
     else:
         return JsonResponse({'error': 'Invalid request method'}, status=405)
+
 
     
 def update_cart(request):
