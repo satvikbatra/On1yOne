@@ -50,9 +50,9 @@
                             <h2 class="align-left">Total</h2>
                             <h2>₹ {{ order.get_cart_total | add:1000 }}</h2>
                         </div>
-                        <button class="btn btn-xs sm:btn-sm md:btn-md lg:btn-lg w-full bg-green-300 text-white">
-                            Checkout
-                        </button>
+                        <a href="{% url 'checkout' %}">
+                            <button class="btn btn-xs sm:btn-sm md:btn-md lg:btn-lg w-full bg-green-300 text-white">Checkout</button>
+                        </a>
                     </div>
                 </div>
             </div>

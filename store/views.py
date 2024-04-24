@@ -323,7 +323,7 @@ def create_checkout_session(request):
                     'price_data': {
                         'currency': 'inr',
                         'product_data': {
-                            'name': 't-shirt',
+                            'name': 'Cart Total',
                         },
                         'unit_amount': 1999,
                     },
