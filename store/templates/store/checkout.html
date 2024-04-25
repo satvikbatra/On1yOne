@@ -4,8 +4,10 @@
 {% block content %}
     {% load static %}
 
+
     <section>
         <div class="w-full lg:w-8/12 px-4 mx-auto mt-6">
+            
             <div class="relative flex flex-col min-w-0 break-words w-full mb-6 shadow-lg rounded-lg bg-blueGray-100 border-0">
                 <div class="rounded-t bg-white mb-0 px-6 py-6">
                     <div class="text-center flex justify-between">
@@ -13,7 +15,8 @@
                             Shipping Details
                         </h6>
                     </div>
-                    <form id="form">
+                    <form id="form">\
+                        {% csrf_token %}
 
                         <div class="flex">
                             <label class="form-control w-full px-6">
@@ -110,83 +113,14 @@
                         <div class="flex items-end h-full p-6">
                             <button id="form-button" class="btn bg-black text-white" type="submit">Shop Now</button>
                         </div>
+                        <div class="box-element hidden" id="payment-info">
+                            <button onclick="submitFormData()" class="button is-primary" id="submitBtn">Purchase!</button>
+                        </div>
                     </form>
                 </div>
             </div>
     </section>
-    {#<!DOCTYPE html>#}
-    {#<html lang="en">#}
-    {#<head>#}
-    {#    <meta charset="UTF-8">#}
-    {#    <meta name="viewport" content="width=device-width, initial-scale=1.0">#}
-    {#    <title>Document</title>#}
-    {#    <style>#}
-    {#        @import url('https://fonts.googleapis.com/css2?family=Urbanist:ital,wght@0,100..900;1,100..900&display=swap');#}
-    {#        .hidden {#}
-    {#            display: none;#}
-    {#        }#}
-    {#    </style>#}
-    {#    <!-- <link rel="stylesheet" href="{% static 'css/checkout.css' %}"> -->#}
-    {#    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">#}
-    {#    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>#}
-    {#    <script src="https://js.stripe.com/v3/"></script>#}
-    {#    <script src="{% static 'js/checkout.js' %}"></script>#}
-    {#</head>#}
-    {#<body>#}
-    {#    <div class="checkout-page">#}
-    {#        <div class="div">#}
-    {#            <div class="navbar">#}
-    {#                <div class="navbar-2">#}
-    {#                    <img src="images/On1lyOne-White.png" class="one-logo-1" >#}
-    {#                    <button class="home">HOME</button>#}
-    {#                    <button class="about">ABOUT</button>#}
-    {#                    <button class="shop">SHOP</button>#}
-    {#                    <button class="contact">CONTACT</button>#}
-    {#                    <button class="cart" ><i class="fa fa-shopping-cart"></i></button>#}
-    {#                </div>#}
-    {#            </div>#}
-    {#    <h2>Shipping Details</h2>#}
-    {#    <form id="form">#}
-    {#        {% csrf_token %}#}
-    {#        <div>#}
-    {#            <label for="name">Name:</label>#}
-    {#            <input type="text" id="name" name="name" required>#}
-    {#        </div>#}
-    {#        <br>#}
-    {#        <div>#}
-    {#            <label for="email">Email Address:</label>#}
-    {#            <input type="email" id="email" name="email" required>#}
-    {#        </div>#}
-    {#        <br>#}
-    {#        <div>#}
-    {#            <label for="address">Address:</label>#}
-    {#            <input type="text" name="address" id="address" required>#}
-    {#        </div>#}
-    {#        <br>#}
-    {#        <div>#}
-    {#            <label for="city">City:</label>#}
-    {#            <input type="text" id="city" name="city" required>#}
-    {#        </div>#}
-    {#        <br>#}
-    {#        <div>#}
-    {#            <label for="state">State:</label>#}
-    {#            <input type="text" id="state" name="state" required>#}
-    {#        </div>#}
-    {#        <br>#}
-    {#        <div>#}
-    {#            <label for="pincode">Pin Code:</label>#}
-    {#            <input type="text" id="pincode" name="pincode" required>#}
-    {#        </div>#}
-    {#        <br>#}
-    {#        <button id="form-button" type="submit">Continue</button>#}
-    {#    </form>#}
-    {##}
-    {#    <div class="box-element hidden" id="payment-info">#}
-    {#        <!-- <button id="submitBtn">Pay</button> -->#}
-    {#        <button class="button is-primary" id="submitBtn">Purchase!</button>#}
-    {#    </div>#}
-    {#</div>#}
-    {#</div>#}
+    <script src="https://js.stripe.com/v3/"></script>
 
     <script type="text/javascript">
         document.addEventListener('DOMContentLoaded', function () {
@@ -245,22 +179,26 @@
 
 
         function submitFormData() {
-            console.log('payment button clicked!!!');
+            console.log('First Name Element:', document.getElementById('first_name'));
+            console.log('Last Name Element:', document.getElementById('last_name'));
 
             userFormData = {
-                'name': form.name.value,
-                'email': form.email.value,
-                'total': total,
+                'name': document.getElementById('first_name').value + ' ' + document.getElementById('last_name').value,
+                'email': document.getElementById('email').value,
+                'total': '{{ order.get_cart_total }}',
             };
 
             var shippingInfo = {
-                'address': form.address.value,
-                'city': form.city.value,
-                'state': form.state.value,
-                'zipcode': form.pincode.value,
+                'address': document.getElementById('address').value,
+                'city': document.getElementById('city').value,
+                'state': document.getElementById('indian_state').value,
+                'zipcode': document.getElementById('pincode').value,
             };
 
-            var csrftoken = document.querySelector('[name=csrfmiddlewaretoken]').value;  // Get CSRF token from the form
+            var csrftoken = document.querySelector('[name=csrfmiddlewaretoken]').value;
+            console.log('payment button clicked!!!');
+            console.log('Form submission triggered!');
+            console.log('Form data:', userFormData);
 
             var url = '/process-order/';
             fetch(url, {
@@ -271,15 +209,15 @@
                 },
                 body: JSON.stringify({'form': userFormData, 'shipping': shippingInfo}),
             })
-                .then((response) => response.json())
-                .then((data) => {
-                    console.log('Success:', data);
-                    alert('Transaction completed!!');
-                    window.location.href = "{% url 'home' %}";
-                })
-                .catch((error) => {
-                    console.error('Error occurred while submitting form data:', error);
-                });
+            .then((response) => response.json())
+            .then((data) => {
+                console.log('Success:', data);
+                // alert('Transaction completed!!');
+                // window.location.href = "{% url 'home' %}";
+            })
+            .catch((error) => {
+                console.error('Error occurred while submitting form data:', error);
+            });
         }
 
     </script>

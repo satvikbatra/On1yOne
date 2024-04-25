@@ -15,6 +15,7 @@ from django.conf import settings # new
 from django.http.response import JsonResponse # new
 from django.views.decorators.csrf import csrf_exempt
 import stripe
+from django.contrib.auth import logout
 
 
 # Create your views here.
@@ -46,6 +47,12 @@ def login_view(request):
         form = AuthenticationForm()
     context = {'form': form}
     return render(request, 'store/login.html', context)
+
+@login_required
+def logout_view(request):
+    logout(request)
+    return redirect('home')
+    
 
 def home(request):
     context = {}
@@ -305,30 +312,48 @@ def stripe_config(request):
         stripe_config = {'publicKey': settings.STRIPE_PUBLISHABLE_KEY}
         return JsonResponse(stripe_config, safe=False)
 
+from django.db.models import Sum
 
+
+stripe.api_key = settings.STRIPE_SECRET_KEY
 
 @csrf_exempt
 def create_checkout_session(request):
     if request.method == 'GET':
-        domain_url = 'http://localhost:2222/checkout/'  # Update this with your actual domain URL
-        stripe.api_key = settings.STRIPE_SECRET_KEY
+        domain_url = 'http://localhost:2222/checkout/'  # Update with your domain URL
         try:
-            # Create Checkout Session with dynamically generated line items
+            # Calculate cart total
+            # cart_total = OrderItem.objects.aggregate(total=Sum('product__price'))['total']
+            order = Order.objects.get(customer=request.user.customer, complete=False)
+            cart_total = order.get_cart_total()
+
+            # Retrieve customer name and address from the request (modify this part based on how you collect this information)
+            customer_name = request.GET.get('customer_name')
+            customer_address = request.GET.get('customer_address')
+
+            # Create a new checkout session with customer name and address
             checkout_session = stripe.checkout.Session.create(
                 success_url=domain_url + 'success?session_id={CHECKOUT_SESSION_ID}',
                 cancel_url=domain_url + 'cancelled/',
                 payment_method_types=['card'],
                 mode='payment',
+                customer_email=request.user.email,  # Assuming you have authenticated users and you want to use their email
                 line_items=[{
                     'price_data': {
                         'currency': 'inr',
                         'product_data': {
                             'name': 'Cart Total',
                         },
-                        'unit_amount': 1999,
+                        'unit_amount': int(cart_total * 100),  # Convert to cents
                     },
                     'quantity': 1,
-                }]
+                }],
+                shipping_address={
+                    'name': customer_name,
+                    'address': {
+                        'line1': customer_address,
+                    },
+                }
             )
             return JsonResponse({'sessionId': checkout_session['id'], 'STRIPE_PUBLISHABLE_KEY': settings.STRIPE_PUBLISHABLE_KEY})
         except Exception as e:

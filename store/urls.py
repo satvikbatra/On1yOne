@@ -17,6 +17,7 @@ urlpatterns = [
     path('generate_image_hoodie/', views.generate_image_hoodie, name='generate_image_hoodie'),
     path('config/', views.stripe_config),
     path('create-checkout-session/', views.create_checkout_session),
+    path('logout/', views.logout_view, name='logout'),
 
 ]
 

@@ -4,6 +4,7 @@ from django.db.models.signals import post_save
 from django.dispatch import receiver
 import uuid
 import os
+from django.contrib import admin
 
 def unique_design_image_path(instance, filename):
     """
@@ -19,13 +20,14 @@ class Customer(models.Model):
     email = models.CharField(max_length=100, null=True)
 
     def __str__(self):
-        return self.name
+        return self.name if self.name else "No Name"
 
 # Signal to create a Customer instance whenever a new User is created
 @receiver(post_save, sender=User)
 def create_customer(sender, instance, created, **kwargs):
     if created:
-        Customer.objects.create(user=instance)
+        user_name = instance.username  # Get the username of the new user
+        Customer.objects.create(user=instance, name=user_name)
 
 # Signal to save the Customer instance whenever the related User instance is saved
 @receiver(post_save, sender=User)
@@ -102,7 +104,7 @@ class Order(models.Model):
     transaction_id = models.CharField(max_length=100, null=True)
     
     def __str__(self):
-        return str(self.id)
+        return f"Order #{self.id} by {self.customer.name if self.customer else 'Unknown'}"
     
     @property
     def get_cart_total(self):
@@ -129,8 +131,8 @@ class OrderItem(models.Model):
         return total
 
 class ShippingAddress(models.Model):
-    customer = models.ForeignKey(Customer, on_delete=models.SET_NULL, null=True)
-    order = models.ForeignKey(Order, on_delete=models.SET_NULL, null=True)
+    customer = models.ForeignKey(Customer, on_delete=models.CASCADE, null=True)
+    order = models.ForeignKey(Order, on_delete=models.CASCADE, null=True)
     address = models.CharField(max_length=300, null=False)
     city = models.CharField(max_length=100, null=False)
     state = models.CharField(max_length=100, null=False)
@@ -138,4 +140,30 @@ class ShippingAddress(models.Model):
     date_added = models.DateField(auto_now_add=True)
 
     def __str__(self):
-        return self.address
+        customer_info = self.customer.name if self.customer else "No Customer"
+        return f"Shipping Address for {customer_info} - {self.address}, {self.city}, {self.state}, {self.zipcode}"
+
+
+class OrderItemInline(admin.TabularInline):
+    model = OrderItem
+    extra = 0
+    readonly_fields = ['product_name']  # Make the product name field read-only
+
+    # Define a custom method to display the product name
+    def product_name(self, instance):
+        return instance.product.name if instance.product else "No Product"
+
+    # Set the custom method to a short description
+    product_name.short_description = 'Product'
+    
+class OrderAdmin(admin.ModelAdmin):
+    list_display = ('id', 'customer', 'date_ordered', 'complete')
+    inlines = [OrderItemInline]
+
+    def display_products(self, obj):
+        order_items = OrderItem.objects.filter(order=obj)
+        products = [order_item.product.name for order_item in order_items]
+        return ", ".join(products)
+
+    # Set the custom method to a short description
+    display_products.short_description = 'Products'

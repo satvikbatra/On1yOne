@@ -100,14 +100,26 @@
         };
         let selectedSize = null;
 
+        // function selectSize(size) {
+        //     document.querySelectorAll('.size button').forEach(button => {
+        //         button.style.background = '#e8edeb';
+        //         button.style.color = 'black';
+        //     });
+
+        //     document.getElementById('btn' + size).style.background = '#384037';
+        //     document.getElementById('btn' + size).style.color = 'white';
+        //     selectedSize = size;
+        // }
         function selectSize(size) {
-            document.querySelectorAll('.size button').forEach(button => {
-                button.style.background = '#e8edeb';
-                button.style.color = 'black';
+            // Reset styles for all size buttons
+            document.querySelectorAll('.grid button').forEach(button => {
+                button.classList.remove('btn-primary');
+                button.classList.add('btn-outline');
             });
 
-            document.getElementById('btn' + size).style.background = '#384037';
-            document.getElementById('btn' + size).style.color = 'white';
+            // Apply styles to the selected button
+            document.getElementById('btn' + size).classList.remove('btn-outline');
+            document.getElementById('btn' + size).classList.add('btn-primary');
             selectedSize = size;
         }
 
